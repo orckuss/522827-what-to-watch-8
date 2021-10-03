@@ -1,17 +1,18 @@
+import { Film } from '../../types/film';
 import Main from '../main/main';
 
 type Props = {
-  readonly name: string;
-  readonly genre: string,
-  readonly released: number,
+  readonly promoFilm: Film;
 }
 
-function App({ name, genre, released }: Props): JSX.Element {
+function App({ promoFilm }: Props): JSX.Element {
   return (
     <Main
-      name={name}
-      genre={genre}
-      released={released}
+      name={promoFilm.name}
+      genre={promoFilm.genre}
+      released={promoFilm.released}
+      posterImage={promoFilm.posterImage}
+      backgroundImage={promoFilm.backgroundImage}
     />
   );
 }

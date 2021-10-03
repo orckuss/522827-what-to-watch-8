@@ -3,6 +3,8 @@ export type Film = {
   readonly id: number;
   readonly name: string;
   readonly previewImage: string;
+  readonly posterImage: string;
+  readonly backgroundImage: string;
   readonly genre: string,
   readonly released: number,
 };

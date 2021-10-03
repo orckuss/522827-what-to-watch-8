@@ -6,14 +6,16 @@ type Props = {
   readonly name: string;
   readonly genre: string,
   readonly released: number,
+  readonly backgroundImage: string;
+  readonly posterImage: string;
 }
 
-function Main({ name, genre, released }: Props): JSX.Element {
+function Main(props: Props): JSX.Element {
   return (
     <>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt={name} />
+          <img src={props.backgroundImage} alt={props.name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -42,14 +44,14 @@ function Main({ name, genre, released }: Props): JSX.Element {
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src={props.posterImage} alt={`${props.name} poster`} width="218" height="327" />
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{name}</h2>
+              <h2 className="film-card__title">{props.name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{genre}</span>
-                <span className="film-card__year">{released}</span>
+                <span className="film-card__genre">{props.genre}</span>
+                <span className="film-card__year">{props.released}</span>
               </p>
 
               <div className="film-card__buttons">

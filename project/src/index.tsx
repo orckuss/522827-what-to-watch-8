@@ -8,14 +8,12 @@ const PROMO_FILM_MOCK: Partial<Film> = {
   name: 'The Grand Budapest Hotel',
   genre: 'Drama',
   released: 2014,
+  posterImage: 'img/the-grand-budapest-hotel-poster.jpg',
+  backgroundImage: 'img/bg-the-grand-budapest-hotel.jpg',
 };
 
 ReactDOM.render(
   <React.StrictMode>
-    <App
-      name={PROMO_FILM_MOCK.name as string}
-      genre={PROMO_FILM_MOCK.genre as string}
-      released={PROMO_FILM_MOCK.released as number}
-    />
+    <App promoFilm={PROMO_FILM_MOCK as Film} />
   </React.StrictMode>,
   document.getElementById('root'));
