@@ -3,16 +3,24 @@ import SmallFilmCard from '../small-film-card/small-film-card';
 import Footer from '../footer/footer';
 
 type Props = {
-  movie: Movie,
+  movie: Omit<Movie, 'id' | 'previewImage' | 'isFavorite'>;
 }
 
 function Film({ movie }: Props): JSX.Element {
+  const {
+    backgroundImage,
+    name,
+    genre,
+    posterImage,
+    released,
+  } = movie;
+
   return (
     <>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
           <div className="film-card__bg">
-            <img src={movie.backgroundImage} alt={movie.name} />
+            <img src={backgroundImage} alt={name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -40,10 +48,10 @@ function Film({ movie }: Props): JSX.Element {
 
           <div className="film-card__wrap">
             <div className="film-card__desc">
-              <h2 className="film-card__title">{movie.name}</h2>
+              <h2 className="film-card__title">{name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{movie.genre}</span>
-                <span className="film-card__year">{movie.released}</span>
+                <span className="film-card__genre">{genre}</span>
+                <span className="film-card__year">{released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -68,7 +76,7 @@ function Film({ movie }: Props): JSX.Element {
         <div className="film-card__wrap film-card__translate-top">
           <div className="film-card__info">
             <div className="film-card__poster film-card__poster--big">
-              <img src={movie.posterImage} alt={movie.name} width="218" height="327" />
+              <img src={posterImage} alt={name} width="218" height="327" />
             </div>
 
             <div className="film-card__desc">

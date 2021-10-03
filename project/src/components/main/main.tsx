@@ -1,21 +1,26 @@
+import { Movie } from '../../types/film';
 import Footer from '../footer/footer';
 import SmallFilmCard from '../small-film-card/small-film-card';
 import { FILMS_MOCK } from './films-mock';
 
 type Props = {
-  readonly name: string;
-  readonly genre: string,
-  readonly released: number,
-  readonly backgroundImage: string;
-  readonly posterImage: string;
+  promoFilm: Omit<Movie, 'id' | 'previewImage' | 'isFavorite'>;
 }
 
-function Main(props: Props): JSX.Element {
+function Main({ promoFilm }: Props): JSX.Element {
+  const {
+    backgroundImage,
+    genre,
+    name,
+    posterImage,
+    released,
+  } = promoFilm;
+
   return (
     <>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src={props.backgroundImage} alt={props.name} />
+          <img src={backgroundImage} alt={name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -44,14 +49,14 @@ function Main(props: Props): JSX.Element {
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
-              <img src={props.posterImage} alt={`${props.name} poster`} width="218" height="327" />
+              <img src={posterImage} alt={`${name} poster`} width="218" height="327" />
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{props.name}</h2>
+              <h2 className="film-card__title">{name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{props.genre}</span>
-                <span className="film-card__year">{props.released}</span>
+                <span className="film-card__genre">{genre}</span>
+                <span className="film-card__year">{released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -114,8 +119,8 @@ function Main(props: Props): JSX.Element {
             {FILMS_MOCK.map((film) => (
               <SmallFilmCard
                 key={film.id}
-                name={film.name as string}
-                imgSrc={film.previewImage as string}
+                name={film.name}
+                imgSrc={film.previewImage}
               />
             ))}
           </div>
@@ -125,7 +130,7 @@ function Main(props: Props): JSX.Element {
           </div>
         </section>
 
-        <Footer></Footer>
+        <Footer />
       </div>
     </>
   );

@@ -33,7 +33,7 @@ function SignIn(): JSX.Element {
         </form>
       </div>
 
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 }

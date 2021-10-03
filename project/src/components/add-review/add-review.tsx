@@ -1,7 +1,7 @@
 type Props = {
-  readonly name: string;
-  readonly posterImage: string;
-  readonly backgroundImage: string;
+  name: string;
+  posterImage: string;
+  backgroundImage: string;
 }
 
 function AddReview({ name, posterImage, backgroundImage }: Props): JSX.Element {

@@ -1,7 +1,7 @@
 import { Movie } from '../../types/film';
 
 // ToDo: Delete mock on stage of integration with server
-export const FILMS_MOCK: Array<Partial<Movie>> = [
+export const FILMS_MOCK: Array<Pick<Movie, 'id' | 'name' | 'previewImage' | 'isFavorite'>> = [
   {
     id: 1,
     previewImage: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
