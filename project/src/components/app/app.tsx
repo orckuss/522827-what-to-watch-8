@@ -1,8 +1,8 @@
-import { Film } from '../../types/film';
+import { Movie } from '../../types/film';
 import Main from '../main/main';
 
 type Props = {
-  readonly promoFilm: Film;
+  readonly promoFilm: Movie;
 }
 
 function App({ promoFilm }: Props): JSX.Element {

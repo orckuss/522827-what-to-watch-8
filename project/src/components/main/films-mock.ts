@@ -1,7 +1,7 @@
-import { Film } from '../../types/film';
+import { Movie } from '../../types/film';
 
 // ToDo: Delete mock on stage of integration with server
-export const FILMS_MOCK: Array<Partial<Film>> = [
+export const FILMS_MOCK: Array<Partial<Movie>> = [
   {
     id: 1,
     previewImage: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',

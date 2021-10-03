@@ -1,5 +1,5 @@
 // ToDO: Supplement the type at the stage of integration with the server
-export type Film = {
+export type Movie = {
   readonly id: number;
   readonly name: string;
   readonly previewImage: string;
