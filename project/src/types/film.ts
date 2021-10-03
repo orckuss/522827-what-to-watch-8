@@ -5,6 +5,7 @@ export type Film = {
   readonly previewImage: string;
   readonly posterImage: string;
   readonly backgroundImage: string;
-  readonly genre: string,
-  readonly released: number,
+  readonly genre: string;
+  readonly released: number;
+  readonly isFavorite: boolean;
 };
