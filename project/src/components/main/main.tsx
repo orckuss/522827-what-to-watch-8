@@ -2,12 +2,18 @@ import Footer from '../footer/footer';
 import SmallFilmCard from '../small-film-card/small-film-card';
 import { FILMS_MOCK } from './films-mock';
 
-function Main(): JSX.Element {
+type Props = {
+  readonly name: string;
+  readonly genre: string,
+  readonly released: number,
+}
+
+function Main({ name, genre, released }: Props): JSX.Element {
   return (
     <>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src="img/bg-the-grand-budapest-hotel.jpg" alt={name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -40,10 +46,10 @@ function Main(): JSX.Element {
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="film-card__title">{name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">Drama</span>
-                <span className="film-card__year">2014</span>
+                <span className="film-card__genre">{genre}</span>
+                <span className="film-card__year">{released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -106,8 +112,8 @@ function Main(): JSX.Element {
             {FILMS_MOCK.map((film) => (
               <SmallFilmCard
                 key={film.id}
-                name={film.name}
-                imgSrc={film.previewImage}
+                name={film.name as string}
+                imgSrc={film.previewImage as string}
               />
             ))}
           </div>
