@@ -1,7 +1,7 @@
-import SmallFilmCard from '../small-film-card/small-film-card';
-import Footer from '../footer/footer';
+import SmallFilmCard from '../../layout/small-film-card/small-film-card';
+import Footer from '../../layout/footer/footer';
 import { FILMS_MOCK } from '../main/films-mock';
-import Logo from '../logo/logo';
+import Logo from '../../layout/logo/logo';
 
 function MyList(): JSX.Element {
   return (

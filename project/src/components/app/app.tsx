@@ -1,5 +1,5 @@
 import { Movie } from '../../types/film';
-import Main from '../main/main';
+import Main from '../pages/main/main';
 
 type Props = {
   promoFilm: Omit<Movie, 'id' | 'previewImage' | 'isFavorite'>;

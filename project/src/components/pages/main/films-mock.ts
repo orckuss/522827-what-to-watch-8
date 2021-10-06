@@ -1,4 +1,4 @@
-import { Movie } from '../../types/film';
+import { Movie } from '../../../types/film';
 
 // ToDo: Delete mock on stage of integration with server
 export const FILMS_MOCK: Array<Pick<Movie, 'id' | 'name' | 'previewImage' | 'isFavorite'>> = [

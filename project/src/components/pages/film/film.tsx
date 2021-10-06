@@ -1,7 +1,7 @@
-import { Movie } from '../../types/film';
-import SmallFilmCard from '../small-film-card/small-film-card';
-import Footer from '../footer/footer';
-import Logo from '../logo/logo';
+import { Movie } from '../../../types/film';
+import SmallFilmCard from '../../layout/small-film-card/small-film-card';
+import Footer from '../../layout/footer/footer';
+import Logo from '../../layout/logo/logo';
 
 type Props = {
   movie: Omit<Movie, 'id' | 'previewImage' | 'isFavorite'>;

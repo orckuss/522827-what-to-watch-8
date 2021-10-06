@@ -1,4 +1,4 @@
-import Logo from '../logo/logo';
+import Logo from '../../layout/logo/logo';
 
 type Props = {
   name: string;

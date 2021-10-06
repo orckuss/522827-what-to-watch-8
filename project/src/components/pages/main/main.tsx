@@ -1,7 +1,7 @@
-import { Movie } from '../../types/film';
-import Footer from '../footer/footer';
-import Logo from '../logo/logo';
-import SmallFilmCard from '../small-film-card/small-film-card';
+import { Movie } from '../../../types/film';
+import Footer from '../../layout/footer/footer';
+import Logo from '../../layout/logo/logo';
+import SmallFilmCard from '../../layout/small-film-card/small-film-card';
 import { FILMS_MOCK } from './films-mock';
 
 type Props = {

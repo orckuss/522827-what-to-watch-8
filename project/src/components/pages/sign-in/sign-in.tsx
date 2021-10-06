@@ -1,5 +1,5 @@
-import Footer from '../footer/footer';
-import Logo from '../logo/logo';
+import Footer from '../../layout/footer/footer';
+import Logo from '../../layout/logo/logo';
 
 function SignIn(): JSX.Element {
   return (
