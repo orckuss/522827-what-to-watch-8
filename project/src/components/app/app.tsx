@@ -7,7 +7,10 @@ import MyList from '../pages/my-list/my-list';
 import NotFound from '../pages/not-found/not-found';
 import Player from '../pages/player/player';
 import SignIn from '../pages/sign-in/sign-in';
+import PrivateRoute from '../services/private-route';
 import { AppRoutes } from './routes';
+
+const HAS_ACCESS = false;
 
 type Props = {
   promoFilm: Omit<Movie, 'id' | 'previewImage' | 'isFavorite'>;
@@ -31,9 +34,9 @@ function App({ promoFilm }: Props): JSX.Element {
           <SignIn />
         </Route>
 
-        <Route path={AppRoutes.MyList} exact>
+        <PrivateRoute path="/mylist" exact hasAccess={HAS_ACCESS}>
           <MyList />
-        </Route>
+        </PrivateRoute>
 
         <Route path={AppRoutes.Films} exact>
           <Film movie={promoFilm} />
