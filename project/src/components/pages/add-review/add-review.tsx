@@ -22,10 +22,10 @@ function AddReview({ name, posterImage, backgroundImage }: Props): JSX.Element {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="film-page.html" className="breadcrumbs__link">{name}</a>
+                <a href="/" className="breadcrumbs__link">{name}</a>
               </li>
               <li className="breadcrumbs__item">
-                <a className="breadcrumbs__link">Add review</a>
+                <a href="/" className="breadcrumbs__link">Add review</a>
               </li>
             </ul>
           </nav>
@@ -37,7 +37,7 @@ function AddReview({ name, posterImage, backgroundImage }: Props): JSX.Element {
               </div>
             </li>
             <li className="user-block__item">
-              <a className="user-block__link">Sign out</a>
+              <a href="/" className="user-block__link">Sign out</a>
             </li>
           </ul>
         </header>
