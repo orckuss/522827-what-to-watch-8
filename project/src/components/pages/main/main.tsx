@@ -1,33 +1,33 @@
-import Footer from '../footer/footer';
-import SmallFilmCard from '../small-film-card/small-film-card';
+import { Movie } from '../../../types/film';
+import Footer from '../../layout/footer/footer';
+import Logo from '../../layout/logo/logo';
+import SmallFilmCard from '../../layout/small-film-card/small-film-card';
 import { FILMS_MOCK } from './films-mock';
 
 type Props = {
-  readonly name: string;
-  readonly genre: string,
-  readonly released: number,
-  readonly backgroundImage: string;
-  readonly posterImage: string;
+  promoFilm: Omit<Movie, 'id' | 'previewImage' | 'isFavorite'>;
 }
 
-function Main(props: Props): JSX.Element {
+function Main({ promoFilm }: Props): JSX.Element {
+  const {
+    backgroundImage,
+    genre,
+    name,
+    posterImage,
+    released,
+  } = promoFilm;
+
   return (
     <>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src={props.backgroundImage} alt={props.name} />
+          <img src={backgroundImage} alt={name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
 
         <header className="page-header film-card__head">
-          <div className="logo">
-            <a className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
+          <Logo />
 
           <ul className="user-block">
             <li className="user-block__item">
@@ -36,7 +36,7 @@ function Main(props: Props): JSX.Element {
               </div>
             </li>
             <li className="user-block__item">
-              <a className="user-block__link">Sign out</a>
+              <a href="/" className="user-block__link">Sign out</a>
             </li>
           </ul>
         </header>
@@ -44,14 +44,14 @@ function Main(props: Props): JSX.Element {
         <div className="film-card__wrap">
           <div className="film-card__info">
             <div className="film-card__poster">
-              <img src={props.posterImage} alt={`${props.name} poster`} width="218" height="327" />
+              <img src={posterImage} alt={`${name} poster`} width="218" height="327" />
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{props.name}</h2>
+              <h2 className="film-card__title">{name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{props.genre}</span>
-                <span className="film-card__year">{props.released}</span>
+                <span className="film-card__genre">{genre}</span>
+                <span className="film-card__year">{released}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -79,34 +79,34 @@ function Main(props: Props): JSX.Element {
 
           <ul className="catalog__genres-list">
             <li className="catalog__genres-item catalog__genres-item--active">
-              <a href="#" className="catalog__genres-link">All genres</a>
+              <a href="/" className="catalog__genres-link">All genres</a>
             </li>
             <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Comedies</a>
+              <a href="/" className="catalog__genres-link">Comedies</a>
             </li>
             <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Crime</a>
+              <a href="/" className="catalog__genres-link">Crime</a>
             </li>
             <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Documentary</a>
+              <a href="/" className="catalog__genres-link">Documentary</a>
             </li>
             <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Dramas</a>
+              <a href="/" className="catalog__genres-link">Dramas</a>
             </li>
             <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Horror</a>
+              <a href="/" className="catalog__genres-link">Horror</a>
             </li>
             <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Kids & Family</a>
+              <a href="/" className="catalog__genres-link">Kids & Family</a>
             </li>
             <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Romance</a>
+              <a href="/" className="catalog__genres-link">Romance</a>
             </li>
             <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Sci-Fi</a>
+              <a href="/" className="catalog__genres-link">Sci-Fi</a>
             </li>
             <li className="catalog__genres-item">
-              <a href="#" className="catalog__genres-link">Thrillers</a>
+              <a href="/" className="catalog__genres-link">Thrillers</a>
             </li>
           </ul>
 
@@ -114,8 +114,8 @@ function Main(props: Props): JSX.Element {
             {FILMS_MOCK.map((film) => (
               <SmallFilmCard
                 key={film.id}
-                name={film.name as string}
-                imgSrc={film.previewImage as string}
+                name={film.name}
+                imgSrc={film.previewImage}
               />
             ))}
           </div>
@@ -125,7 +125,7 @@ function Main(props: Props): JSX.Element {
           </div>
         </section>
 
-        <Footer></Footer>
+        <Footer />
       </div>
     </>
   );

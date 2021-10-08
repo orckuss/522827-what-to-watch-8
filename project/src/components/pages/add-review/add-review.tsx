@@ -1,7 +1,9 @@
+import Logo from '../../layout/logo/logo';
+
 type Props = {
-  readonly name: string;
-  readonly posterImage: string;
-  readonly backgroundImage: string;
+  name: string;
+  posterImage: string;
+  backgroundImage: string;
 }
 
 function AddReview({ name, posterImage, backgroundImage }: Props): JSX.Element {
@@ -15,21 +17,15 @@ function AddReview({ name, posterImage, backgroundImage }: Props): JSX.Element {
         <h1 className="visually-hidden">WTW</h1>
 
         <header className="page-header">
-          <div className="logo">
-            <a href="main.html" className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
+          <Logo />
 
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="film-page.html" className="breadcrumbs__link">{name}</a>
+                <a href="/" className="breadcrumbs__link">{name}</a>
               </li>
               <li className="breadcrumbs__item">
-                <a className="breadcrumbs__link">Add review</a>
+                <a href="/" className="breadcrumbs__link">Add review</a>
               </li>
             </ul>
           </nav>
@@ -41,7 +37,7 @@ function AddReview({ name, posterImage, backgroundImage }: Props): JSX.Element {
               </div>
             </li>
             <li className="user-block__item">
-              <a className="user-block__link">Sign out</a>
+              <a href="/" className="user-block__link">Sign out</a>
             </li>
           </ul>
         </header>

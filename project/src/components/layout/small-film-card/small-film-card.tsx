@@ -1,6 +1,6 @@
 type Props = {
-  readonly name: string;
-  readonly imgSrc: string;
+  name: string;
+  imgSrc: string;
 }
 
 function SmallFilmCard({ name, imgSrc }: Props): JSX.Element {

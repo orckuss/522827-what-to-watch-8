@@ -4,7 +4,7 @@ import App from './components/app/app';
 import { Movie } from './types/film';
 
 // ToDo: Delete mock on stage of integration with server
-const PROMO_FILM_MOCK: Partial<Movie> = {
+const PROMO_FILM_MOCK: Omit<Movie, 'id' | 'previewImage' | 'isFavorite'> = {
   name: 'The Grand Budapest Hotel',
   genre: 'Drama',
   released: 2014,
@@ -14,6 +14,6 @@ const PROMO_FILM_MOCK: Partial<Movie> = {
 
 ReactDOM.render(
   <React.StrictMode>
-    <App promoFilm={PROMO_FILM_MOCK as Movie} />
+    <App promoFilm={PROMO_FILM_MOCK} />
   </React.StrictMode>,
   document.getElementById('root'));
