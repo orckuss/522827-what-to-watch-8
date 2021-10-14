@@ -1,4 +1,7 @@
 import { Movie } from '../../../types/film';
+import FullScreenButton from '../../ui/full-screen-button/full-screen-button';
+import PlayButton from '../../ui/play-button/play-button';
+import ProgressBar from '../../ui/progress-bar/progress-bar';
 
 type Props = {
   film: Movie;
@@ -22,28 +25,17 @@ function Player({ film }: Props): JSX.Element {
 
       <div className="player__controls">
         <div className="player__controls-row">
-          <div className="player__time">
-            <progress className="player__progress" value="30" max="100"></progress>
-            <div className="player__toggler" style={{ 'left': '30%' }}>Toggler</div>
-          </div>
+          <ProgressBar />
+
           <div className="player__time-value">1:30:29</div>
         </div>
 
         <div className="player__controls-row">
-          <button type="button" className="player__play">
-            <svg viewBox="0 0 19 19" width="19" height="19">
-              <use xlinkHref="#play-s"></use>
-            </svg>
-            <span>Play</span>
-          </button>
+          <PlayButton />
+
           <div className="player__name">Transpotting</div>
 
-          <button type="button" className="player__full-screen">
-            <svg viewBox="0 0 27 27" width="27" height="27">
-              <use xlinkHref="#full-screen"></use>
-            </svg>
-            <span>Full screen</span>
-          </button>
+          <FullScreenButton />
         </div>
       </div>
     </div>
