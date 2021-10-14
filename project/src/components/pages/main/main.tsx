@@ -2,7 +2,7 @@ import { Movie } from '../../../types/film';
 import Footer from '../../layout/footer/footer';
 import Logo from '../../layout/logo/logo';
 import SmallFilmCard from '../../layout/small-film-card/small-film-card';
-import { FILMS_MOCK } from './films-mock';
+import { FILMS_MOCK } from '../../../mocks/films';
 
 type Props = {
   promoFilm: Omit<Movie, 'id' | 'previewImage' | 'isFavorite'>;
