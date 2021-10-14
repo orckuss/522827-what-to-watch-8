@@ -13,10 +13,11 @@ import { AppRoutes } from './routes';
 const HAS_ACCESS = false;
 
 type Props = {
-  promoFilm: Omit<Movie, 'id' | 'previewImage' | 'isFavorite'>;
+  promoFilm: Movie;
+  films: Array<Movie>;
 }
 
-function App({ promoFilm }: Props): JSX.Element {
+function App({ promoFilm, films }: Props): JSX.Element {
   const {
     name,
     backgroundImage,
