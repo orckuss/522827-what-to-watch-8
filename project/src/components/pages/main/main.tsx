@@ -1,14 +1,14 @@
 import { Movie } from '../../../types/film';
+import FilmCardList from '../../layout/film-card-list/film-card-list';
 import Footer from '../../layout/footer/footer';
 import Logo from '../../layout/logo/logo';
-import SmallFilmCard from '../../layout/small-film-card/small-film-card';
-import { FILMS_MOCK } from '../../../mocks/films';
 
 type Props = {
-  promoFilm: Omit<Movie, 'id' | 'previewImage' | 'isFavorite'>;
+  promoFilm: Movie;
+  films: Array<Movie>;
 }
 
-function Main({ promoFilm }: Props): JSX.Element {
+function Main({ promoFilm, films }: Props): JSX.Element {
   const {
     backgroundImage,
     genre,
@@ -110,14 +110,7 @@ function Main({ promoFilm }: Props): JSX.Element {
             </li>
           </ul>
 
-          <div className="catalog__films-list">
-            {FILMS_MOCK.map((film) => (
-              <SmallFilmCard
-                key={film.id}
-                movie={film}
-              />
-            ))}
-          </div>
+          <FilmCardList films={films} />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>

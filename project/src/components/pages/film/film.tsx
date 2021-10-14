@@ -1,13 +1,14 @@
 import { Movie } from '../../../types/film';
-// import SmallFilmCard from '../../layout/small-film-card/small-film-card';
+import FilmCardList from '../../layout/film-card-list/film-card-list';
 import Footer from '../../layout/footer/footer';
 import Logo from '../../layout/logo/logo';
 
 type Props = {
-  movie: Omit<Movie, 'id' | 'previewImage' | 'isFavorite'>;
+  movie: Movie;
+  films: Array<Movie>
 }
 
-function Film({ movie }: Props): JSX.Element {
+function Film({ movie, films }: Props): JSX.Element {
   const {
     backgroundImage,
     name,
@@ -115,27 +116,7 @@ function Film({ movie }: Props): JSX.Element {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          {/* <div className="catalog__films-list">
-            <SmallFilmCard
-              name={'Fantastic Beasts: The Crimes of Grindelwald'}
-              imgSrc={'img/fantastic-beasts-the-crimes-of-grindelwald.jpg'}
-            />
-
-            <SmallFilmCard
-              name={'Bohemian Rhapsody'}
-              imgSrc={'img/bohemian-rhapsody.jpg'}
-            />
-
-            <SmallFilmCard
-              name={'Macbeth'}
-              imgSrc={'img/macbeth.jpg'}
-            />
-
-            <SmallFilmCard
-              name={'Aviator'}
-              imgSrc={'img/aviator.jpg'}
-            />
-          </div> */}
+          <FilmCardList films={films} />
         </section>
 
         <Footer />
