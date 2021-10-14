@@ -18,12 +18,6 @@ type Props = {
 }
 
 function App({ promoFilm, films }: Props): JSX.Element {
-  const {
-    name,
-    backgroundImage,
-    posterImage,
-  } = promoFilm;
-
   return (
     <BrowserRouter>
       <Switch>
@@ -51,9 +45,8 @@ function App({ promoFilm, films }: Props): JSX.Element {
 
         <Route path={AppRoutes.Review} exact>
           <AddReview
-            name={name}
-            backgroundImage={backgroundImage}
-            posterImage={posterImage}
+            movie={promoFilm}
+            films={films}
           />
         </Route>
 

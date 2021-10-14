@@ -6,7 +6,7 @@ export const FILMS_MOCK: Array<Movie> = [
     id: 1,
     name: 'Fantastic Beasts: The Crimes of Grindelwald',
     previewImage: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
-    posterImage: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg.jpg',
+    posterImage: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
     backgroundImage: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
     backgroundColor: '#ffffff',
     description: 'Fantastic Beasts: The Crimes of Grindelwald',

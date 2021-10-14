@@ -1,12 +1,18 @@
+import { Movie } from '../../../types/film';
 import Logo from '../../layout/logo/logo';
 
 type Props = {
-  name: string;
-  posterImage: string;
-  backgroundImage: string;
+  movie: Movie;
+  films: Array<Movie>
 }
 
-function AddReview({ name, posterImage, backgroundImage }: Props): JSX.Element {
+function AddReview({ movie, films }: Props): JSX.Element {
+  const {
+    name,
+    posterImage,
+    backgroundImage,
+  } = movie;
+
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
