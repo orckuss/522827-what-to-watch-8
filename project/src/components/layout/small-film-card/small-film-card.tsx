@@ -1,14 +1,20 @@
+import { Movie } from '../../../types/film';
+
 type Props = {
-  name: string;
-  imgSrc: string;
+  movie: Movie;
 }
 
-function SmallFilmCard({ name, imgSrc }: Props): JSX.Element {
+function SmallFilmCard({ movie }: Props): JSX.Element {
+  const {
+    name,
+    previewImage,
+  } = movie;
+
   return (
     <article className="small-film-card catalog__films-card">
       <div className="small-film-card__image">
         <img
-          src={imgSrc}
+          src={previewImage}
           alt={name}
           width="280"
           height="175"

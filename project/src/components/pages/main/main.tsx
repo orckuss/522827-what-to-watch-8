@@ -114,8 +114,7 @@ function Main({ promoFilm }: Props): JSX.Element {
             {FILMS_MOCK.map((film) => (
               <SmallFilmCard
                 key={film.id}
-                name={film.name}
-                imgSrc={film.previewImage}
+                movie={film}
               />
             ))}
           </div>

@@ -30,8 +30,7 @@ function MyList(): JSX.Element {
           {FILMS_MOCK.filter((film) => film.isFavorite).map((film) => (
             <SmallFilmCard
               key={film.id}
-              name={film.name}
-              imgSrc={film.previewImage}
+              movie={film}
             />
           ))}
         </div>

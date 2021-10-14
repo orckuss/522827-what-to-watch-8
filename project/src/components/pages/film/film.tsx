@@ -1,5 +1,5 @@
 import { Movie } from '../../../types/film';
-import SmallFilmCard from '../../layout/small-film-card/small-film-card';
+// import SmallFilmCard from '../../layout/small-film-card/small-film-card';
 import Footer from '../../layout/footer/footer';
 import Logo from '../../layout/logo/logo';
 
@@ -115,7 +115,7 @@ function Film({ movie }: Props): JSX.Element {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <div className="catalog__films-list">
+          {/* <div className="catalog__films-list">
             <SmallFilmCard
               name={'Fantastic Beasts: The Crimes of Grindelwald'}
               imgSrc={'img/fantastic-beasts-the-crimes-of-grindelwald.jpg'}
@@ -135,7 +135,7 @@ function Film({ movie }: Props): JSX.Element {
               name={'Aviator'}
               imgSrc={'img/aviator.jpg'}
             />
-          </div>
+          </div> */}
         </section>
 
         <Footer />
