@@ -1,17 +1,24 @@
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Movie } from '../../../types/film';
+import { RouteParams } from '../../../types/route-params';
+import { AppRoutes } from '../../app/routes';
 import Logo from '../../layout/logo/logo';
 
 type Props = {
-  movie: Movie;
   films: Array<Movie>
 }
 
-function AddReview({ movie, films }: Props): JSX.Element {
+function AddReview({ films }: Props): JSX.Element {
+  const { id } = useParams<RouteParams>();
+
+  const movie = films.find((film) => film.id === Number(id));
+
   const {
     name,
     posterImage,
     backgroundImage,
-  } = movie;
+  } = movie as Movie;
 
   return (
     <section className="film-card film-card--full">
@@ -28,10 +35,20 @@ function AddReview({ movie, films }: Props): JSX.Element {
           <nav className="breadcrumbs">
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
-                <a href="/" className="breadcrumbs__link">{name}</a>
+                <Link
+                  to={AppRoutes.Films.replace(':id', id)}
+                  className="breadcrumbs__link"
+                >
+                  {name}
+                </Link>
               </li>
               <li className="breadcrumbs__item">
-                <a href="/" className="breadcrumbs__link">Add review</a>
+                <Link
+                  to={AppRoutes.Review.replace(':id', id)}
+                  className="breadcrumbs__link"
+                >
+                  Add review
+                </Link>
               </li>
             </ul>
           </nav>

@@ -1,3 +1,4 @@
+import { useHistory } from 'react-router';
 import { Movie } from '../../../types/film';
 import FullScreenButton from '../../ui/full-screen-button/full-screen-button';
 import PlayButton from '../../ui/play-button/play-button';
@@ -8,6 +9,8 @@ type Props = {
 };
 
 function Player({ film }: Props): JSX.Element {
+  const history = useHistory();
+
   const {
     posterImage,
     videoLink,
@@ -21,7 +24,13 @@ function Player({ film }: Props): JSX.Element {
         poster={posterImage}
       />
 
-      <button type="button" className="player__exit">Exit</button>
+      <button
+        type="button"
+        className="player__exit"
+        onClick={() => history.goBack()}
+      >
+        Exit
+      </button>
 
       <div className="player__controls">
         <div className="player__controls-row">

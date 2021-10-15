@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import { Movie } from '../../../types/film';
+import { AppRoutes } from '../../app/routes';
 
 type Props = {
   movie: Movie;
@@ -6,6 +8,7 @@ type Props = {
 
 function SmallFilmCard({ movie }: Props): JSX.Element {
   const {
+    id,
     name,
     previewImage,
   } = movie;
@@ -21,12 +24,12 @@ function SmallFilmCard({ movie }: Props): JSX.Element {
         />
       </div>
       <h3 className="small-film-card__title">
-        <a
+        <Link
           className="small-film-card__link"
-          href="film-page.html"
+          to={AppRoutes.Films.replace(':id', `${id}`)}
         >
           {name}
-        </a>
+        </Link>
       </h3>
     </article>
   );

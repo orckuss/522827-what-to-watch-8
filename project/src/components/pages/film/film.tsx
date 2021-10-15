@@ -1,21 +1,27 @@
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Movie } from '../../../types/film';
+import { RouteParams } from '../../../types/route-params';
+import { AppRoutes } from '../../app/routes';
 import FilmCardList from '../../layout/film-card-list/film-card-list';
 import Footer from '../../layout/footer/footer';
 import Logo from '../../layout/logo/logo';
 
 type Props = {
-  movie: Movie;
   films: Array<Movie>
 }
 
-function Film({ movie, films }: Props): JSX.Element {
+function Film({ films }: Props): JSX.Element {
+  const { id } = useParams<RouteParams>();
+  const movie = films.find((film) => film.id === Number(id));
+
   const {
     backgroundImage,
     name,
     genre,
     posterImage,
     released,
-  } = movie;
+  } = movie as Movie;
 
   return (
     <>
@@ -63,7 +69,12 @@ function Film({ movie, films }: Props): JSX.Element {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn film-card__button">Add review</a>
+                <Link
+                  to={AppRoutes.Review.replace(':id', id)}
+                  className="btn film-card__button"
+                >
+                  Add review
+                </Link>
               </div>
             </div>
           </div>

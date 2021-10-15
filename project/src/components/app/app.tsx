@@ -37,17 +37,11 @@ function App({ promoFilm, films }: Props): JSX.Element {
         </PrivateRoute>
 
         <Route path={AppRoutes.Films} exact>
-          <Film
-            movie={promoFilm}
-            films={films}
-          />
+          <Film films={films} />
         </Route>
 
         <Route path={AppRoutes.Review} exact>
-          <AddReview
-            movie={promoFilm}
-            films={films}
-          />
+          <AddReview films={films} />
         </Route>
 
         <Route path={AppRoutes.Player} exact>
