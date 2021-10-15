@@ -13,45 +13,39 @@ import { AppRoutes } from './routes';
 const HAS_ACCESS = false;
 
 type Props = {
-  promoFilm: Omit<Movie, 'id' | 'previewImage' | 'isFavorite'>;
+  promoFilm: Movie;
+  films: Array<Movie>;
 }
 
-function App({ promoFilm }: Props): JSX.Element {
-  const {
-    name,
-    backgroundImage,
-    posterImage,
-  } = promoFilm;
-
+function App({ promoFilm, films }: Props): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
         <Route path={AppRoutes.Main} exact>
-          <Main promoFilm={promoFilm} />
+          <Main
+            promoFilm={promoFilm}
+            films={films}
+          />
         </Route>
 
         <Route path={AppRoutes.SignIn} exact>
           <SignIn />
         </Route>
 
-        <PrivateRoute path="/mylist" exact hasAccess={HAS_ACCESS}>
-          <MyList />
+        <PrivateRoute hasAccess={HAS_ACCESS} path={AppRoutes.MyList} exact>
+          <MyList films={films} />
         </PrivateRoute>
 
         <Route path={AppRoutes.Films} exact>
-          <Film movie={promoFilm} />
+          <Film films={films} />
         </Route>
 
         <Route path={AppRoutes.Review} exact>
-          <AddReview
-            name={name}
-            backgroundImage={backgroundImage}
-            posterImage={posterImage}
-          />
+          <AddReview films={films} />
         </Route>
 
         <Route path={AppRoutes.Player} exact>
-          <Player />
+          <Player film={promoFilm} />
         </Route>
 
         <Route>

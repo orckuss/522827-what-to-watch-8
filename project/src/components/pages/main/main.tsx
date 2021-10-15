@@ -1,15 +1,18 @@
+import { Link } from 'react-router-dom';
 import { Movie } from '../../../types/film';
+import { AppRoutes } from '../../app/routes';
+import FilmCardList from '../../layout/film-card-list/film-card-list';
 import Footer from '../../layout/footer/footer';
 import Logo from '../../layout/logo/logo';
-import SmallFilmCard from '../../layout/small-film-card/small-film-card';
-import { FILMS_MOCK } from './films-mock';
 
 type Props = {
-  promoFilm: Omit<Movie, 'id' | 'previewImage' | 'isFavorite'>;
+  promoFilm: Movie;
+  films: Array<Movie>;
 }
 
-function Main({ promoFilm }: Props): JSX.Element {
+function Main({ promoFilm, films }: Props): JSX.Element {
   const {
+    id,
     backgroundImage,
     genre,
     name,
@@ -55,12 +58,15 @@ function Main({ promoFilm }: Props): JSX.Element {
               </p>
 
               <div className="film-card__buttons">
-                <button className="btn btn--play film-card__button" type="button">
+                <Link
+                  to={AppRoutes.Player.replace(':id', `${id}`)}
+                  className="btn btn--play film-card__button"
+                >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
                   </svg>
                   <span>Play</span>
-                </button>
+                </Link>
                 <button className="btn btn--list film-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
                     <use xlinkHref="#add"></use>
@@ -110,15 +116,7 @@ function Main({ promoFilm }: Props): JSX.Element {
             </li>
           </ul>
 
-          <div className="catalog__films-list">
-            {FILMS_MOCK.map((film) => (
-              <SmallFilmCard
-                key={film.id}
-                name={film.name}
-                imgSrc={film.previewImage}
-              />
-            ))}
-          </div>
+          <FilmCardList films={films} />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>

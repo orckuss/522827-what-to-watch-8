@@ -1,20 +1,27 @@
+import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Movie } from '../../../types/film';
-import SmallFilmCard from '../../layout/small-film-card/small-film-card';
+import { RouteParams } from '../../../types/route-params';
+import { AppRoutes } from '../../app/routes';
+import FilmCardList from '../../layout/film-card-list/film-card-list';
 import Footer from '../../layout/footer/footer';
 import Logo from '../../layout/logo/logo';
 
 type Props = {
-  movie: Omit<Movie, 'id' | 'previewImage' | 'isFavorite'>;
+  films: Array<Movie>
 }
 
-function Film({ movie }: Props): JSX.Element {
+function Film({ films }: Props): JSX.Element {
+  const { id } = useParams<RouteParams>();
+  const movie = films.find((film) => film.id === Number(id));
+
   const {
     backgroundImage,
     name,
     genre,
     posterImage,
     released,
-  } = movie;
+  } = movie as Movie;
 
   return (
     <>
@@ -62,7 +69,12 @@ function Film({ movie }: Props): JSX.Element {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn film-card__button">Add review</a>
+                <Link
+                  to={AppRoutes.Review.replace(':id', id)}
+                  className="btn film-card__button"
+                >
+                  Add review
+                </Link>
               </div>
             </div>
           </div>
@@ -115,27 +127,7 @@ function Film({ movie }: Props): JSX.Element {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <div className="catalog__films-list">
-            <SmallFilmCard
-              name={'Fantastic Beasts: The Crimes of Grindelwald'}
-              imgSrc={'img/fantastic-beasts-the-crimes-of-grindelwald.jpg'}
-            />
-
-            <SmallFilmCard
-              name={'Bohemian Rhapsody'}
-              imgSrc={'img/bohemian-rhapsody.jpg'}
-            />
-
-            <SmallFilmCard
-              name={'Macbeth'}
-              imgSrc={'img/macbeth.jpg'}
-            />
-
-            <SmallFilmCard
-              name={'Aviator'}
-              imgSrc={'img/aviator.jpg'}
-            />
-          </div>
+          <FilmCardList films={films} />
         </section>
 
         <Footer />

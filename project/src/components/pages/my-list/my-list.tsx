@@ -1,9 +1,13 @@
-import SmallFilmCard from '../../layout/small-film-card/small-film-card';
 import Footer from '../../layout/footer/footer';
-import { FILMS_MOCK } from '../main/films-mock';
 import Logo from '../../layout/logo/logo';
+import FilmCardList from '../../layout/film-card-list/film-card-list';
+import { Movie } from '../../../types/film';
 
-function MyList(): JSX.Element {
+type Props = {
+  films: Array<Movie>
+}
+
+function MyList({ films }: Props): JSX.Element {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -26,15 +30,7 @@ function MyList(): JSX.Element {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <div className="catalog__films-list">
-          {FILMS_MOCK.filter((film) => film.isFavorite).map((film) => (
-            <SmallFilmCard
-              key={film.id}
-              name={film.name}
-              imgSrc={film.previewImage}
-            />
-          ))}
-        </div>
+        <FilmCardList films={films} />
       </section>
 
       <Footer />
