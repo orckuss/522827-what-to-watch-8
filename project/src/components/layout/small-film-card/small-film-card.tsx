@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Movie } from '../../../types/film';
+import { generatePath } from 'react-router-dom';
 import { AppRoutes } from '../../app/routes';
 
 type Props = {
@@ -26,7 +27,7 @@ function SmallFilmCard({ movie }: Props): JSX.Element {
       <h3 className="small-film-card__title">
         <Link
           className="small-film-card__link"
-          to={AppRoutes.Films.replace(':id', `${id}`)}
+          to={generatePath(AppRoutes.Films, { id })}
         >
           {name}
         </Link>

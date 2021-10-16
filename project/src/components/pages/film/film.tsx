@@ -1,4 +1,4 @@
-import { useParams } from 'react-router';
+import { generatePath, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Movie } from '../../../types/film';
 import { RouteParams } from '../../../types/route-params';
@@ -70,7 +70,7 @@ function Film({ films }: Props): JSX.Element {
                   <span>My list</span>
                 </button>
                 <Link
-                  to={AppRoutes.Review.replace(':id', id)}
+                  to={generatePath(AppRoutes.Review, { id })}
                   className="btn film-card__button"
                 >
                   Add review

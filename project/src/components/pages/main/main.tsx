@@ -4,6 +4,7 @@ import { AppRoutes } from '../../app/routes';
 import FilmCardList from '../../layout/film-card-list/film-card-list';
 import Footer from '../../layout/footer/footer';
 import Logo from '../../layout/logo/logo';
+import { generatePath } from 'react-router-dom';
 
 type Props = {
   promoFilm: Movie;
@@ -59,7 +60,7 @@ function Main({ promoFilm, films }: Props): JSX.Element {
 
               <div className="film-card__buttons">
                 <Link
-                  to={AppRoutes.Player.replace(':id', `${id}`)}
+                  to={generatePath(AppRoutes.Player, { id })}
                   className="btn btn--play film-card__button"
                 >
                   <svg viewBox="0 0 19 19" width="19" height="19">
