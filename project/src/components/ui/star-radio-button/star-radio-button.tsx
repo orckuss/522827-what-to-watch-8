@@ -1,8 +1,11 @@
+import { ChangeEventHandler } from 'react';
+
 type Props = {
   value: number | string;
   id: string;
   textLabel?: string;
   className?: string;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
 };
 
 function StarRadioButton({
@@ -10,6 +13,7 @@ function StarRadioButton({
   value,
   className,
   textLabel,
+  onChange,
 }: Props): JSX.Element {
   return (
     <>
@@ -19,6 +23,7 @@ function StarRadioButton({
         type="radio"
         name="rating"
         value={value}
+        onChange={onChange}
       />
       <label
         className="rating__label"

@@ -1,12 +1,16 @@
+import { ChangeEventHandler } from 'react';
 import StarRadioButton from '../../ui/star-radio-button/star-radio-button';
 
-const START_COUNT = 10;
+type Props = {
+  count: number;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
+};
 
-function RatingFormControl(): JSX.Element {
+function RatingFormControl({ count, onChange }: Props): JSX.Element {
   return (
     <div className="rating">
       <div className="rating__stars">
-        {new Array(START_COUNT).fill(null)
+        {new Array(count).fill(null)
           .map((_, index, arr) => arr.length - index)
           .map((item) => (
             <StarRadioButton
@@ -15,6 +19,7 @@ function RatingFormControl(): JSX.Element {
               id={`stat-${item}`}
               value={item}
               textLabel={`Rating ${item}`}
+              onChange={onChange}
             />
           ))}
       </div>
