@@ -1,8 +1,9 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import './video-player.css';
 
 type Props = {
   src: string;
+  isPlayed: boolean;
   poster?: string;
   width?: number | string;
   height?: number | string;
@@ -15,8 +16,21 @@ function VideoPlayer({
   muted,
   width,
   height,
+  isPlayed,
 }: Props): JSX.Element {
   const videopRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const timeOutId = isPlayed && setTimeout(() => {
+      videopRef.current?.play();
+    }, 1000);
+
+    !isPlayed && videopRef.current?.load();
+
+    return () => {
+      timeOutId && clearTimeout(timeOutId);
+    };
+  }, [isPlayed]);
 
   return (
     <video
