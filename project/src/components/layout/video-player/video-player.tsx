@@ -1,10 +1,11 @@
 import { useRef } from 'react';
+import './video-player.css';
 
 type Props = {
   src: string;
-  poster: string;
-  width: number;
-  height: number;
+  poster?: string;
+  width?: number | string;
+  height?: number | string;
   muted?: boolean;
 };
 
@@ -22,7 +23,7 @@ function VideoPlayer({
       ref={videopRef}
       src={src}
       muted={muted}
-      preload="auto"
+      preload="metadata"
       poster={poster}
       width={width}
       height={height}
