@@ -1,6 +1,6 @@
 import { generatePath, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import { Movie } from '../../../types/film';
+import { Film as FilmData } from '../../../types/film';
 import { RouteParams } from '../../../types/route-params';
 import { AppRoutes } from '../../app/routes';
 import FilmCardList from '../../layout/film-card-list/film-card-list';
@@ -8,7 +8,7 @@ import Footer from '../../layout/footer/footer';
 import Logo from '../../layout/logo/logo';
 
 type Props = {
-  films: Array<Movie>
+  films: Array<FilmData>
 }
 
 function Film({ films }: Props): JSX.Element {
@@ -21,7 +21,7 @@ function Film({ films }: Props): JSX.Element {
     genre,
     posterImage,
     released,
-  } = movie as Movie;
+  } = movie as FilmData;
 
   return (
     <>

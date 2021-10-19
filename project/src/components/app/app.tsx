@@ -1,5 +1,5 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Movie } from '../../types/film';
+import { Film as FilmData } from '../../types/film';
 import AddReview from '../pages/add-review/add-review';
 import Film from '../pages/film/film';
 import Main from '../pages/main/main';
@@ -13,8 +13,8 @@ import { AppRoutes } from './routes';
 const HAS_ACCESS = false;
 
 type Props = {
-  promoFilm: Movie;
-  films: Array<Movie>;
+  promoFilm: FilmData;
+  films: Array<FilmData>;
 }
 
 function App({ promoFilm, films }: Props): JSX.Element {

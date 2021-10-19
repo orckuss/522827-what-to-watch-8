@@ -1,21 +1,21 @@
 import { Link } from 'react-router-dom';
-import { Movie } from '../../../types/film';
+import { Film } from '../../../types/film';
 import { generatePath } from 'react-router-dom';
 import { AppRoutes } from '../../app/routes';
 import VideoPlayer from '../video-player/video-player';
 import { useState } from 'react';
 
 type Props = {
-  movie: Movie;
+  film: Film;
 }
 
-function SmallFilmCard({ movie }: Props): JSX.Element {
+function SmallFilmCard({ film }: Props): JSX.Element {
   const {
     id,
     name,
     previewImage,
     previewVideoLink,
-  } = movie;
+  } = film;
 
   const [isPlayed, setIsPlayed] = useState<boolean>(false);
 

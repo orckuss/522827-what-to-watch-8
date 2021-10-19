@@ -1,7 +1,7 @@
-import { Movie } from '../types/film';
+import { Film } from '../types/film';
 
 // ToDo: Delete mock on stage of integration with server
-export const PROMO_FILM_MOCK: Movie = {
+export const PROMO_FILM_MOCK: Film = {
   id: 1,
   name: 'The Grand Budapest Hotel',
   posterImage: 'img/the-grand-budapest-hotel-poster.jpg',

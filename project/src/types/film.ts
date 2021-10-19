@@ -1,4 +1,4 @@
-export type Movie = {
+export type Film = {
   readonly id: number;
   readonly name: string;
   readonly previewImage: string;

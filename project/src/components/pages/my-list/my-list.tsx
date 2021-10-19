@@ -1,10 +1,10 @@
 import Footer from '../../layout/footer/footer';
 import Logo from '../../layout/logo/logo';
 import FilmCardList from '../../layout/film-card-list/film-card-list';
-import { Movie } from '../../../types/film';
+import { Film } from '../../../types/film';
 
 type Props = {
-  films: Array<Movie>
+  films: Array<Film>
 }
 
 function MyList({ films }: Props): JSX.Element {
