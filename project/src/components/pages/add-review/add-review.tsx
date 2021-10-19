@@ -1,4 +1,4 @@
-import { useParams } from 'react-router';
+import { generatePath, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Movie } from '../../../types/film';
 import { RouteParams } from '../../../types/route-params';
@@ -37,7 +37,7 @@ function AddReview({ films }: Props): JSX.Element {
             <ul className="breadcrumbs__list">
               <li className="breadcrumbs__item">
                 <Link
-                  to={AppRoutes.Films.replace(':id', id)}
+                  to={generatePath(AppRoutes.Films, { id })}
                   className="breadcrumbs__link"
                 >
                   {name}
@@ -45,7 +45,7 @@ function AddReview({ films }: Props): JSX.Element {
               </li>
               <li className="breadcrumbs__item">
                 <Link
-                  to={AppRoutes.Review.replace(':id', id)}
+                  to={generatePath(AppRoutes.Review, { id })}
                   className="breadcrumbs__link"
                 >
                   Add review

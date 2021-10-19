@@ -4,6 +4,8 @@ import { AppRoutes } from '../../app/routes';
 import FilmCardList from '../../layout/film-card-list/film-card-list';
 import Footer from '../../layout/footer/footer';
 import Logo from '../../layout/logo/logo';
+import { generatePath } from 'react-router-dom';
+import GenreList from '../../layout/genre-list/genre-list';
 
 type Props = {
   promoFilm: Movie;
@@ -59,7 +61,7 @@ function Main({ promoFilm, films }: Props): JSX.Element {
 
               <div className="film-card__buttons">
                 <Link
-                  to={AppRoutes.Player.replace(':id', `${id}`)}
+                  to={generatePath(AppRoutes.Player, { id })}
                   className="btn btn--play film-card__button"
                 >
                   <svg viewBox="0 0 19 19" width="19" height="19">
@@ -83,38 +85,7 @@ function Main({ promoFilm, films }: Props): JSX.Element {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <ul className="catalog__genres-list">
-            <li className="catalog__genres-item catalog__genres-item--active">
-              <a href="/" className="catalog__genres-link">All genres</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="/" className="catalog__genres-link">Comedies</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="/" className="catalog__genres-link">Crime</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="/" className="catalog__genres-link">Documentary</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="/" className="catalog__genres-link">Dramas</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="/" className="catalog__genres-link">Horror</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="/" className="catalog__genres-link">Kids & Family</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="/" className="catalog__genres-link">Romance</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="/" className="catalog__genres-link">Sci-Fi</a>
-            </li>
-            <li className="catalog__genres-item">
-              <a href="/" className="catalog__genres-link">Thrillers</a>
-            </li>
-          </ul>
+          <GenreList />
 
           <FilmCardList films={films} />
 
