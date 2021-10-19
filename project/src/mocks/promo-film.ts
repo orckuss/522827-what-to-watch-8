@@ -10,7 +10,7 @@ export const PROMO_FILM_MOCK: Film = {
   backgroundColor: '#ffffff',
   description: 'The Grand Budapest Hotel',
   director: 'director',
-  genre: 'Drama',
+  genre: 'Dramas',
   rating: 8.9,
   released: 2014,
   runTime: 160,
