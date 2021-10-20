@@ -4,6 +4,8 @@ import { GlobalState } from '../../../types/global-state';
 import { bindActionCreators, Dispatch } from 'redux';
 import { Actions } from '../../../types/actions';
 import { changeGenre, filterFilms } from '../../../store/actions';
+import { useEffect } from 'react';
+import { DEFALUT_ACTIVE_GENRE } from '../../../constants';
 
 const mapStateToProps = ({ genre }: GlobalState) => ({
   activeGenre: genre,
@@ -23,6 +25,10 @@ function GenreList({
   onChangeGenre,
   onFilterFilms,
 }: PropsFromRedux): JSX.Element {
+  useEffect(() => {
+    onChangeGenre(DEFALUT_ACTIVE_GENRE);
+    onFilterFilms(DEFALUT_ACTIVE_GENRE);
+  }, [onChangeGenre, onFilterFilms]);
 
   return (
     <ul className="catalog__genres-list">
