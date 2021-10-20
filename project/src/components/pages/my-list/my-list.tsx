@@ -1,13 +1,8 @@
 import Footer from '../../layout/footer/footer';
 import Logo from '../../layout/logo/logo';
 import FilmCardList from '../../layout/film-card-list/film-card-list';
-import { Film } from '../../../types/film';
 
-type Props = {
-  films: Array<Film>
-}
-
-function MyList({ films }: Props): JSX.Element {
+function MyList(): JSX.Element {
   return (
     <div className="user-page">
       <header className="page-header user-page__head">
@@ -30,7 +25,7 @@ function MyList({ films }: Props): JSX.Element {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <FilmCardList films={films} />
+        <FilmCardList />
       </section>
 
       <Footer />

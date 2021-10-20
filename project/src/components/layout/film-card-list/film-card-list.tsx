@@ -1,11 +1,16 @@
-import { Film } from '../../../types/film';
+import { connect, ConnectedProps } from 'react-redux';
+import { GlobalState } from '../../../types/global-state';
 import SmallFilmCard from '../small-film-card/small-film-card';
 
-type Props = {
-  films: Array<Film>;
-}
+const mapStateToProps = ({ films }: GlobalState) => ({
+  films,
+});
 
-function FilmCardList({ films }: Props): JSX.Element {
+const connector = connect(mapStateToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+function FilmCardList({ films }: PropsFromRedux): JSX.Element {
   return (
     <div className="catalog__films-list">
       {films.map((film) => (
@@ -18,4 +23,5 @@ function FilmCardList({ films }: Props): JSX.Element {
   );
 }
 
-export default FilmCardList;
+export { FilmCardList };
+export default connector(FilmCardList);

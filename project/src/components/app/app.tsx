@@ -22,10 +22,7 @@ function App({ promoFilm, films }: Props): JSX.Element {
     <BrowserRouter>
       <Switch>
         <Route path={AppRoutes.Main} exact>
-          <Main
-            promoFilm={promoFilm}
-            films={films}
-          />
+          <Main promoFilm={promoFilm} />
         </Route>
 
         <Route path={AppRoutes.SignIn} exact>
@@ -33,7 +30,7 @@ function App({ promoFilm, films }: Props): JSX.Element {
         </Route>
 
         <PrivateRoute hasAccess={HAS_ACCESS} path={AppRoutes.MyList} exact>
-          <MyList films={films} />
+          <MyList />
         </PrivateRoute>
 
         <Route path={AppRoutes.Films} exact>

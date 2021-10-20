@@ -127,7 +127,7 @@ function Film({ films }: Props): JSX.Element {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <FilmCardList films={films} />
+          <FilmCardList />
         </section>
 
         <Footer />
