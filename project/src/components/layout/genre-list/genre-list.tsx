@@ -4,7 +4,7 @@ import { connect, ConnectedProps } from 'react-redux';
 import { GlobalState } from '../../../types/global-state';
 import { bindActionCreators, Dispatch } from 'redux';
 import { Actions } from '../../../types/actions';
-import { changeGenre } from '../../../store/actions';
+import { changeGenre, resetFilter, filterFilms } from '../../../store/actions';
 
 const mapStateToProps = ({ genre }: GlobalState) => ({
   activeGenre: genre,
@@ -12,20 +12,31 @@ const mapStateToProps = ({ genre }: GlobalState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch<Actions>) => bindActionCreators({
   onChangeGenre: changeGenre,
+  onResetFilter: resetFilter,
+  onFilterFilms: filterFilms,
 }, dispatch);
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type PropsFromRedux = ConnectedProps<typeof connector>
 
-function GenreList({ activeGenre, onChangeGenre }: PropsFromRedux): JSX.Element {
+function GenreList({
+  activeGenre,
+  onChangeGenre,
+  onFilterFilms,
+  onResetFilter,
+}: PropsFromRedux): JSX.Element {
+
   return (
     <ul className="catalog__genres-list">
       <li className={`catalog__genres-item ${activeGenre === DEFALUT_ACTIVE_GENRE && 'catalog__genres-item--active'}`}>
         <a
           href="/"
           className="catalog__genres-link"
-          onClick={(evt) => { evt.preventDefault(); onChangeGenre(DEFALUT_ACTIVE_GENRE); }}
+          onClick={(evt) => {
+            evt.preventDefault();
+            onResetFilter();
+          }}
         >
           All genres
         </a>
@@ -39,7 +50,11 @@ function GenreList({ activeGenre, onChangeGenre }: PropsFromRedux): JSX.Element 
           <a
             href="/"
             className="catalog__genres-link"
-            onClick={(evt) => { evt.preventDefault(); onChangeGenre(genre); }}
+            onClick={(evt) => {
+              evt.preventDefault();
+              onChangeGenre(genre);
+              onFilterFilms(genre);
+            }}
           >
             {genre}
           </a>

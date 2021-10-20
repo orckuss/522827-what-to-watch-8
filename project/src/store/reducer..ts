@@ -24,7 +24,7 @@ export const reducer: Reducer<GlobalState, Actions> = (
     }
 
     case ActionType.ResetFilter:
-      return { ...state, films: initialState.films };
+      return { ...initialState };
 
     default:
       return state;
