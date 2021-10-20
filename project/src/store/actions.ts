@@ -1,15 +1,12 @@
 import { ActionType } from '../types/actions';
-import { Genre, GenreName } from '../types/genre';
+import { Genre } from '../types/genre';
 
-export const changeGenre = (genre: GenreName) => ({
+export const changeGenre = (genre: Genre) => ({
   type: ActionType.ChangeGenre,
-  payload: {
-    active: true,
-    name: genre,
-  } as Genre,
+  payload: genre,
 } as const);
 
-export const filterFilms = (genre: GenreName) => ({
+export const filterFilms = (genre: Genre) => ({
   type: ActionType.FilterFilms,
   payload: genre,
 } as const);

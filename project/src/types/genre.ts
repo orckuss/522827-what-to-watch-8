@@ -1,9 +1,4 @@
-export type Genre = {
-  name: GenreName;
-  active: boolean;
-};
-
-export type GenreName =
+export type Genre =
   | 'All genres'
   | 'Comedies'
   | 'Crime'

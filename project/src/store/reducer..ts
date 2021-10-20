@@ -1,16 +1,13 @@
 import { Reducer } from 'redux';
 import { filterFilmsByGenre } from '../business-modules/filter';
+import { DEFALUT_ACTIVE_GENRE } from '../constants';
 import { FILMS_MOCK } from '../mocks/films';
 import { Actions, ActionType } from '../types/actions';
-import { Genre } from '../types/genre';
 import { GlobalState } from '../types/global-state';
 
 export const initialState: GlobalState = {
   films: FILMS_MOCK,
-  genre: {
-    active: true,
-    name: 'All genres',
-  } as Genre,
+  genre: DEFALUT_ACTIVE_GENRE,
 };
 
 export const reducer: Reducer<GlobalState, Actions> = (

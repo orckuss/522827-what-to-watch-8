@@ -1,6 +1,6 @@
 import { Film } from '../types/film';
-import { GenreName } from '../types/genre';
+import { Genre } from '../types/genre';
 
-export function filterFilmsByGenre(films: Array<Film>, genre: GenreName): Array<Film> {
+export function filterFilmsByGenre(films: Array<Film>, genre: Genre): Array<Film> {
   return films.filter((film) => film.genre === genre);
 }
