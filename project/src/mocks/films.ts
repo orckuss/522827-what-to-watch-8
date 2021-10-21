@@ -1,7 +1,7 @@
-import { Movie } from '../types/film';
+import { Film } from '../types/film';
 
 // ToDo: Delete mock on stage of integration with server
-export const FILMS_MOCK: Array<Movie> = [
+export const FILMS_MOCK: Array<Film> = [
   {
     id: 1,
     name: 'Fantastic Beasts: The Crimes of Grindelwald',
@@ -11,7 +11,7 @@ export const FILMS_MOCK: Array<Movie> = [
     backgroundColor: '#ffffff',
     description: 'Fantastic Beasts: The Crimes of Grindelwald',
     director: 'director',
-    genre: 'fantasy',
+    genre: 'Comedies',
     rating: 8.9,
     released: 2017,
     runTime: 160,
@@ -30,7 +30,7 @@ export const FILMS_MOCK: Array<Movie> = [
     backgroundColor: '#ffffff',
     description: 'Bohemian Rhapsody',
     director: 'director',
-    genre: 'drama',
+    genre: 'Dramas',
     rating: 8.9,
     released: 2017,
     runTime: 160,
@@ -49,7 +49,7 @@ export const FILMS_MOCK: Array<Movie> = [
     backgroundColor: '#ffffff',
     description: 'Macbeth',
     director: 'director',
-    genre: 'drama',
+    genre: 'Dramas',
     rating: 8.9,
     released: 2017,
     runTime: 160,
@@ -68,7 +68,7 @@ export const FILMS_MOCK: Array<Movie> = [
     backgroundColor: '#ffffff',
     description: 'Aviator',
     director: 'director',
-    genre: 'drama',
+    genre: 'Dramas',
     rating: 8.9,
     released: 2017,
     runTime: 160,
@@ -87,7 +87,7 @@ export const FILMS_MOCK: Array<Movie> = [
     backgroundColor: '#ffffff',
     description: 'We need to talk about Kevin',
     director: 'director',
-    genre: 'drama',
+    genre: 'Dramas',
     rating: 8.9,
     released: 2017,
     runTime: 160,
@@ -106,7 +106,7 @@ export const FILMS_MOCK: Array<Movie> = [
     backgroundColor: '#ffffff',
     description: 'What We Do in the Shadows',
     director: 'director',
-    genre: 'drama',
+    genre: 'Dramas',
     rating: 8.9,
     released: 2017,
     runTime: 160,
@@ -125,7 +125,7 @@ export const FILMS_MOCK: Array<Movie> = [
     backgroundColor: '#ffffff',
     description: 'Revenant',
     director: 'director',
-    genre: 'drama',
+    genre: 'Dramas',
     rating: 8.9,
     released: 2017,
     runTime: 160,
@@ -144,7 +144,7 @@ export const FILMS_MOCK: Array<Movie> = [
     backgroundColor: '#ffffff',
     description: 'Johnny English',
     director: 'director',
-    genre: 'drama',
+    genre: 'Dramas',
     rating: 8.9,
     released: 2017,
     runTime: 160,

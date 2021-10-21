@@ -1,26 +1,27 @@
-import { useState } from 'react';
-import { Movie } from '../../../types/film';
+import { connect, ConnectedProps } from 'react-redux';
+import { GlobalState } from '../../../types/global-state';
 import SmallFilmCard from '../small-film-card/small-film-card';
 
-type Props = {
-  films: Array<Movie>;
-}
+const mapStateToProps = ({ films }: GlobalState) => ({
+  films,
+});
 
-function FilmCardList({ films }: Props): JSX.Element {
-  // ToDo: убрать отключение правила esLint, когда будет реализация превью видео
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [activeCard, setActiveCard] = useState<Movie | null>(null);
+const connector = connect(mapStateToProps);
 
+type PropsFromRedux = ConnectedProps<typeof connector>
+
+function FilmCardList({ films }: PropsFromRedux): JSX.Element {
   return (
     <div className="catalog__films-list">
       {films.map((film) => (
         <SmallFilmCard
           key={film.id}
-          movie={film}
+          film={film}
         />
       ))}
     </div>
   );
 }
 
-export default FilmCardList;
+export { FilmCardList };
+export default connector(FilmCardList);

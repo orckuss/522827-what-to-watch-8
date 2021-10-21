@@ -1,4 +1,11 @@
-export type Genre = {
-  name: string;
-  active: boolean;
-};
+export type Genre =
+  | 'All genres'
+  | 'Comedies'
+  | 'Crime'
+  | 'Documentary'
+  | 'Dramas'
+  | 'Horror'
+  | 'Kids & Family'
+  | 'Romance'
+  | 'Sci-Fi'
+  | 'Thrillers';

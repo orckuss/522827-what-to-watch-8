@@ -1,11 +1,11 @@
 import { useHistory } from 'react-router';
-import { Movie } from '../../../types/film';
+import { Film } from '../../../types/film';
 import FullScreenButton from '../../ui/full-screen-button/full-screen-button';
 import PlayButton from '../../ui/play-button/play-button';
 import ProgressBar from '../../ui/progress-bar/progress-bar';
 
 type Props = {
-  film: Movie;
+  film: Film;
 };
 
 function Player({ film }: Props): JSX.Element {

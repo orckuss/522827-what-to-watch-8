@@ -1,4 +1,6 @@
-export type Movie = {
+import { Genre } from './genre';
+
+export type Film = {
   readonly id: number;
   readonly name: string;
   readonly previewImage: string;
@@ -13,7 +15,7 @@ export type Movie = {
   readonly director: string;
   readonly starring: Array<string>;
   readonly runTime: number;
-  readonly genre: string;
+  readonly genre: Genre;
   readonly released: number;
   readonly isFavorite: boolean;
 };

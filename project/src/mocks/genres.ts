@@ -1,44 +1,5 @@
+import { mapFilmsToGenres } from '../business-modules/genres';
 import { Genre } from '../types/genre';
+import { FILMS_MOCK } from './films';
 
-export const GENRES: Array<Genre> = [
-  {
-    name: 'All genres',
-    active: true,
-  },
-  {
-    name: 'Comedies',
-    active: false,
-  },
-  {
-    name: 'Crime',
-    active: false,
-  },
-  {
-    name: 'Documentary',
-    active: false,
-  },
-  {
-    name: 'Dramas',
-    active: false,
-  },
-  {
-    name: 'Horror',
-    active: false,
-  },
-  {
-    name: 'Kids & Family',
-    active: false,
-  },
-  {
-    name: 'Romance',
-    active: false,
-  },
-  {
-    name: 'Sci-Fi',
-    active: false,
-  },
-  {
-    name: 'Thrillers',
-    active: false,
-  },
-];
+export const GENRES: Array<Genre> = mapFilmsToGenres(FILMS_MOCK);

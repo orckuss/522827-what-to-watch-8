@@ -1,25 +1,25 @@
 import { generatePath, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import { Movie } from '../../../types/film';
+import { Film } from '../../../types/film';
 import { RouteParams } from '../../../types/route-params';
 import { AppRoutes } from '../../app/routes';
 import AddReviewForm from '../../layout/add-review-form/add-review-form';
 import Logo from '../../layout/logo/logo';
 
 type Props = {
-  films: Array<Movie>
+  films: Array<Film>
 }
 
 function AddReview({ films }: Props): JSX.Element {
   const { id } = useParams<RouteParams>();
 
-  const movie = films.find((film) => film.id === Number(id));
+  const film = films.find((item) => item.id === Number(id));
 
   const {
     name,
     posterImage,
     backgroundImage,
-  } = movie as Movie;
+  } = film as Film;
 
   return (
     <section className="film-card film-card--full">
