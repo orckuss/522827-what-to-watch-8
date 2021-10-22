@@ -1,9 +1,9 @@
 import { generatePath, useParams } from 'react-router';
-import { Link } from 'react-router-dom';
 import { Film } from '../../../types/film';
-import { RouteParams } from '../../../types/route-params';
+import { NamedRoute, RouteParams } from '../../../types/route-params';
 import { AppRoutes } from '../../app/routes';
 import AddReviewForm from '../../layout/add-review-form/add-review-form';
+import Breadcrumbs from '../../layout/breadcrumbs/breadcrumbs';
 import Logo from '../../layout/logo/logo';
 import User from '../../layout/user/user';
 
@@ -22,6 +22,17 @@ function AddReview({ films }: Props): JSX.Element {
     backgroundImage,
   } = film as Film;
 
+  const routes: Array<NamedRoute> = [
+    {
+      name,
+      path: generatePath(AppRoutes.Films, { id }),
+    },
+    {
+      name: 'Add review',
+      path: generatePath(AppRoutes.Review, { id }),
+    },
+  ];
+
   return (
     <section className="film-card film-card--full">
       <div className="film-card__header">
@@ -34,26 +45,7 @@ function AddReview({ films }: Props): JSX.Element {
         <header className="page-header">
           <Logo />
 
-          <nav className="breadcrumbs">
-            <ul className="breadcrumbs__list">
-              <li className="breadcrumbs__item">
-                <Link
-                  to={generatePath(AppRoutes.Films, { id })}
-                  className="breadcrumbs__link"
-                >
-                  {name}
-                </Link>
-              </li>
-              <li className="breadcrumbs__item">
-                <Link
-                  to={generatePath(AppRoutes.Review, { id })}
-                  className="breadcrumbs__link"
-                >
-                  Add review
-                </Link>
-              </li>
-            </ul>
-          </nav>
+          <Breadcrumbs routes={routes} />
 
           <User />
         </header>
