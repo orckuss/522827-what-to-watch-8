@@ -5,6 +5,7 @@ import { RouteParams } from '../../../types/route-params';
 import { AppRoutes } from '../../app/routes';
 import AddReviewForm from '../../layout/add-review-form/add-review-form';
 import Logo from '../../layout/logo/logo';
+import User from '../../layout/user/user';
 
 type Props = {
   films: Array<Film>
@@ -54,16 +55,7 @@ function AddReview({ films }: Props): JSX.Element {
             </ul>
           </nav>
 
-          <ul className="user-block">
-            <li className="user-block__item">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-            </li>
-            <li className="user-block__item">
-              <a href="/" className="user-block__link">Sign out</a>
-            </li>
-          </ul>
+          <User />
         </header>
 
         <div className="film-card__poster film-card__poster--small">

@@ -1,6 +1,7 @@
 import Footer from '../../layout/footer/footer';
 import Logo from '../../layout/logo/logo';
 import FilmCardList from '../../layout/film-card-list/film-card-list';
+import User from '../../layout/user/user';
 
 function MyList(): JSX.Element {
   return (
@@ -10,16 +11,7 @@ function MyList(): JSX.Element {
 
         <h1 className="page-title user-page__title">My list</h1>
 
-        <ul className="user-block">
-          <li className="user-block__item">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </li>
-          <li className="user-block__item">
-            <a href="/" className="user-block__link">Sign out</a>
-          </li>
-        </ul>
+        <User />
       </header>
 
       <section className="catalog">
