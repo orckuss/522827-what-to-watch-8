@@ -4,8 +4,7 @@ import { NamedRoute, RouteParams } from '../../../types/route-params';
 import { AppRoutes } from '../../app/routes';
 import AddReviewForm from '../../layout/add-review-form/add-review-form';
 import Breadcrumbs from '../../layout/breadcrumbs/breadcrumbs';
-import Logo from '../../layout/logo/logo';
-import User from '../../layout/user/user';
+import Header from '../../layout/header/header';
 
 type Props = {
   films: Array<Film>
@@ -37,21 +36,25 @@ function AddReview({ films }: Props): JSX.Element {
     <section className="film-card film-card--full">
       <div className="film-card__header">
         <div className="film-card__bg">
-          <img src={backgroundImage} alt={name} />
+          <img
+            src={backgroundImage}
+            alt={name}
+          />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header">
-          <Logo />
-
+        <Header>
           <Breadcrumbs routes={routes} />
-
-          <User />
-        </header>
+        </Header>
 
         <div className="film-card__poster film-card__poster--small">
-          <img src={posterImage} alt={`${name} poster`} width="218" height="327" />
+          <img
+            src={posterImage}
+            alt={`${name} poster`}
+            width="218"
+            height="327"
+          />
         </div>
       </div>
 

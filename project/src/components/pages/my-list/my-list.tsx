@@ -1,18 +1,13 @@
 import Footer from '../../layout/footer/footer';
-import Logo from '../../layout/logo/logo';
 import FilmCardList from '../../layout/film-card-list/film-card-list';
-import User from '../../layout/user/user';
+import Header from '../../layout/header/header';
 
 function MyList(): JSX.Element {
   return (
     <div className="user-page">
-      <header className="page-header user-page__head">
-        <Logo />
-
+      <Header className="user-page__head">
         <h1 className="page-title user-page__title">My list</h1>
-
-        <User />
-      </header>
+      </Header>
 
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
