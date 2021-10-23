@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { Fragment } from 'react';
 import { Film } from '../../../types/film';
 
 type Props = {
