@@ -6,6 +6,7 @@ import { AppRoutes } from '../../app/routes';
 import FilmCardList from '../../layout/film-card-list/film-card-list';
 import Footer from '../../layout/footer/footer';
 import Header from '../../layout/header/header';
+import Overview from '../../layout/overview/overview';
 
 type Props = {
   films: Array<FilmData>
@@ -13,7 +14,7 @@ type Props = {
 
 function Film({ films }: Props): JSX.Element {
   const { id } = useParams<RouteParams>();
-  const movie = films.find((film) => film.id === Number(id));
+  const film = films.find((item) => item.id === Number(id)) as FilmData;
 
   const {
     backgroundImage,
@@ -21,7 +22,7 @@ function Film({ films }: Props): JSX.Element {
     genre,
     posterImage,
     released,
-  } = movie as FilmData;
+  } = film;
 
   return (
     <>
@@ -88,23 +89,7 @@ function Film({ films }: Props): JSX.Element {
                 </ul>
               </nav>
 
-              <div className="film-rating">
-                <div className="film-rating__score">8,9</div>
-                <p className="film-rating__meta">
-                  <span className="film-rating__level">Very good</span>
-                  <span className="film-rating__count">240 ratings</span>
-                </p>
-              </div>
-
-              <div className="film-card__text">
-                <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&apos;s friend and protege.</p>
-
-                <p>Gustave prides himself on providing first-className service to the hotel&apos;s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave&apos;s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
-
-                <p className="film-card__director"><strong>Director: Wes Anderson</strong></p>
-
-                <p className="film-card__starring"><strong>Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other</strong></p>
-              </div>
+              <Overview film={film} />
             </div>
           </div>
         </div>
