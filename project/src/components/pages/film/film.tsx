@@ -4,10 +4,13 @@ import { COMMENTS } from '../../../mocks/comments';
 import { Film as FilmData } from '../../../types/film';
 import { RouteParams } from '../../../types/route-params';
 import { AppRoutes } from '../../app/routes';
+import Details from '../../layout/details/details';
 import FilmCardList from '../../layout/film-card-list/film-card-list';
 import Footer from '../../layout/footer/footer';
 import Header from '../../layout/header/header';
-import Tabs from '../../layout/tabs/tabs';
+import Overview from '../../layout/overview/overview';
+import Reviews from '../../layout/reviews/reviews';
+import Tabs, { TabConfig } from '../../layout/tabs/tabs';
 
 type Props = {
   films: Array<FilmData>
@@ -25,6 +28,21 @@ function Film({ films }: Props): JSX.Element {
     posterImage,
     released,
   } = film;
+
+  const tabs: Array<TabConfig> = [
+    {
+      caption: 'Overview',
+      component: <Overview film={film} />,
+    },
+    {
+      caption: 'Details',
+      component: <Details film={film} />,
+    },
+    {
+      caption: 'Reviews',
+      component: <Reviews comments={comments} />,
+    },
+  ];
 
   return (
     <>
@@ -77,10 +95,7 @@ function Film({ films }: Props): JSX.Element {
             </div>
 
             <div className="film-card__desc">
-              <Tabs
-                film={film}
-                comments={comments}
-              />
+              <Tabs tabs={tabs} />
             </div>
           </div>
         </div>
