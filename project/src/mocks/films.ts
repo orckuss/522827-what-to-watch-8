@@ -16,7 +16,7 @@ export const FILMS_MOCK: Array<Film> = [
     released: 2017,
     runTime: 160,
     scoresCount: 15,
-    starring: ['Actor'],
+    starring: ['Actor', 'Actor', 'Actor', 'Actor', 'Actor', 'Actor'],
     videoLink: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     previewVideoLink: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     isFavorite: true,
