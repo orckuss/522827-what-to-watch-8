@@ -1,12 +1,13 @@
 import { generatePath, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import { COMMENTS } from '../../../mocks/comments';
 import { Film as FilmData } from '../../../types/film';
 import { RouteParams } from '../../../types/route-params';
 import { AppRoutes } from '../../app/routes';
 import FilmCardList from '../../layout/film-card-list/film-card-list';
 import Footer from '../../layout/footer/footer';
 import Header from '../../layout/header/header';
-import Overview from '../../layout/overview/overview';
+import Tabs from '../../layout/tabs/tabs';
 
 type Props = {
   films: Array<FilmData>
@@ -15,6 +16,7 @@ type Props = {
 function Film({ films }: Props): JSX.Element {
   const { id } = useParams<RouteParams>();
   const film = films.find((item) => item.id === Number(id)) as FilmData;
+  const comments = COMMENTS;
 
   const {
     backgroundImage,
@@ -75,21 +77,10 @@ function Film({ films }: Props): JSX.Element {
             </div>
 
             <div className="film-card__desc">
-              <nav className="film-nav film-card__nav">
-                <ul className="film-nav__list">
-                  <li className="film-nav__item film-nav__item--active">
-                    <a href="/" className="film-nav__link">Overview</a>
-                  </li>
-                  <li className="film-nav__item">
-                    <a href="/" className="film-nav__link">Details</a>
-                  </li>
-                  <li className="film-nav__item">
-                    <a href="/" className="film-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav>
-
-              <Overview film={film} />
+              <Tabs
+                film={film}
+                comments={comments}
+              />
             </div>
           </div>
         </div>
