@@ -1,6 +1,9 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { generatePath, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { COMMENTS } from '../../../mocks/comments';
+import { filterFilms } from '../../../store/actions';
 import { Film as FilmData } from '../../../types/film';
 import { RouteParams } from '../../../types/route-params';
 import { AppRoutes } from '../../app/routes';
@@ -19,6 +22,13 @@ type Props = {
 function Film({ films }: Props): JSX.Element {
   const { id } = useParams<RouteParams>();
   const film = films.find((item) => item.id === Number(id)) as FilmData;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(filterFilms(film.genre));
+  }, [dispatch, film]);
+
   const comments = COMMENTS;
 
   const {
