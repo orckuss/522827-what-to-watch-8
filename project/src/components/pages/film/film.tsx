@@ -1,11 +1,19 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { generatePath, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import { COMMENTS } from '../../../mocks/comments';
+import { filterFilms } from '../../../store/actions';
 import { Film as FilmData } from '../../../types/film';
 import { RouteParams } from '../../../types/route-params';
 import { AppRoutes } from '../../app/routes';
+import Details from '../../layout/details/details';
 import FilmCardList from '../../layout/film-card-list/film-card-list';
 import Footer from '../../layout/footer/footer';
-import Logo from '../../layout/logo/logo';
+import Header from '../../layout/header/header';
+import Overview from '../../layout/overview/overview';
+import Reviews from '../../layout/reviews/reviews';
+import Tabs, { TabConfig } from '../../layout/tabs/tabs';
 
 type Props = {
   films: Array<FilmData>
@@ -13,7 +21,15 @@ type Props = {
 
 function Film({ films }: Props): JSX.Element {
   const { id } = useParams<RouteParams>();
-  const movie = films.find((film) => film.id === Number(id));
+  const film = films.find((item) => item.id === Number(id)) as FilmData;
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(filterFilms(film.genre));
+  }, [dispatch, film]);
+
+  const comments = COMMENTS;
 
   const {
     backgroundImage,
@@ -21,7 +37,22 @@ function Film({ films }: Props): JSX.Element {
     genre,
     posterImage,
     released,
-  } = movie as FilmData;
+  } = film;
+
+  const tabs: Array<TabConfig> = [
+    {
+      caption: 'Overview',
+      component: <Overview film={film} />,
+    },
+    {
+      caption: 'Details',
+      component: <Details film={film} />,
+    },
+    {
+      caption: 'Reviews',
+      component: <Reviews comments={comments} />,
+    },
+  ];
 
   return (
     <>
@@ -33,20 +64,7 @@ function Film({ films }: Props): JSX.Element {
 
           <h1 className="visually-hidden">WTW</h1>
 
-          <header className="page-header film-card__head">
-            <Logo />
-
-            <ul className="user-block">
-              <li className="user-block__item">
-                <div className="user-block__avatar">
-                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-                </div>
-              </li>
-              <li className="user-block__item">
-                <a href="/" className="user-block__link">Sign out</a>
-              </li>
-            </ul>
-          </header>
+          <Header className="film-card__head" />
 
           <div className="film-card__wrap">
             <div className="film-card__desc">
@@ -87,37 +105,7 @@ function Film({ films }: Props): JSX.Element {
             </div>
 
             <div className="film-card__desc">
-              <nav className="film-nav film-card__nav">
-                <ul className="film-nav__list">
-                  <li className="film-nav__item film-nav__item--active">
-                    <a href="/" className="film-nav__link">Overview</a>
-                  </li>
-                  <li className="film-nav__item">
-                    <a href="/" className="film-nav__link">Details</a>
-                  </li>
-                  <li className="film-nav__item">
-                    <a href="/" className="film-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav>
-
-              <div className="film-rating">
-                <div className="film-rating__score">8,9</div>
-                <p className="film-rating__meta">
-                  <span className="film-rating__level">Very good</span>
-                  <span className="film-rating__count">240 ratings</span>
-                </p>
-              </div>
-
-              <div className="film-card__text">
-                <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&apos;s friend and protege.</p>
-
-                <p>Gustave prides himself on providing first-className service to the hotel&apos;s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave&apos;s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
-
-                <p className="film-card__director"><strong>Director: Wes Anderson</strong></p>
-
-                <p className="film-card__starring"><strong>Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other</strong></p>
-              </div>
+              <Tabs tabs={tabs} />
             </div>
           </div>
         </div>
