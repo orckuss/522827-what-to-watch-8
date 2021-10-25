@@ -2,7 +2,7 @@ import {
   changeGenre,
   filterFilms,
   resetFilter
-} from '../store/actions';
+} from '../store/film/actions';
 
 export enum ActionType {
   ChangeGenre = 'films/changeGenre',

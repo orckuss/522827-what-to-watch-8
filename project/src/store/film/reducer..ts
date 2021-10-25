@@ -1,9 +1,9 @@
 import { Reducer } from 'redux';
-import { filterFilmsByGenre } from '../business-modules/filter';
-import { DEFALUT_ACTIVE_GENRE } from '../constants';
-import { FILMS_MOCK } from '../mocks/films';
-import { Actions, ActionType } from '../types/actions';
-import { GlobalState } from '../types/global-state';
+import { filterFilmsByGenre } from '../../business-modules/filter';
+import { DEFALUT_ACTIVE_GENRE } from '../../constants';
+import { FILMS_MOCK } from '../../mocks/films';
+import { Actions, ActionType } from '../../types/actions';
+import { GlobalState } from '../../types/global-state';
 
 export const initialState: GlobalState = {
   films: FILMS_MOCK,

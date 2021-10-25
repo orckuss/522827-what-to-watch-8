@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { generatePath, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { COMMENTS } from '../../../mocks/comments';
-import { filterFilms } from '../../../store/actions';
+import { filterFilms } from '../../../store/film/actions';
 import { Film as FilmData } from '../../../types/film';
 import { RouteParams } from '../../../types/route-params';
 import { AppRoutes } from '../../app/routes';

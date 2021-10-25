@@ -3,7 +3,7 @@ import { connect, ConnectedProps } from 'react-redux';
 import { GlobalState } from '../../../types/global-state';
 import { bindActionCreators, Dispatch } from 'redux';
 import { Actions } from '../../../types/actions';
-import { changeGenre, filterFilms } from '../../../store/actions';
+import { changeGenre, filterFilms } from '../../../store/film/actions';
 import { useEffect } from 'react';
 import { DEFALUT_ACTIVE_GENRE } from '../../../constants';
 
