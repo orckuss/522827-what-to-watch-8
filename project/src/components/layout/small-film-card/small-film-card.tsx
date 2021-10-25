@@ -25,25 +25,26 @@ function SmallFilmCard({ film }: Props): JSX.Element {
       onMouseEnter={() => setIsPlayed(true)}
       onMouseLeave={() => setIsPlayed(false)}
     >
-      <div className="small-film-card__image">
-        <VideoPlayer
-          src={previewVideoLink}
-          isPlayed={isPlayed}
-          poster={previewImage}
-          muted
-          width={280}
-          height={175}
-        />
-      </div>
 
-      <h3 className="small-film-card__title">
-        <Link
-          className="small-film-card__link"
-          to={generatePath(AppRoutes.Films, { id })}
-        >
+      <Link
+        className="small-film-card__link"
+        to={generatePath(AppRoutes.Films, { id })}
+      >
+        <div className="small-film-card__image">
+          <VideoPlayer
+            src={previewVideoLink}
+            isPlayed={isPlayed}
+            poster={previewImage}
+            muted
+            width={280}
+            height={175}
+          />
+        </div>
+
+        <h3 className="small-film-card__title">
           {name}
-        </Link>
-      </h3>
+        </h3>
+      </Link>
     </article>
   );
 }
