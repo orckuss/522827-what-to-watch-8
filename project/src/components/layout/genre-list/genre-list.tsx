@@ -1,11 +1,11 @@
-import { GENRES } from '../../../mocks/genres';
-import { connect, ConnectedProps } from 'react-redux';
+import { connect, ConnectedProps, useSelector } from 'react-redux';
 import { GlobalState } from '../../../types/global-state';
 import { bindActionCreators, Dispatch } from 'redux';
 import { Actions } from '../../../types/actions';
 import { changeGenre, filterFilms } from '../../../store/film/actions';
 import { useEffect } from 'react';
 import { DEFALUT_ACTIVE_GENRE } from '../../../constants';
+import { getGenres } from '../../../store/film/selectors';
 
 const mapStateToProps = ({ genre }: GlobalState) => ({
   activeGenre: genre,
@@ -25,6 +25,8 @@ function GenreList({
   onChangeGenre,
   onFilterFilms,
 }: PropsFromRedux): JSX.Element {
+  const genres = useSelector(getGenres);
+
   useEffect(() => {
     onChangeGenre(DEFALUT_ACTIVE_GENRE);
     onFilterFilms(DEFALUT_ACTIVE_GENRE);
@@ -32,7 +34,7 @@ function GenreList({
 
   return (
     <ul className="catalog__genres-list">
-      {GENRES.map((genre) => (
+      {genres.map((genre) => (
         <li
           key={genre}
           className={`catalog__genres-item ${activeGenre === genre && 'catalog__genres-item--active'}`}
