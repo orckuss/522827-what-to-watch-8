@@ -1,10 +1,11 @@
-import { useSelector } from 'react-redux';
-import { getFilteredFilms } from '../../../store/film/selectors';
+import { Film } from '../../../types/film';
 import SmallFilmCard from '../small-film-card/small-film-card';
 
-function FilmCardList(): JSX.Element {
-  const films = useSelector(getFilteredFilms);
+type Props = {
+  films: Array<Film>;
+}
 
+function FilmCardList({ films }: Props): JSX.Element {
   return (
     <div className="catalog__films-list">
       {films.map((film) => (

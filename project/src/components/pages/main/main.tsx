@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import { Film } from '../../../types/film';
 import { AppRoutes } from '../../app/routes';
-import FilmCardList from '../../layout/film-card-list/film-card-list';
 import Footer from '../../layout/footer/footer';
 import { generatePath } from 'react-router-dom';
 import GenreList from '../../layout/genre-list/genre-list';
 import Header from '../../layout/header/header';
+import FilteredFilmCardList from '../../layout/filtered-film-card-list/filtered-film-card-list';
 
 type Props = {
   promoFilm: Film;
@@ -73,7 +73,7 @@ function Main({ promoFilm }: Props): JSX.Element {
 
           <GenreList />
 
-          <FilmCardList />
+          <FilteredFilmCardList />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>

@@ -5,7 +5,7 @@ import { Film as FilmData } from '../../../types/film';
 import { RouteParams } from '../../../types/route-params';
 import { AppRoutes } from '../../app/routes';
 import Details from '../../layout/details/details';
-import FilmCardList from '../../layout/film-card-list/film-card-list';
+import FilteredFilmCardList from '../../layout/filtered-film-card-list/filtered-film-card-list';
 import Footer from '../../layout/footer/footer';
 import Header from '../../layout/header/header';
 import Overview from '../../layout/overview/overview';
@@ -106,7 +106,7 @@ function Film({ films }: Props): JSX.Element {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <FilmCardList />
+          <FilteredFilmCardList />
         </section>
 
         <Footer />
