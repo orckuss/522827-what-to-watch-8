@@ -15,3 +15,10 @@ export const getGenres = createSelector<GlobalState, Array<Film>, Array<Genre>>(
     return [DEFALUT_ACTIVE_GENRE].concat(Array.from(set));
   },
 );
+
+export const getFilteredFilms = createSelector<GlobalState, Genre, Array<Film>, Array<Film>>(
+  getGenre,
+  getFilms,
+  (genre, films) => genre === DEFALUT_ACTIVE_GENRE ?
+    films : films.filter((film) => film.genre === genre),
+);
