@@ -1,5 +1,5 @@
 import { Redirect, Route, RouteProps } from 'react-router';
-import { AppRoutes } from '../app/routes';
+import { AppRoutes } from '../../constants';
 
 type Props = RouteProps & {
   hasAccess: boolean;

@@ -1,4 +1,5 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { AppRoutes } from '../../constants';
 import { Film as FilmData } from '../../types/film';
 import AddReview from '../pages/add-review/add-review';
 import Film from '../pages/film/film';
@@ -8,7 +9,6 @@ import NotFound from '../pages/not-found/not-found';
 import Player from '../pages/player/player';
 import SignIn from '../pages/sign-in/sign-in';
 import PrivateRoute from '../services/private-route';
-import { AppRoutes } from './routes';
 
 const HAS_ACCESS = false;
 

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Film } from '../../../types/film';
-import { AppRoutes } from '../../app/routes';
+import { AppRoutes } from '../../../constants';
 import Footer from '../../layout/footer/footer';
 import { generatePath } from 'react-router-dom';
 import GenreList from '../../layout/genre-list/genre-list';

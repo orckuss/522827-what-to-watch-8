@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Film } from '../../../types/film';
 import { generatePath } from 'react-router-dom';
-import { AppRoutes } from '../../app/routes';
+import { AppRoutes } from '../../../constants';
 import VideoPlayer from '../video-player/video-player';
 import { useState } from 'react';
 

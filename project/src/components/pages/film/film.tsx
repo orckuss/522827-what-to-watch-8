@@ -1,9 +1,9 @@
 import { generatePath, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import { COMMENTS } from '../../../mocks/comments';
+import { COMMENTS_MOCK } from '../../../mocks/comments';
 import { Film as FilmData } from '../../../types/film';
 import { RouteParams } from '../../../types/route-params';
-import { AppRoutes } from '../../app/routes';
+import { AppRoutes } from '../../../constants';
 import Details from '../../layout/details/details';
 import FilteredFilmCardList from '../../layout/filtered-film-card-list/filtered-film-card-list';
 import Footer from '../../layout/footer/footer';
@@ -20,7 +20,7 @@ function Film({ films }: Props): JSX.Element {
   const { id } = useParams<RouteParams>();
   const film = films.find((item) => item.id === Number(id)) as FilmData;
 
-  const comments = COMMENTS;
+  const comments = COMMENTS_MOCK;
 
   const {
     backgroundImage,

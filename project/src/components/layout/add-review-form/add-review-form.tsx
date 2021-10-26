@@ -1,9 +1,8 @@
 /* eslint-disable no-console */
 import { useState } from 'react';
+import { STAR_COUNT } from '../../../constants';
 import { Comment } from '../../../types/comment';
 import RatingFormControl from '../rating-form-control/rating-form-control';
-
-const STAR_COUNT = 10;
 
 function AddReviewForm(): JSX.Element {
   const [comment, setComment] = useState<string>('');

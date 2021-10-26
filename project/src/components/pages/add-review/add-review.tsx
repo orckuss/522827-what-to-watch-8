@@ -1,7 +1,7 @@
 import { generatePath, useParams } from 'react-router';
 import { Film } from '../../../types/film';
 import { NamedRoute, RouteParams } from '../../../types/route-params';
-import { AppRoutes } from '../../app/routes';
+import { AppRoutes } from '../../../constants';
 import AddReviewForm from '../../layout/add-review-form/add-review-form';
 import Breadcrumbs from '../../layout/breadcrumbs/breadcrumbs';
 import Header from '../../layout/header/header';
