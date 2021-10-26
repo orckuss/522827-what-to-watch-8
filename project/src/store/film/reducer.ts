@@ -1,5 +1,4 @@
 import { Reducer } from 'redux';
-import { filterFilmsByGenre } from '../../business-modules/filter';
 import { DEFALUT_ACTIVE_GENRE } from '../../constants';
 import { FILMS_MOCK } from '../../mocks/films';
 import { Actions, ActionType } from '../../types/actions';
@@ -17,11 +16,6 @@ export const reducer: Reducer<GlobalState, Actions> = (
   switch (action.type) {
     case ActionType.ChangeGenre:
       return { ...state, genre: action.payload };
-
-    case ActionType.FilterFilms: {
-      const films = filterFilmsByGenre(initialState.films, action.payload);
-      return { ...state, films };
-    }
 
     case ActionType.ResetFilter:
       return { ...initialState };

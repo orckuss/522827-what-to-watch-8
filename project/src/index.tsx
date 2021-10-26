@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import App from './components/app/app';
 import { FILMS_MOCK } from './mocks/films';
 import { PROMO_FILM_MOCK } from './mocks/promo-film';
-import { reducer } from './store/film/reducer.';
+import { reducer } from './store/film/reducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 const store = createStore(reducer, composeWithDevTools());

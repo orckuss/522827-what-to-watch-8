@@ -6,11 +6,6 @@ export const changeGenre = (genre: Genre) => ({
   payload: genre,
 } as const);
 
-export const filterFilms = (genre: Genre) => ({
-  type: ActionType.FilterFilms,
-  payload: genre,
-} as const);
-
 export const resetFilter = () => ({
   type: ActionType.ResetFilter,
 } as const);

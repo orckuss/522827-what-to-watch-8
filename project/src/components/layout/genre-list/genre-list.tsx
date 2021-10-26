@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { changeGenre, filterFilms } from '../../../store/film/actions';
+import { changeGenre } from '../../../store/film/actions';
 import { getGenre, getGenres } from '../../../store/film/selectors';
 
 function GenreList(): JSX.Element {
@@ -20,7 +20,6 @@ function GenreList(): JSX.Element {
             onClick={(evt) => {
               evt.preventDefault();
               dispatch(changeGenre(genre));
-              dispatch(filterFilms(genre));
             }}
           >
             {genre}
