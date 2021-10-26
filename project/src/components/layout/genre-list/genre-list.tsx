@@ -1,36 +1,11 @@
-import { connect, ConnectedProps, useSelector } from 'react-redux';
-import { GlobalState } from '../../../types/global-state';
-import { bindActionCreators, Dispatch } from 'redux';
-import { Actions } from '../../../types/actions';
+import { useDispatch, useSelector } from 'react-redux';
 import { changeGenre, filterFilms } from '../../../store/film/actions';
-import { useEffect } from 'react';
-import { DEFALUT_ACTIVE_GENRE } from '../../../constants';
-import { getGenres } from '../../../store/film/selectors';
+import { getGenre, getGenres } from '../../../store/film/selectors';
 
-const mapStateToProps = ({ genre }: GlobalState) => ({
-  activeGenre: genre,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch<Actions>) => bindActionCreators({
-  onChangeGenre: changeGenre,
-  onFilterFilms: filterFilms,
-}, dispatch);
-
-const connector = connect(mapStateToProps, mapDispatchToProps);
-
-type PropsFromRedux = ConnectedProps<typeof connector>
-
-function GenreList({
-  activeGenre,
-  onChangeGenre,
-  onFilterFilms,
-}: PropsFromRedux): JSX.Element {
+function GenreList(): JSX.Element {
   const genres = useSelector(getGenres);
-
-  useEffect(() => {
-    onChangeGenre(DEFALUT_ACTIVE_GENRE);
-    onFilterFilms(DEFALUT_ACTIVE_GENRE);
-  }, [onChangeGenre, onFilterFilms]);
+  const activeGenre = useSelector(getGenre);
+  const dispatch = useDispatch();
 
   return (
     <ul className="catalog__genres-list">
@@ -44,8 +19,8 @@ function GenreList({
             className="catalog__genres-link"
             onClick={(evt) => {
               evt.preventDefault();
-              onChangeGenre(genre);
-              onFilterFilms(genre);
+              dispatch(changeGenre(genre));
+              dispatch(filterFilms(genre));
             }}
           >
             {genre}
@@ -56,5 +31,4 @@ function GenreList({
   );
 }
 
-export { GenreList };
-export default connector(GenreList);
+export default GenreList;
