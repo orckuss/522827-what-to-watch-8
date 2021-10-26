@@ -5,12 +5,12 @@ import { Film as FilmData } from '../../../types/film';
 import { RouteParams } from '../../../types/route-params';
 import { AppRoutes } from '../../../constants';
 import Details from '../../layout/details/details';
-import FilteredFilmCardList from '../../layout/filtered-film-card-list/filtered-film-card-list';
 import Footer from '../../layout/footer/footer';
 import Header from '../../layout/header/header';
 import Overview from '../../layout/overview/overview';
 import Reviews from '../../layout/reviews/reviews';
 import Tabs, { TabConfig } from '../../layout/tabs/tabs';
+import SimilarFilmCardList from '../../layout/similar-film-card-list/similar-film-card-list';
 
 type Props = {
   films: Array<FilmData>
@@ -106,7 +106,7 @@ function Film({ films }: Props): JSX.Element {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <FilteredFilmCardList />
+          <SimilarFilmCardList />
         </section>
 
         <Footer />
