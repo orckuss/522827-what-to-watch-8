@@ -21,6 +21,11 @@ export const reducer: Reducer<GlobalState, Actions> = (
     case ActionType.ResetFilter:
       return { ...initialState };
 
+    case ActionType.IncreaseFilmCardsCount: {
+      const newCardsCount = state.filmCardsCount + FILM_CARDS_COUNT;
+      return { ...state, filmCardsCount: newCardsCount };
+    }
+
     default:
       return state;
   }

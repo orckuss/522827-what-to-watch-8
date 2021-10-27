@@ -9,3 +9,7 @@ export const changeGenre = (genre: Genre) => ({
 export const resetFilter = () => ({
   type: ActionType.ResetFilter,
 } as const);
+
+export const increaseFilmCardsCount = () => ({
+  type: ActionType.IncreaseFilmCardsCount,
+} as const);
