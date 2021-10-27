@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { DEFALUT_ACTIVE_GENRE } from '../../constants';
+import { DEFALUT_ACTIVE_GENRE, FILM_CARDS_COUNT } from '../../constants';
 import { FILMS_MOCK } from '../../mocks/films';
 import { Actions, ActionType } from '../../types/actions';
 import { GlobalState } from '../../types/global-state';
@@ -7,6 +7,7 @@ import { GlobalState } from '../../types/global-state';
 export const initialState: GlobalState = {
   films: FILMS_MOCK,
   genre: DEFALUT_ACTIVE_GENRE,
+  filmCardsCount: FILM_CARDS_COUNT,
 };
 
 export const reducer: Reducer<GlobalState, Actions> = (

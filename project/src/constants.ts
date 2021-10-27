@@ -14,3 +14,5 @@ export const STAR_COUNT = 10;
 export const DEFALUT_ACTIVE_GENRE: Genre = 'All genres';
 
 export const SIMILAR_FILMS_COUNT = 4;
+
+export const FILM_CARDS_COUNT = 8;
