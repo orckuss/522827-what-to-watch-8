@@ -6,6 +6,7 @@ import { generatePath } from 'react-router-dom';
 import GenreList from '../../layout/genre-list/genre-list';
 import Header from '../../layout/header/header';
 import FilteredFilmCardList from '../../layout/filtered-film-card-list/filtered-film-card-list';
+import ShowMoreBtn from '../../ui/show-more-btn/show-more-btn';
 
 type Props = {
   promoFilm: Film;
@@ -75,9 +76,7 @@ function Main({ promoFilm }: Props): JSX.Element {
 
           <FilteredFilmCardList />
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          <ShowMoreBtn />
         </section>
 
         <Footer />
