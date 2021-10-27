@@ -18,6 +18,11 @@ export const getGenres = createSelector<GlobalState, Array<Film>, Array<Genre>>(
   },
 );
 
+export const getFilmsCount = createSelector<GlobalState, Array<Film>, number>(
+  getFilms,
+  (films) => films.length,
+);
+
 export const getFilteredFilms = createSelector<GlobalState, Genre, Array<Film>, Array<Film>>(
   getGenre,
   getFilms,
