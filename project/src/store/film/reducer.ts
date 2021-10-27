@@ -26,6 +26,9 @@ export const reducer: Reducer<GlobalState, Actions> = (
       return { ...state, filmCardsCount: newCardsCount };
     }
 
+    case ActionType.ResetFilmCardsCount:
+      return { ...state, filmCardsCount: FILM_CARDS_COUNT };
+
     default:
       return state;
   }

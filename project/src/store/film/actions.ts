@@ -13,3 +13,7 @@ export const resetFilter = () => ({
 export const increaseFilmCardsCount = () => ({
   type: ActionType.IncreaseFilmCardsCount,
 } as const);
+
+export const resetFilmCardsCount = () => ({
+  type: ActionType.ResetFilmCardsCount,
+} as const);
