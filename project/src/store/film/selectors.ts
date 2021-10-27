@@ -8,6 +8,8 @@ export const getGenre: Selector<GlobalState, Genre> = (state) => state.genre;
 
 export const getFilms: Selector<GlobalState, Array<Film>> = (state) => state.films;
 
+export const getFilmCardsCount: Selector<GlobalState, number> = (state) => state.filmCardsCount;
+
 export const getGenres = createSelector<GlobalState, Array<Film>, Array<Genre>>(
   getFilms,
   (films) => {
@@ -21,6 +23,12 @@ export const getFilteredFilms = createSelector<GlobalState, Genre, Array<Film>, 
   getFilms,
   (genre, films) => genre === DEFALUT_ACTIVE_GENRE ?
     films : films.filter((film) => film.genre === genre),
+);
+
+export const getFilteredFilmsByCount = createSelector<GlobalState, Array<Film>, number, Array<Film>>(
+  getFilteredFilms,
+  getFilmCardsCount,
+  (films, count) => films.slice(0, count),
 );
 
 export const getSimilarFilmsFactory = (id: number): OutputSelector<GlobalState, Array<Film>, (films: Array<Film>) => Array<Film>> =>
