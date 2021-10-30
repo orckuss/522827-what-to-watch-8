@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import { getFilteredFilmsByCount } from '../../../store/film/selectors';
+import { getSlicedFilteredFilms } from '../../../store/film/selectors';
 import FilmCardList from '../film-card-list/film-card-list';
 
 function FilteredFilmCardList(): JSX.Element {
-  const films = useSelector(getFilteredFilmsByCount);
+  const films = useSelector(getSlicedFilteredFilms);
 
   return (
     <FilmCardList films={films} />

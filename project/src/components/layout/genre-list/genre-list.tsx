@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { changeGenre } from '../../../store/film/actions';
-import { getGenre, getGenres } from '../../../store/film/selectors';
+import { changeGenre, resetFilmCardsCount } from '../../../store/film/actions';
+import { getActiveGenre, getGenres } from '../../../store/film/selectors';
 
 function GenreList(): JSX.Element {
   const genres = useSelector(getGenres);
-  const activeGenre = useSelector(getGenre);
+  const activeGenre = useSelector(getActiveGenre);
   const dispatch = useDispatch();
 
   return (
@@ -20,6 +20,7 @@ function GenreList(): JSX.Element {
             onClick={(evt) => {
               evt.preventDefault();
               dispatch(changeGenre(genre));
+              dispatch(resetFilmCardsCount());
             }}
           >
             {genre}
