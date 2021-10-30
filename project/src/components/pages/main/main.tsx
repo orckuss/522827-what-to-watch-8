@@ -1,12 +1,12 @@
+import FilteredFilmCardList from '@components/layout/filtered-film-card-list/filtered-film-card-list';
+import Footer from '@components/layout/footer/footer';
+import GenreList from '@components/layout/genre-list/genre-list';
+import Header from '@components/layout/header/header';
+import ShowMoreBtn from '@components/ui/show-more-btn/show-more-btn';
+import { generatePath } from 'react-router';
 import { Link } from 'react-router-dom';
-import { Film } from '../../../types/film';
-import { AppRoutes } from '../../../constants';
-import Footer from '../../layout/footer/footer';
-import { generatePath } from 'react-router-dom';
-import GenreList from '../../layout/genre-list/genre-list';
-import Header from '../../layout/header/header';
-import FilteredFilmCardList from '../../layout/filtered-film-card-list/filtered-film-card-list';
-import ShowMoreBtn from '../../ui/show-more-btn/show-more-btn';
+import { AppRoutes } from 'src/constants';
+import { Film } from 'src/types/film';
 
 type Props = {
   promoFilm: Film;

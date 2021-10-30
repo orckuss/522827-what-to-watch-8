@@ -1,16 +1,16 @@
 import { generatePath, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import { COMMENTS_MOCK } from '../../../mocks/comments';
-import { Film as FilmData } from '../../../types/film';
-import { RouteParams } from '../../../types/route-params';
-import { AppRoutes } from '../../../constants';
-import Details from '../../layout/details/details';
-import Footer from '../../layout/footer/footer';
-import Header from '../../layout/header/header';
-import Overview from '../../layout/overview/overview';
-import Reviews from '../../layout/reviews/reviews';
-import Tabs, { TabConfig } from '../../layout/tabs/tabs';
-import SimilarFilmCardList from '../../layout/similar-film-card-list/similar-film-card-list';
+import { COMMENTS_MOCK } from 'src/mocks/comments';
+import { Film as FilmData } from 'src/types/film';
+import { RouteParams } from 'src/types/route-params';
+import { AppRoutes } from 'src/constants';
+import Details from '@components/layout/details/details';
+import Footer from '@components/layout/footer/footer';
+import Header from '@components/layout/header/header';
+import Overview from '@components/layout/overview/overview';
+import Reviews from '@components/layout/reviews/reviews';
+import Tabs, { TabConfig } from '@components/layout/tabs/tabs';
+import SimilarFilmCardList from '@components/layout/similar-film-card-list/similar-film-card-list';
 
 type Props = {
   films: Array<FilmData>

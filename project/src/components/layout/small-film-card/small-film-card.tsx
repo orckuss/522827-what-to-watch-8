@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
-import { Film } from '../../../types/film';
-import { generatePath } from 'react-router-dom';
-import { AppRoutes } from '../../../constants';
-import VideoPlayer from '../video-player/video-player';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { generatePath } from 'react-router';
+import { AppRoutes } from 'src/constants';
+import { Film } from 'src/types/film';
+import VideoPlayer from '../video-player/video-player';
 
 type Props = {
   film: Film;

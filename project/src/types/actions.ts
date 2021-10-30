@@ -3,7 +3,7 @@ import {
   increaseFilmCardsCount,
   resetFilmCardsCount,
   resetFilter
-} from '../store/film/actions';
+} from '@store/film/actions';
 
 export enum ActionType {
   ChangeGenre = 'films/changeGenre',

@@ -1,8 +1,8 @@
 import { createSelector, OutputSelector, Selector } from 'reselect';
-import { DEFALUT_ACTIVE_GENRE, SIMILAR_FILMS_COUNT } from '../../constants';
-import { Film } from '../../types/film';
-import { Genre } from '../../types/genre';
-import { GlobalState } from '../../types/global-state';
+import { DEFALUT_ACTIVE_GENRE, SIMILAR_FILMS_COUNT } from 'src/constants';
+import { Film } from 'src/types/film';
+import { Genre } from 'src/types/genre';
+import { GlobalState } from 'src/types/global-state';
 
 export const getActiveGenre: Selector<GlobalState, Genre> = (state) => state.genre;
 

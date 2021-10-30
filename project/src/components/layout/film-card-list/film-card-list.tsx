@@ -1,4 +1,4 @@
-import { Film } from '../../../types/film';
+import { Film } from 'src/types/film';
 import SmallFilmCard from '../small-film-card/small-film-card';
 
 type Props = {

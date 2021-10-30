@@ -1,5 +1,5 @@
-import { ActionType } from '../../types/actions';
-import { Genre } from '../../types/genre';
+import { ActionType } from 'src/types/actions';
+import { Genre } from 'src/types/genre';
 
 export const changeGenre = (genre: Genre) => ({
   type: ActionType.ChangeGenre,

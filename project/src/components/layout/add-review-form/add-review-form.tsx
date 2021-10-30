@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { useState } from 'react';
-import { STAR_COUNT } from '../../../constants';
-import { Comment } from '../../../types/comment';
+import { STAR_COUNT } from 'src/constants';
+import { Comment } from 'src/types/comment';
 import RatingFormControl from '../rating-form-control/rating-form-control';
 
 function AddReviewForm(): JSX.Element {

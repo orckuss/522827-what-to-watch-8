@@ -1,6 +1,6 @@
+import { changeGenre, resetFilmCardsCount } from '@store/film/actions';
+import { getActiveGenre, getGenres } from '@store/film/selectors';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeGenre, resetFilmCardsCount } from '../../../store/film/actions';
-import { getActiveGenre, getGenres } from '../../../store/film/selectors';
 
 function GenreList(): JSX.Element {
   const genres = useSelector(getGenres);

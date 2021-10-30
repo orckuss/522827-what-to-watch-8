@@ -1,6 +1,6 @@
+import { resetFilmCardsCount } from '@store/film/actions';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { resetFilmCardsCount } from '../../../store/film/actions';
 
 type Props = {
   className?: string;

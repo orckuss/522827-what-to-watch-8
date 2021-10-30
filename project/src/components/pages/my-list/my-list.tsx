@@ -1,6 +1,6 @@
-import Footer from '../../layout/footer/footer';
-import Header from '../../layout/header/header';
-import FilteredFilmCardList from '../../layout/filtered-film-card-list/filtered-film-card-list';
+import FilteredFilmCardList from '@components/layout/filtered-film-card-list/filtered-film-card-list';
+import Footer from '@components/layout/footer/footer';
+import Header from '@components/layout/header/header';
 
 function MyList(): JSX.Element {
   return (

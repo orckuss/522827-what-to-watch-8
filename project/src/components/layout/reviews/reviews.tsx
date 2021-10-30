@@ -1,4 +1,4 @@
-import { Comment } from '../../../types/comment';
+import { Comment } from 'src/types/comment';
 import './reviews.css';
 
 type Props = {

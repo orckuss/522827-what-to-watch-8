@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { NamedRoute } from '../../../types/route-params';
+import { NamedRoute } from 'src/types/route-params';
 
 type Props = {
   routes: Array<NamedRoute>

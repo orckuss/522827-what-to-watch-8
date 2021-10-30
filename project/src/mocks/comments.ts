@@ -1,4 +1,4 @@
-import { Comment } from '../types/comment';
+import { Comment } from 'src/types/comment';
 
 export const COMMENTS_MOCK: Array<Comment> = [
   {

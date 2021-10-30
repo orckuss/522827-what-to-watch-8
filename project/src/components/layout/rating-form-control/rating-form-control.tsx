@@ -1,5 +1,5 @@
+import StarRadioButton from '@components/ui/star-radio-button/star-radio-button';
 import { ChangeEventHandler } from 'react';
-import StarRadioButton from '../../ui/star-radio-button/star-radio-button';
 
 type Props = {
   count: number;

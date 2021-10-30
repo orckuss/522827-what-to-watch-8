@@ -1,10 +1,10 @@
 import { generatePath, useParams } from 'react-router';
-import { Film } from '../../../types/film';
-import { NamedRoute, RouteParams } from '../../../types/route-params';
-import { AppRoutes } from '../../../constants';
-import AddReviewForm from '../../layout/add-review-form/add-review-form';
-import Breadcrumbs from '../../layout/breadcrumbs/breadcrumbs';
-import Header from '../../layout/header/header';
+import { Film } from 'src/types/film';
+import { NamedRoute, RouteParams } from 'src/types/route-params';
+import { AppRoutes } from 'src/constants';
+import AddReviewForm from '@components/layout/add-review-form/add-review-form';
+import Breadcrumbs from '@components/layout/breadcrumbs/breadcrumbs';
+import Header from '@components/layout/header/header';
 
 type Props = {
   films: Array<Film>

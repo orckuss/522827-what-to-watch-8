@@ -1,4 +1,4 @@
-import { Film } from '../types/film';
+import { Film } from 'src/types/film';
 
 // ToDo: Delete mock on stage of integration with server
 export const PROMO_FILM_MOCK: Film = {

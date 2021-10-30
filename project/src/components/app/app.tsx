@@ -1,14 +1,14 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { AppRoutes } from '../../constants';
-import { Film as FilmData } from '../../types/film';
+import { AppRoutes } from 'src/constants';
+import { Film as FilmData } from 'src/types/film';
 import AddReview from '../pages/add-review/add-review';
-import Film from '../pages/film/film';
-import Main from '../pages/main/main';
-import MyList from '../pages/my-list/my-list';
-import NotFound from '../pages/not-found/not-found';
-import Player from '../pages/player/player';
-import SignIn from '../pages/sign-in/sign-in';
-import PrivateRoute from '../services/private-route';
+import Film from '@components/pages/film/film';
+import Main from '@components/pages/main/main';
+import MyList from '@components/pages/my-list/my-list';
+import NotFound from '@components/pages/not-found/not-found';
+import Player from '@components/pages/player/player';
+import SignIn from '@components/pages/sign-in/sign-in';
+import PrivateRoute from '@components/services/private-route';
 
 const HAS_ACCESS = false;
 
