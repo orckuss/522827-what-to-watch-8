@@ -1,5 +1,6 @@
-import { ActionType } from 'src/types/actions';
-import { Genre } from 'src/types/genre';
+import { ActionType } from '../../types/actions';
+import { Film } from '../../types/film';
+import { Genre } from '../../types/genre';
 
 export const changeGenre = (genre: Genre) => ({
   type: ActionType.ChangeGenre,
@@ -16,4 +17,9 @@ export const increaseFilmCardsCount = () => ({
 
 export const resetFilmCardsCount = () => ({
   type: ActionType.ResetFilmCardsCount,
+} as const);
+
+export const setfilms = (films: Array<Film>) => ({
+  type: ActionType.SetFilms,
+  payload: films,
 } as const);
