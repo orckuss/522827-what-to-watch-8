@@ -1,6 +1,6 @@
-import { Comment } from '../types/comment';
+import { Comment } from 'src/types/comment';
 
-export const COMMENTS: Array<Comment> = [
+export const COMMENTS_MOCK: Array<Comment> = [
   {
     id: 1,
     user: {

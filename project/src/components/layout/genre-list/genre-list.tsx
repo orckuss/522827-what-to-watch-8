@@ -1,38 +1,15 @@
-import { GENRES } from '../../../mocks/genres';
-import { connect, ConnectedProps } from 'react-redux';
-import { GlobalState } from '../../../types/global-state';
-import { bindActionCreators, Dispatch } from 'redux';
-import { Actions } from '../../../types/actions';
-import { changeGenre, filterFilms } from '../../../store/actions';
-import { useEffect } from 'react';
-import { DEFALUT_ACTIVE_GENRE } from '../../../constants';
+import { changeGenre, resetFilmCardsCount } from '@store/film/actions';
+import { getActiveGenre, getGenres } from '@store/film/selectors';
+import { useDispatch, useSelector } from 'react-redux';
 
-const mapStateToProps = ({ genre }: GlobalState) => ({
-  activeGenre: genre,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch<Actions>) => bindActionCreators({
-  onChangeGenre: changeGenre,
-  onFilterFilms: filterFilms,
-}, dispatch);
-
-const connector = connect(mapStateToProps, mapDispatchToProps);
-
-type PropsFromRedux = ConnectedProps<typeof connector>
-
-function GenreList({
-  activeGenre,
-  onChangeGenre,
-  onFilterFilms,
-}: PropsFromRedux): JSX.Element {
-  useEffect(() => {
-    onChangeGenre(DEFALUT_ACTIVE_GENRE);
-    onFilterFilms(DEFALUT_ACTIVE_GENRE);
-  }, [onChangeGenre, onFilterFilms]);
+function GenreList(): JSX.Element {
+  const genres = useSelector(getGenres);
+  const activeGenre = useSelector(getActiveGenre);
+  const dispatch = useDispatch();
 
   return (
     <ul className="catalog__genres-list">
-      {GENRES.map((genre) => (
+      {genres.map((genre) => (
         <li
           key={genre}
           className={`catalog__genres-item ${activeGenre === genre && 'catalog__genres-item--active'}`}
@@ -42,8 +19,8 @@ function GenreList({
             className="catalog__genres-link"
             onClick={(evt) => {
               evt.preventDefault();
-              onChangeGenre(genre);
-              onFilterFilms(genre);
+              dispatch(changeGenre(genre));
+              dispatch(resetFilmCardsCount());
             }}
           >
             {genre}
@@ -54,5 +31,4 @@ function GenreList({
   );
 }
 
-export { GenreList };
-export default connector(GenreList);
+export default GenreList;

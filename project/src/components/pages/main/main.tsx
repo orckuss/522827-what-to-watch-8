@@ -1,11 +1,12 @@
+import FilteredFilmCardList from '@components/layout/filtered-film-card-list/filtered-film-card-list';
+import Footer from '@components/layout/footer/footer';
+import GenreList from '@components/layout/genre-list/genre-list';
+import Header from '@components/layout/header/header';
+import ShowMoreBtn from '@components/ui/show-more-btn/show-more-btn';
+import { generatePath } from 'react-router';
 import { Link } from 'react-router-dom';
-import { Film } from '../../../types/film';
-import { AppRoutes } from '../../app/routes';
-import FilmCardList from '../../layout/film-card-list/film-card-list';
-import Footer from '../../layout/footer/footer';
-import { generatePath } from 'react-router-dom';
-import GenreList from '../../layout/genre-list/genre-list';
-import Header from '../../layout/header/header';
+import { AppRoutes } from 'src/constants';
+import { Film } from 'src/types/film';
 
 type Props = {
   promoFilm: Film;
@@ -73,11 +74,9 @@ function Main({ promoFilm }: Props): JSX.Element {
 
           <GenreList />
 
-          <FilmCardList />
+          <FilteredFilmCardList />
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          <ShowMoreBtn />
         </section>
 
         <Footer />

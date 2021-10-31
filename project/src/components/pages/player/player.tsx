@@ -1,8 +1,8 @@
+import FullScreenButton from '@components/ui/full-screen-button/full-screen-button';
+import PlayButton from '@components/ui/play-button/play-button';
+import ProgressBar from '@components/ui/progress-bar/progress-bar';
 import { useHistory } from 'react-router';
-import { Film } from '../../../types/film';
-import FullScreenButton from '../../ui/full-screen-button/full-screen-button';
-import PlayButton from '../../ui/play-button/play-button';
-import ProgressBar from '../../ui/progress-bar/progress-bar';
+import { Film } from 'src/types/film';
 
 type Props = {
   film: Film;

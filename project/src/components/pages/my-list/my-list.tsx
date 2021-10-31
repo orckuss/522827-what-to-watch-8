@@ -1,6 +1,6 @@
-import Footer from '../../layout/footer/footer';
-import FilmCardList from '../../layout/film-card-list/film-card-list';
-import Header from '../../layout/header/header';
+import FilteredFilmCardList from '@components/layout/filtered-film-card-list/filtered-film-card-list';
+import Footer from '@components/layout/footer/footer';
+import Header from '@components/layout/header/header';
 
 function MyList(): JSX.Element {
   return (
@@ -12,7 +12,7 @@ function MyList(): JSX.Element {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <FilmCardList />
+        <FilteredFilmCardList />
       </section>
 
       <Footer />

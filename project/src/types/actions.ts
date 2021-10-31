@@ -1,16 +1,19 @@
 import {
   changeGenre,
-  filterFilms,
+  increaseFilmCardsCount,
+  resetFilmCardsCount,
   resetFilter
-} from '../store/actions';
+} from '@store/film/actions';
 
 export enum ActionType {
   ChangeGenre = 'films/changeGenre',
-  FilterFilms = 'films/filter',
   ResetFilter = 'films/resetFilter',
+  IncreaseFilmCardsCount = 'films/increaseFilmCardsCount',
+  ResetFilmCardsCount = 'films/resetFilmCardsCount'
 }
 
 export type Actions =
   | ReturnType<typeof changeGenre>
-  | ReturnType<typeof filterFilms>
-  | ReturnType<typeof resetFilter>;
+  | ReturnType<typeof resetFilter>
+  | ReturnType<typeof increaseFilmCardsCount>
+  | ReturnType<typeof resetFilmCardsCount>;
