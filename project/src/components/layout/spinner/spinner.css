@@ -1,17 +1,13 @@
-html,
-body {
-  height: 100%;
-}
-
-body {
+.spinner-wrapper {
   display: flex;
-  align-items: center;
+  height: 95vh;
   justify-content: center;
+  align-items: center;
 }
 
 .spinner {
   -webkit-animation: rotator 1.4s linear infinite;
-          animation: rotator 1.4s linear infinite;
+  animation: rotator 1.4s linear infinite;
 }
 
 @-webkit-keyframes rotator {
@@ -37,7 +33,7 @@ body {
   stroke-dashoffset: 0;
   transform-origin: center;
   -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
-          animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+  animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
 }
 
 @-webkit-keyframes colors {
