@@ -14,10 +14,9 @@ const HAS_ACCESS = false;
 
 type Props = {
   promoFilm: FilmData;
-  films: Array<FilmData>;
 }
 
-function App({ promoFilm, films }: Props): JSX.Element {
+function App({ promoFilm }: Props): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
@@ -34,11 +33,11 @@ function App({ promoFilm, films }: Props): JSX.Element {
         </PrivateRoute>
 
         <Route path={AppRoutes.Films} exact>
-          <Film films={films} />
+          <Film />
         </Route>
 
         <Route path={AppRoutes.Review} exact>
-          <AddReview films={films} />
+          <AddReview />
         </Route>
 
         <Route path={AppRoutes.Player} exact>

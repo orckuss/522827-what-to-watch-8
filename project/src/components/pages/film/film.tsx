@@ -11,13 +11,12 @@ import Overview from '@components/layout/overview/overview';
 import Reviews from '@components/layout/reviews/reviews';
 import Tabs, { TabConfig } from '@components/layout/tabs/tabs';
 import SimilarFilmCardList from '@components/layout/similar-film-card-list/similar-film-card-list';
+import { useSelector } from 'react-redux';
+import { getFilms } from '@store/film/selectors';
 
-type Props = {
-  films: Array<FilmData>
-}
-
-function Film({ films }: Props): JSX.Element {
+function Film(): JSX.Element {
   const { id } = useParams<RouteParams>();
+  const films = useSelector(getFilms);
   const film = films.find((item) => item.id === Number(id)) as FilmData;
 
   const comments = COMMENTS_MOCK;
