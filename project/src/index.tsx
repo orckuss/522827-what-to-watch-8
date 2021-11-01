@@ -9,7 +9,8 @@ import { reducer } from './store/film/reducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createAPI } from './api/api';
 import thunk from 'redux-thunk';
-import { setfilms } from './store/film/actions';
+import { getFilms } from './store/film/async-actions';
+import { ThunkApiDispatch } from './types/actions';
 
 const api = createAPI();
 
@@ -20,7 +21,7 @@ const store = createStore(
   ),
 );
 
-store.dispatch(setfilms(FILMS_MOCK));
+(store.dispatch as ThunkApiDispatch)(getFilms());
 
 ReactDOM.render(
   <React.StrictMode>
