@@ -30,7 +30,10 @@ export const reducer: Reducer<GlobalState, Actions> = (
       return { ...state, filmCardsCount: FILM_CARDS_COUNT };
 
     case ActionType.SetFilms:
-      return { ...initialState, films: action.payload };
+      return { ...state, films: action.payload };
+
+    case ActionType.SetFilmsLoaded:
+      return { ...state, filmsLoaded: action.payload };
 
     default:
       return state;
