@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 export type TabConfig = {
   caption: string;
@@ -10,7 +10,13 @@ type Props = {
 };
 
 function Tabs({ tabs }: Props): JSX.Element {
-  const [active, setActive] = useState<TabConfig>(tabs[0]);
+  const [active, setActive] = useState<string>(tabs[0].caption);
+  const [component, setComponent] = useState<ReactNode>(null);
+
+  useEffect(() => {
+    const activeTab = tabs.find((tab) => tab.caption === active);
+    setComponent(activeTab?.component);
+  }, [tabs, active]);
 
   return (
     <>
@@ -19,14 +25,14 @@ function Tabs({ tabs }: Props): JSX.Element {
           {tabs.map((tab) => (
             <li
               key={tab.caption}
-              className={`film-nav__item ${active === tab && 'film-nav__item--active'}`}
+              className={`film-nav__item ${active === tab.caption && 'film-nav__item--active'}`}
             >
               <a
                 href="/"
                 className="film-nav__link"
                 onClick={(evt) => {
                   evt.preventDefault();
-                  setActive(tab);
+                  setActive(tab.caption);
                 }}
               >
                 {tab.caption}
@@ -36,7 +42,7 @@ function Tabs({ tabs }: Props): JSX.Element {
         </ul>
       </nav>
 
-      {active.component}
+      {component}
     </>
   );
 }
