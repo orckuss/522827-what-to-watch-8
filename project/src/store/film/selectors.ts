@@ -8,6 +8,8 @@ export const getActiveGenre: Selector<GlobalState, Genre> = (state) => state.gen
 
 export const getFilms: Selector<GlobalState, Array<Film>> = (state) => state.films;
 
+export const getFilmsLoadedState: Selector<GlobalState, boolean> = (state) => state.filmsLoaded;
+
 export const getFilmCardsCount: Selector<GlobalState, number> = (state) => state.filmCardsCount;
 
 export const getGenres = createSelector<GlobalState, Array<Film>, Array<Genre>>(

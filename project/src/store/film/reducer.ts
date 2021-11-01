@@ -5,6 +5,7 @@ import { GlobalState } from 'src/types/global-state';
 
 export const initialState: GlobalState = {
   films: [],
+  filmsLoaded: false,
   genre: DEFALUT_ACTIVE_GENRE,
   filmCardsCount: FILM_CARDS_COUNT,
 };
