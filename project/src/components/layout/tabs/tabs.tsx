@@ -7,9 +7,10 @@ export type TabConfig = {
 
 type Props = {
   tabs: Array<TabConfig>;
+  className?: string;
 };
 
-function Tabs({ tabs }: Props): JSX.Element {
+function Tabs({ tabs, className = '' }: Props): JSX.Element {
   const [active, setActive] = useState<string>(tabs[0].caption);
   const [component, setComponent] = useState<ReactNode>(null);
 
@@ -19,7 +20,7 @@ function Tabs({ tabs }: Props): JSX.Element {
   }, [tabs, active]);
 
   return (
-    <>
+    <div className={className}>
       <nav className="film-nav film-card__nav">
         <ul className="film-nav__list">
           {tabs.map((tab) => (
@@ -43,7 +44,7 @@ function Tabs({ tabs }: Props): JSX.Element {
       </nav>
 
       {component}
-    </>
+    </div>
   );
 }
 
