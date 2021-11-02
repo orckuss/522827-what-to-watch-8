@@ -6,7 +6,6 @@ import { RouteParams } from 'src/types/route-params';
 import { AppRoutes } from 'src/constants';
 import Details from '@components/layout/details/details';
 import Footer from '@components/layout/footer/footer';
-import Header from '@components/layout/header/header';
 import Overview from '@components/layout/overview/overview';
 import Reviews from '@components/layout/reviews/reviews';
 import Tabs, { TabConfig } from '@components/layout/tabs/tabs';
@@ -15,6 +14,7 @@ import { useSelector } from 'react-redux';
 import { getFilms } from '@store/film/selectors';
 import Poster from '@components/layout/poster/poster';
 import FilmCardButtons from '@components/layout/film-card-buttons/film-card-buttons';
+import FilmCardHeader from '@components/layout/film-card-header/film-card-header';
 
 function Film(): JSX.Element {
   const { id } = useParams<RouteParams>();
@@ -48,16 +48,10 @@ function Film(): JSX.Element {
     <>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
-          <div className="film-card__bg">
-            <img
-              src={backgroundImage}
-              alt={name}
-            />
-          </div>
-
-          <h1 className="visually-hidden">WTW</h1>
-
-          <Header className="film-card__head" />
+          <FilmCardHeader
+            backgroundImage={backgroundImage}
+            alt={name}
+          />
 
           <div className="film-card__wrap">
             <FilmCardButtons
