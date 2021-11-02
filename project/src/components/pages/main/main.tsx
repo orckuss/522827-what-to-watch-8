@@ -2,6 +2,7 @@ import FilteredFilmCardList from '@components/layout/filtered-film-card-list/fil
 import Footer from '@components/layout/footer/footer';
 import GenreList from '@components/layout/genre-list/genre-list';
 import Header from '@components/layout/header/header';
+import Poster from '@components/layout/poster/poster';
 import ShowMoreBtn from '@components/ui/show-more-btn/show-more-btn';
 import { generatePath } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -26,7 +27,10 @@ function Main({ promoFilm }: Props): JSX.Element {
     <>
       <section className="film-card">
         <div className="film-card__bg">
-          <img src={backgroundImage} alt={name} />
+          <img
+            src={backgroundImage}
+            alt={name}
+          />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -35,9 +39,10 @@ function Main({ promoFilm }: Props): JSX.Element {
 
         <div className="film-card__wrap">
           <div className="film-card__info">
-            <div className="film-card__poster">
-              <img src={posterImage} alt={`${name} poster`} width="218" height="327" />
-            </div>
+            <Poster
+              src={posterImage}
+              alt={name}
+            />
 
             <div className="film-card__desc">
               <h2 className="film-card__title">{name}</h2>

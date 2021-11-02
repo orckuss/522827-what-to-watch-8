@@ -13,6 +13,7 @@ import Tabs, { TabConfig } from '@components/layout/tabs/tabs';
 import SimilarFilmCardList from '@components/layout/similar-film-card-list/similar-film-card-list';
 import { useSelector } from 'react-redux';
 import { getFilms } from '@store/film/selectors';
+import Poster from '@components/layout/poster/poster';
 
 function Film(): JSX.Element {
   const { id } = useParams<RouteParams>();
@@ -49,7 +50,10 @@ function Film(): JSX.Element {
       <section className="film-card film-card--full">
         <div className="film-card__hero">
           <div className="film-card__bg">
-            <img src={backgroundImage} alt={name} />
+            <img
+              src={backgroundImage}
+              alt={name}
+            />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -90,9 +94,11 @@ function Film(): JSX.Element {
 
         <div className="film-card__wrap film-card__translate-top">
           <div className="film-card__info">
-            <div className="film-card__poster film-card__poster--big">
-              <img src={posterImage} alt={name} width="218" height="327" />
-            </div>
+            <Poster
+              src={posterImage}
+              alt={name}
+              className="film-card__poster--big"
+            />
 
             <div className="film-card__desc">
               <Tabs tabs={tabs} />
