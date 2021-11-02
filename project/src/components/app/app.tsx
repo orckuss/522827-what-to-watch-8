@@ -9,16 +9,20 @@ import NotFound from '@components/pages/not-found/not-found';
 import Player from '@components/pages/player/player';
 import SignIn from '@components/pages/sign-in/sign-in';
 import PrivateRoute from '@components/services/private-route';
+import Spinner from '@components/layout/spinner/spinner';
+import { useSelector } from 'react-redux';
+import { getFilmsLoadedState } from '@store/film/selectors';
 
 const HAS_ACCESS = false;
 
 type Props = {
   promoFilm: FilmData;
-  films: Array<FilmData>;
 }
 
-function App({ promoFilm, films }: Props): JSX.Element {
-  return (
+function App({ promoFilm }: Props): JSX.Element {
+  const isFilmsLoaded = useSelector(getFilmsLoadedState);
+
+  return isFilmsLoaded ? (
     <BrowserRouter>
       <Switch>
         <Route path={AppRoutes.Main} exact>
@@ -34,11 +38,11 @@ function App({ promoFilm, films }: Props): JSX.Element {
         </PrivateRoute>
 
         <Route path={AppRoutes.Films} exact>
-          <Film films={films} />
+          <Film />
         </Route>
 
         <Route path={AppRoutes.Review} exact>
-          <AddReview films={films} />
+          <AddReview />
         </Route>
 
         <Route path={AppRoutes.Player} exact>
@@ -50,7 +54,7 @@ function App({ promoFilm, films }: Props): JSX.Element {
         </Route>
       </Switch>
     </BrowserRouter>
-  );
+  ) : <Spinner />;
 }
 
 export default App;

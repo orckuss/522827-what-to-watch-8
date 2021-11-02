@@ -1,9 +1,10 @@
 import { ActionType } from 'src/types/actions';
+import { Film } from 'src/types/film';
 import { Genre } from 'src/types/genre';
 
-export const changeGenre = (genre: Genre) => ({
+export const changeGenre = (payload: Genre) => ({
   type: ActionType.ChangeGenre,
-  payload: genre,
+  payload,
 } as const);
 
 export const resetFilter = () => ({
@@ -16,4 +17,14 @@ export const increaseFilmCardsCount = () => ({
 
 export const resetFilmCardsCount = () => ({
   type: ActionType.ResetFilmCardsCount,
+} as const);
+
+export const setfilms = (payload: Array<Film>) => ({
+  type: ActionType.SetFilms,
+  payload,
+} as const);
+
+export const setFilmsLoaded = (payload: boolean) => ({
+  type: ActionType.SetFilmsLoaded,
+  payload,
 } as const);

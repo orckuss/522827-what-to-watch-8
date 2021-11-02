@@ -27,7 +27,7 @@ function Details({ film }: Props): JSX.Element {
             className="film-card__details-value"
             style={{ 'whiteSpace': 'pre-line' }}
           >
-            {starring.join('\n')}
+            {starring?.join('\n')}
           </span>
         </p>
       </div>

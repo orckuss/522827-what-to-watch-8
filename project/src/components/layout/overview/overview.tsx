@@ -31,7 +31,7 @@ function Overview({ film }: Props): JSX.Element {
         </p>
 
         <p className="film-card__starring">
-          <strong>Starring: {starring.join(', ')}</strong>
+          <strong>Starring: {starring?.join(', ')}</strong>
         </p>
       </div>
     </>

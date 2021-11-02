@@ -1,12 +1,11 @@
 import { Reducer } from 'redux';
 import { DEFALUT_ACTIVE_GENRE, FILM_CARDS_COUNT } from 'src/constants';
-import { FILMS_MOCK } from 'src/mocks/films';
 import { Actions, ActionType } from 'src/types/actions';
 import { GlobalState } from 'src/types/global-state';
 
-
 export const initialState: GlobalState = {
-  films: FILMS_MOCK,
+  films: [],
+  filmsLoaded: false,
   genre: DEFALUT_ACTIVE_GENRE,
   filmCardsCount: FILM_CARDS_COUNT,
 };
@@ -29,6 +28,12 @@ export const reducer: Reducer<GlobalState, Actions> = (
 
     case ActionType.ResetFilmCardsCount:
       return { ...state, filmCardsCount: FILM_CARDS_COUNT };
+
+    case ActionType.SetFilms:
+      return { ...state, films: action.payload };
+
+    case ActionType.SetFilmsLoaded:
+      return { ...state, filmsLoaded: action.payload };
 
     default:
       return state;
