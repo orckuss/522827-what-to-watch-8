@@ -1,5 +1,6 @@
 import { Film } from './film';
 import { Genre } from './genre';
+import { UserInfo } from './user';
 
 export type GlobalState = {
   film: FilmState;
@@ -15,4 +16,5 @@ export type FilmState = {
 
 export type UserState = {
   authorizationStatus: boolean;
+  info: UserInfo;
 }

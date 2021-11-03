@@ -1,14 +1,14 @@
+import { getAuthStatus } from '@store/user/selectors';
+import { useSelector } from 'react-redux';
 import { Redirect, Route, RouteProps } from 'react-router';
 import { AppRoutes } from 'src/constants';
 
-type Props = RouteProps & {
-  hasAccess: boolean;
-}
+function PrivateRoute({ children, ...rest }: RouteProps): JSX.Element {
+  const isAuthorized = useSelector(getAuthStatus);
 
-function PrivateRoute({ hasAccess, children, ...rest }: Props): JSX.Element {
   return (
     <Route {...rest}>
-      {hasAccess ? children : <Redirect to={AppRoutes.SignIn} />}
+      {isAuthorized ? children : <Redirect to={AppRoutes.SignIn} />}
     </Route>
   );
 }

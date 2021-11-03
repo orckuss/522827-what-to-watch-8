@@ -13,8 +13,6 @@ import Spinner from '@components/layout/spinner/spinner';
 import { useSelector } from 'react-redux';
 import { getFilmsLoadedState } from '@store/film/selectors';
 
-const HAS_ACCESS = false;
-
 type Props = {
   promoFilm: FilmData;
 }
@@ -33,7 +31,7 @@ function App({ promoFilm }: Props): JSX.Element {
           <SignIn />
         </Route>
 
-        <PrivateRoute hasAccess={HAS_ACCESS} path={AppRoutes.MyList} exact>
+        <PrivateRoute path={AppRoutes.MyList} exact>
           <MyList />
         </PrivateRoute>
 
