@@ -39,9 +39,9 @@ function App({ promoFilm }: Props): JSX.Element {
           <Film />
         </Route>
 
-        <Route path={AppRoutes.Review} exact>
+        <PrivateRoute path={AppRoutes.Review} exact>
           <AddReview />
-        </Route>
+        </PrivateRoute>
 
         <Route path={AppRoutes.Player} exact>
           <Player film={promoFilm} />
