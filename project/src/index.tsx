@@ -13,8 +13,9 @@ import { getFilms } from './store/film/async-actions';
 import { ThunkApiDispatch } from './types/actions';
 import { GlobalState } from './types/global-state';
 import { checkAuth } from '@store/user/async-actions';
+import { setAuthStatus } from '@store/user/actions';
 
-const api = createAPI();
+const api = createAPI(() => store.dispatch(setAuthStatus(false)));
 
 const reducer = combineReducers<GlobalState>({
   film: filmReducer,
