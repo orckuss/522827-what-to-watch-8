@@ -12,6 +12,7 @@ import thunk from 'redux-thunk';
 import { getFilms } from './store/film/async-actions';
 import { ThunkApiDispatch } from './types/actions';
 import { GlobalState } from './types/global-state';
+import { checkAuth } from '@store/user/async-actions';
 
 const api = createAPI();
 
@@ -28,6 +29,7 @@ const store = createStore(
 );
 
 (store.dispatch as ThunkApiDispatch)(getFilms());
+(store.dispatch as ThunkApiDispatch)(checkAuth());
 
 ReactDOM.render(
   <React.StrictMode>
