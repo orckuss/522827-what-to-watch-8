@@ -1,19 +1,16 @@
 import { Reducer } from 'redux';
 import { DEFALUT_ACTIVE_GENRE, FILM_CARDS_COUNT } from 'src/constants';
 import { Actions, ActionType } from 'src/types/actions';
-import { GlobalState } from 'src/types/global-state';
+import { FilmState } from 'src/types/global-state';
 
-export const initialState: GlobalState = {
+const initialState: FilmState = {
   films: [],
   filmsLoaded: false,
   genre: DEFALUT_ACTIVE_GENRE,
   filmCardsCount: FILM_CARDS_COUNT,
 };
 
-export const reducer: Reducer<GlobalState, Actions> = (
-  state: GlobalState = initialState,
-  action: Actions,
-): GlobalState => {
+export const reducer: Reducer<FilmState, Actions> = (state = initialState,action): FilmState => {
   switch (action.type) {
     case ActionType.ChangeGenre:
       return { ...state, genre: action.payload };
