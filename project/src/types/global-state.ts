@@ -1,3 +1,4 @@
+import { AuthStatus } from 'src/constants';
 import { Film } from './film';
 import { Genre } from './genre';
 import { UserInfo } from './user';
@@ -15,6 +16,6 @@ export type FilmState = {
 };
 
 export type UserState = {
-  authorizationStatus: boolean;
+  authorizationStatus: AuthStatus;
   info: UserInfo;
 }

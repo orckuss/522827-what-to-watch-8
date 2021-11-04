@@ -1,5 +1,5 @@
 import { Router as BrowserRouter, Switch, Route } from 'react-router-dom';
-import { AppRoutes } from 'src/constants';
+import { AppRoutes, AuthStatus } from 'src/constants';
 import { Film as FilmData } from 'src/types/film';
 import AddReview from '../pages/add-review/add-review';
 import Film from '@components/pages/film/film';
@@ -13,15 +13,19 @@ import Spinner from '@components/layout/spinner/spinner';
 import { useSelector } from 'react-redux';
 import { getFilmsLoadedState } from '@store/film/selectors';
 import { browserHistory } from 'src/utils/browser-history';
+import { getAuthStatus } from '@store/user/selectors';
 
 type Props = {
   promoFilm: FilmData;
 }
 
 function App({ promoFilm }: Props): JSX.Element {
+  const authStatus = useSelector(getAuthStatus);
   const isFilmsLoaded = useSelector(getFilmsLoadedState);
 
-  return isFilmsLoaded ? (
+  const condition = authStatus !== AuthStatus.Unknown && isFilmsLoaded;
+
+  return condition ? (
     <BrowserRouter history={browserHistory}>
       <Switch>
         <Route path={AppRoutes.Main} exact>

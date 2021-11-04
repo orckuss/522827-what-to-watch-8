@@ -1,4 +1,4 @@
-import { APIRoutes, AppRoutes, AUTH_TOKEN_KEY_NAME } from 'src/constants';
+import { APIRoutes, AppRoutes, AuthStatus, AUTH_TOKEN_KEY_NAME } from 'src/constants';
 import { ThunkActionResponse } from 'src/types/actions';
 import { AuthRequest, AuthResponse } from 'src/types/user';
 import { SnakeToCamelAdapter } from 'src/utils/snake-to-camel-adapter';
@@ -13,7 +13,7 @@ export const checkAuth = (): ThunkActionResponse =>
     const response = await api.get<Record<string, unknown>>(APIRoutes.Login);
     const result = adapter.transform<AuthResponse>(response.data);
     storage.setToken(result.token);
-    dispatch(setAuthStatus(true));
+    dispatch(setAuthStatus(AuthStatus.Auth));
     dispatch(setUserInfo(result));
   };
 
@@ -22,7 +22,7 @@ export const login = (data: AuthRequest): ThunkActionResponse =>
     const response = await api.post<Record<string, unknown>>(APIRoutes.Login, data);
     const result = adapter.transform<AuthResponse>(response.data);
     storage.setToken(result.token);
-    dispatch(setAuthStatus(true));
+    dispatch(setAuthStatus(AuthStatus.Auth));
     dispatch(setUserInfo(result));
     dispatch(redirect(AppRoutes.Main));
   };
@@ -31,6 +31,6 @@ export const logout = (): ThunkActionResponse =>
   async (dispatch, _getState, api) => {
     api.delete(APIRoutes.Logout);
     storage.removeToken();
-    dispatch(setAuthStatus(false));
+    dispatch(setAuthStatus(AuthStatus.NoAuth));
     dispatch(setUserInfo(null));
   };

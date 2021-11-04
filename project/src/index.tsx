@@ -15,9 +15,10 @@ import { GlobalState } from './types/global-state';
 import { checkAuth } from '@store/user/async-actions';
 import { setAuthStatus } from '@store/user/actions';
 import { redirect } from '@store/user/middlewares';
+import { AuthStatus } from './constants';
 
 const api = createAPI(() => {
-  store.dispatch(setAuthStatus(false));
+  store.dispatch(setAuthStatus(AuthStatus.NoAuth));
 });
 
 const reducer = combineReducers<GlobalState>({

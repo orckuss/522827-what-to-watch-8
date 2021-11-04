@@ -2,7 +2,7 @@ import { logout } from '@store/user/async-actions';
 import { getAuthStatus, getUserInfo } from '@store/user/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { AppRoutes } from 'src/constants';
+import { AppRoutes, AuthStatus } from 'src/constants';
 
 function User(): JSX.Element {
   const isAuthorized = useSelector(getAuthStatus);
@@ -10,7 +10,7 @@ function User(): JSX.Element {
 
   const dispatch = useDispatch();
 
-  return isAuthorized ?
+  return isAuthorized === AuthStatus.Auth ?
     <ul className="user-block">
       <li className="user-block__item">
         <div className="user-block__avatar">
