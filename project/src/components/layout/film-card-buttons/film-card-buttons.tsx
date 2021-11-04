@@ -7,7 +7,7 @@ type Props = {
   film: Film;
   className?: string;
   children?: ReactNode;
-}
+};
 
 function FilmCardButtons({ film, className = '', children }: Props): JSX.Element {
   const {

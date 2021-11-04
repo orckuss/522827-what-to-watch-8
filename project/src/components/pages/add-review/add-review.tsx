@@ -6,7 +6,7 @@ import AddReviewForm from '@components/layout/add-review-form/add-review-form';
 import Breadcrumbs from '@components/layout/breadcrumbs/breadcrumbs';
 import Header from '@components/layout/header/header';
 import { useSelector } from 'react-redux';
-import { getFilms } from '@store/film/selectors';
+import { getFilms } from '@store/films/selectors';
 
 function AddReview(): JSX.Element {
   const { id } = useParams<RouteParams>();

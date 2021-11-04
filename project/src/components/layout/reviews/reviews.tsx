@@ -2,8 +2,8 @@ import { Comment } from 'src/types/comment';
 import './reviews.css';
 
 type Props = {
-  comments: Array<Comment>
-}
+  comments: Array<Comment>;
+};
 
 function Reviews({ comments }: Props): JSX.Element {
   return (

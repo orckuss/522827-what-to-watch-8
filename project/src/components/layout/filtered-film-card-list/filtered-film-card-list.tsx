@@ -1,4 +1,4 @@
-import { getSlicedFilteredFilms } from '@store/film/selectors';
+import { getSlicedFilteredFilms } from '@store/films/selectors';
 import { useSelector } from 'react-redux';
 import FilmCardList from '../film-card-list/film-card-list';
 

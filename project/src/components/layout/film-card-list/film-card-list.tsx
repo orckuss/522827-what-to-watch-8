@@ -3,7 +3,7 @@ import SmallFilmCard from '../small-film-card/small-film-card';
 
 type Props = {
   films: Array<Film>;
-}
+};
 
 function FilmCardList({ films }: Props): JSX.Element {
   return (

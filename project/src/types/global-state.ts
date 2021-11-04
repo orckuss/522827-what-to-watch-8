@@ -4,16 +4,16 @@ import { Genre } from './genre';
 import { UserInfo } from './user';
 
 export type GlobalState = {
-  film: FilmState;
+  films: FilmsState;
   user: UserState;
 }
 
-export type FilmState = {
+export type FilmsState = {
   genre: Genre;
   films: Array<Film>;
   filmsLoaded: boolean;
   filmCardsCount: number;
-};
+}
 
 export type UserState = {
   authorizationStatus: AuthStatus;

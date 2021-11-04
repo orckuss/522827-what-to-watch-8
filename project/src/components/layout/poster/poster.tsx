@@ -2,7 +2,7 @@ type Props = {
   src?: string;
   alt?: string;
   className?: string;
-}
+};
 
 function Poster({ src, alt, className = '' }: Props): JSX.Element {
   return (

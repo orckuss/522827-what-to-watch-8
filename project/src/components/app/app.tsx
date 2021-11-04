@@ -11,13 +11,13 @@ import SignIn from '@components/pages/sign-in/sign-in';
 import PrivateRoute from '@components/services/private-route';
 import Spinner from '@components/layout/spinner/spinner';
 import { useSelector } from 'react-redux';
-import { getFilmsLoadedState } from '@store/film/selectors';
+import { getFilmsLoadedState } from '@store/films/selectors';
 import { browserHistory } from 'src/utils/browser-history';
 import { getAuthStatus } from '@store/user/selectors';
 
 type Props = {
   promoFilm: FilmData;
-}
+};
 
 function App({ promoFilm }: Props): JSX.Element {
   const authStatus = useSelector(getAuthStatus);

@@ -7,7 +7,7 @@ import {
   resetFilter,
   setfilms,
   setFilmsLoaded
-} from '@store/film/actions';
+} from '@store/films/actions';
 import { redirect, setAuthStatus, setUserInfo } from '@store/user/actions';
 import { GlobalState } from './global-state';
 

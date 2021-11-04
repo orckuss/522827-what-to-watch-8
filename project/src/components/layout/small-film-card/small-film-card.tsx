@@ -7,7 +7,7 @@ import VideoPlayer from '../video-player/video-player';
 
 type Props = {
   film: Film;
-}
+};
 
 function SmallFilmCard({ film }: Props): JSX.Element {
   const {

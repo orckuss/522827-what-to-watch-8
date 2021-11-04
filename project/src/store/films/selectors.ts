@@ -4,13 +4,13 @@ import { Film } from 'src/types/film';
 import { Genre } from 'src/types/genre';
 import { GlobalState } from 'src/types/global-state';
 
-export const getActiveGenre: Selector<GlobalState, Genre> = (state) => state.film.genre;
+export const getActiveGenre: Selector<GlobalState, Genre> = (state) => state.films.genre;
 
-export const getFilms: Selector<GlobalState, Array<Film>> = (state) => state.film.films;
+export const getFilms: Selector<GlobalState, Array<Film>> = (state) => state.films.films;
 
-export const getFilmsLoadedState: Selector<GlobalState, boolean> = (state) => state.film.filmsLoaded;
+export const getFilmsLoadedState: Selector<GlobalState, boolean> = (state) => state.films.filmsLoaded;
 
-export const getFilmCardsCount: Selector<GlobalState, number> = (state) => state.film.filmCardsCount;
+export const getFilmCardsCount: Selector<GlobalState, number> = (state) => state.films.filmCardsCount;
 
 export const getGenres = createSelector<GlobalState, Array<Film>, Array<Genre>>(
   getFilms,

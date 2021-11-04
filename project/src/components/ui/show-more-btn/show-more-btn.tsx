@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { increaseFilmCardsCount } from '@store/film/actions';
-import { getFilmCardsCount, getFilteredFilmsCount } from '@store/film/selectors';
+import { increaseFilmCardsCount } from '@store/films/actions';
+import { getFilmCardsCount, getFilteredFilmsCount } from '@store/films/selectors';
 
 function ShowMoreBtn(): JSX.Element | null {
   const filmsCount = useSelector(getFilteredFilmsCount);

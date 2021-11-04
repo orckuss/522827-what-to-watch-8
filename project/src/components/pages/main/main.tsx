@@ -9,7 +9,7 @@ import { Film } from 'src/types/film';
 
 type Props = {
   promoFilm: Film;
-}
+};
 
 function Main({ promoFilm }: Props): JSX.Element {
   const {
