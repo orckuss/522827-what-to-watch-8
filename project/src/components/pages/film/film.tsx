@@ -6,13 +6,15 @@ import { RouteParams } from 'src/types/route-params';
 import { AppRoutes } from 'src/constants';
 import Details from '@components/layout/details/details';
 import Footer from '@components/layout/footer/footer';
-import Header from '@components/layout/header/header';
 import Overview from '@components/layout/overview/overview';
 import Reviews from '@components/layout/reviews/reviews';
 import Tabs, { TabConfig } from '@components/layout/tabs/tabs';
 import SimilarFilmCardList from '@components/layout/similar-film-card-list/similar-film-card-list';
 import { useSelector } from 'react-redux';
 import { getFilms } from '@store/film/selectors';
+import Poster from '@components/layout/poster/poster';
+import FilmCardButtons from '@components/layout/film-card-buttons/film-card-buttons';
+import FilmCardHeader from '@components/layout/film-card-header/film-card-header';
 
 function Film(): JSX.Element {
   const { id } = useParams<RouteParams>();
@@ -24,9 +26,7 @@ function Film(): JSX.Element {
   const {
     backgroundImage,
     name,
-    genre,
     posterImage,
-    released,
   } = film;
 
   const tabs: Array<TabConfig> = [
@@ -48,55 +48,38 @@ function Film(): JSX.Element {
     <>
       <section className="film-card film-card--full">
         <div className="film-card__hero">
-          <div className="film-card__bg">
-            <img src={backgroundImage} alt={name} />
-          </div>
-
-          <h1 className="visually-hidden">WTW</h1>
-
-          <Header className="film-card__head" />
+          <FilmCardHeader
+            backgroundImage={backgroundImage}
+            alt={name}
+          />
 
           <div className="film-card__wrap">
-            <div className="film-card__desc">
-              <h2 className="film-card__title">{name}</h2>
-              <p className="film-card__meta">
-                <span className="film-card__genre">{genre}</span>
-                <span className="film-card__year">{released}</span>
-              </p>
-
-              <div className="film-card__buttons">
-                <button className="btn btn--play film-card__button" type="button">
-                  <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use xlinkHref="#play-s"></use>
-                  </svg>
-                  <span>Play</span>
-                </button>
-                <button className="btn btn--list film-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
-                  <span>My list</span>
-                </button>
-                <Link
-                  to={generatePath(AppRoutes.Review, { id })}
-                  className="btn film-card__button"
-                >
-                  Add review
-                </Link>
-              </div>
-            </div>
+            <FilmCardButtons
+              className="film-card__desc"
+              film={film}
+            >
+              <Link
+                to={generatePath(AppRoutes.Review, { id })}
+                className="btn film-card__button"
+              >
+                Add review
+              </Link>
+            </FilmCardButtons>
           </div>
         </div>
 
         <div className="film-card__wrap film-card__translate-top">
           <div className="film-card__info">
-            <div className="film-card__poster film-card__poster--big">
-              <img src={posterImage} alt={name} width="218" height="327" />
-            </div>
+            <Poster
+              src={posterImage}
+              alt={name}
+              className="film-card__poster--big"
+            />
 
-            <div className="film-card__desc">
-              <Tabs tabs={tabs} />
-            </div>
+            <Tabs
+              className="film-card__desc"
+              tabs={tabs}
+            />
           </div>
         </div>
       </section>

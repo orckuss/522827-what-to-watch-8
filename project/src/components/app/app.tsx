@@ -1,5 +1,5 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { AppRoutes } from 'src/constants';
+import { Router as BrowserRouter, Switch, Route } from 'react-router-dom';
+import { AppRoutes, AuthStatus } from 'src/constants';
 import { Film as FilmData } from 'src/types/film';
 import AddReview from '../pages/add-review/add-review';
 import Film from '@components/pages/film/film';
@@ -12,18 +12,21 @@ import PrivateRoute from '@components/services/private-route';
 import Spinner from '@components/layout/spinner/spinner';
 import { useSelector } from 'react-redux';
 import { getFilmsLoadedState } from '@store/film/selectors';
-
-const HAS_ACCESS = false;
+import { browserHistory } from 'src/utils/browser-history';
+import { getAuthStatus } from '@store/user/selectors';
 
 type Props = {
   promoFilm: FilmData;
 }
 
 function App({ promoFilm }: Props): JSX.Element {
+  const authStatus = useSelector(getAuthStatus);
   const isFilmsLoaded = useSelector(getFilmsLoadedState);
 
-  return isFilmsLoaded ? (
-    <BrowserRouter>
+  const condition = authStatus !== AuthStatus.Unknown && isFilmsLoaded;
+
+  return condition ? (
+    <BrowserRouter history={browserHistory}>
       <Switch>
         <Route path={AppRoutes.Main} exact>
           <Main promoFilm={promoFilm} />
@@ -33,7 +36,7 @@ function App({ promoFilm }: Props): JSX.Element {
           <SignIn />
         </Route>
 
-        <PrivateRoute hasAccess={HAS_ACCESS} path={AppRoutes.MyList} exact>
+        <PrivateRoute path={AppRoutes.MyList} exact>
           <MyList />
         </PrivateRoute>
 
@@ -41,9 +44,9 @@ function App({ promoFilm }: Props): JSX.Element {
           <Film />
         </Route>
 
-        <Route path={AppRoutes.Review} exact>
+        <PrivateRoute path={AppRoutes.Review} exact>
           <AddReview />
-        </Route>
+        </PrivateRoute>
 
         <Route path={AppRoutes.Player} exact>
           <Player film={promoFilm} />
