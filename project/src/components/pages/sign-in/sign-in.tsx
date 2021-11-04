@@ -1,6 +1,6 @@
 import Footer from '@components/layout/footer/footer';
 import Logo from '@components/layout/logo/logo';
-import SignInForm from '@components/layout/sign-in-form./sign-in-form';
+import SignInForm from '@components/layout/sign-in-form/sign-in-form';
 
 function SignIn(): JSX.Element {
   return (
