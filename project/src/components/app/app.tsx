@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Router as BrowserRouter, Switch, Route } from 'react-router-dom';
 import { AppRoutes } from 'src/constants';
 import { Film as FilmData } from 'src/types/film';
 import AddReview from '../pages/add-review/add-review';
@@ -12,6 +12,7 @@ import PrivateRoute from '@components/services/private-route';
 import Spinner from '@components/layout/spinner/spinner';
 import { useSelector } from 'react-redux';
 import { getFilmsLoadedState } from '@store/film/selectors';
+import { browserHistory } from 'src/utils/browser-history';
 
 type Props = {
   promoFilm: FilmData;
@@ -21,7 +22,7 @@ function App({ promoFilm }: Props): JSX.Element {
   const isFilmsLoaded = useSelector(getFilmsLoadedState);
 
   return isFilmsLoaded ? (
-    <BrowserRouter>
+    <BrowserRouter history={browserHistory}>
       <Switch>
         <Route path={AppRoutes.Main} exact>
           <Main promoFilm={promoFilm} />

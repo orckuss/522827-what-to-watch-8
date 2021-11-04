@@ -14,6 +14,7 @@ import { ThunkApiDispatch } from './types/actions';
 import { GlobalState } from './types/global-state';
 import { checkAuth } from '@store/user/async-actions';
 import { setAuthStatus } from '@store/user/actions';
+import { redirect } from '@store/user/middlewares';
 
 const api = createAPI(() => {
   store.dispatch(setAuthStatus(false));
@@ -28,6 +29,7 @@ const store = createStore(
   reducer,
   composeWithDevTools(
     applyMiddleware(thunk.withExtraArgument(api)),
+    applyMiddleware(redirect),
   ),
 );
 

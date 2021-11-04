@@ -8,7 +8,7 @@ import {
   setfilms,
   setFilmsLoaded
 } from '@store/film/actions';
-import { setAuthStatus, setUserInfo } from '@store/user/actions';
+import { redirect, setAuthStatus, setUserInfo } from '@store/user/actions';
 import { GlobalState } from './global-state';
 
 export enum ActionType {
@@ -20,6 +20,7 @@ export enum ActionType {
   SetFilmsLoaded = 'films/setFilmsLoaded',
   SetAuthStatus = 'user/setAuthStatus',
   SetUserInfo = 'user/setUserInfo',
+  Redirect = 'user/redirect',
 }
 
 export type ThunkActionResponse<R = Promise<void>> = ThunkAction<R, GlobalState, AxiosInstance, Actions>;
@@ -33,4 +34,5 @@ export type Actions =
   | ReturnType<typeof setfilms>
   | ReturnType<typeof setFilmsLoaded>
   | ReturnType<typeof setAuthStatus>
-  | ReturnType<typeof setUserInfo>;
+  | ReturnType<typeof setUserInfo>
+  | ReturnType<typeof redirect>;

@@ -1,9 +1,9 @@
-import { APIRoutes, AUTH_TOKEN_KEY_NAME } from 'src/constants';
+import { APIRoutes, AppRoutes, AUTH_TOKEN_KEY_NAME } from 'src/constants';
 import { ThunkActionResponse } from 'src/types/actions';
 import { AuthRequest, AuthResponse } from 'src/types/user';
 import { SnakeToCamelAdapter } from 'src/utils/snake-to-camel-adapter';
 import { TokenStorage } from 'src/utils/token';
-import { setAuthStatus, setUserInfo } from './actions';
+import { redirect, setAuthStatus, setUserInfo } from './actions';
 
 const adapter = new SnakeToCamelAdapter();
 const storage = new TokenStorage(AUTH_TOKEN_KEY_NAME);
@@ -24,6 +24,7 @@ export const login = (data: AuthRequest): ThunkActionResponse =>
     storage.setToken(result.token);
     dispatch(setAuthStatus(true));
     dispatch(setUserInfo(result));
+    dispatch(redirect(AppRoutes.Main));
   };
 
 export const logout = (): ThunkActionResponse =>
