@@ -1,11 +1,14 @@
+import { logout } from '@store/user/async-actions';
 import { getAuthStatus, getUserInfo } from '@store/user/selectors';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { AppRoutes } from 'src/constants';
 
 function User(): JSX.Element {
   const isAuthorized = useSelector(getAuthStatus);
   const user = useSelector(getUserInfo);
+
+  const dispatch = useDispatch();
 
   return isAuthorized ?
     <ul className="user-block">
@@ -25,6 +28,10 @@ function User(): JSX.Element {
         <a
           href="/"
           className="user-block__link"
+          onClick={(evt) => {
+            evt.preventDefault();
+            dispatch(logout());
+          }}
         >
           Sign out
         </a>
