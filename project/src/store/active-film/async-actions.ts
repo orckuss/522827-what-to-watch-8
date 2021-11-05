@@ -2,7 +2,7 @@ import { redirect } from '@store/actions';
 import { AxiosError } from 'axios';
 import { APIRoutes, AppRoutes, HttpCode } from 'src/constants';
 import { ThunkActionResponse } from 'src/types/actions';
-import { Comment } from 'src/types/comment';
+import { Comment, SendComment } from 'src/types/comment';
 import { Film } from 'src/types/film';
 import { SnakeToCamelAdapter } from 'src/utils/snake-to-camel-adapter';
 import { setActiveFilm, setComments, setSimilar } from './actions';
@@ -35,11 +35,15 @@ export const getSimilar = (id: number): ThunkActionResponse =>
 export const getComments = (id: number): ThunkActionResponse =>
   async (dispatch, _getState, api) => {
     try {
-      const response = await api.get<Array<Record<string, unknown>>>(`${APIRoutes.Comments}/${id}`);
-      const comments = response.data.map((item) => adapter.transform<Comment>(item));
-      dispatch(setComments(comments));
+      const response = await api.get<Array<Comment>>(`${APIRoutes.Comments}/${id}`);
+      dispatch(setComments(response.data));
     } catch (error) {
       dispatch(setComments([]));
     }
   };
 
+export const sendComment = (data: SendComment, id: number): ThunkActionResponse =>
+  async (dispatch, _getState, api) => {
+    const response = await api.post<Array<Comment>>(`${APIRoutes.Comments}/${id}`, data);
+    dispatch(setComments(response.data));
+  };

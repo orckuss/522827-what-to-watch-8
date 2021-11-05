@@ -1,12 +1,17 @@
-/* eslint-disable no-console */
+import { sendComment } from '@store/active-film/async-actions';
+import { getActiveFilm } from '@store/active-film/selectors';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { STAR_COUNT } from 'src/constants';
-import { Comment } from 'src/types/comment';
 import RatingFormControl from '../rating-form-control/rating-form-control';
 
 function AddReviewForm(): JSX.Element {
   const [comment, setComment] = useState<string>('');
   const [rating, setRating] = useState<number>(0);
+
+  const { id } = useSelector(getActiveFilm);
+
+  const dispatch = useDispatch();
 
   return (
     <div className="add-review">
@@ -15,7 +20,7 @@ function AddReviewForm(): JSX.Element {
         className="add-review__form"
         onSubmit={(evt) => {
           evt.preventDefault();
-          console.log({ comment, rating } as Pick<Comment, 'comment' | 'rating'>);
+          dispatch(sendComment({ comment, rating }, id));
         }}
       >
         <RatingFormControl

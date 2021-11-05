@@ -1,6 +1,6 @@
 import { generatePath } from 'react-router';
 import { Link } from 'react-router-dom';
-import { AppRoutes } from 'src/constants';
+import { AppRoutes, AuthStatus } from 'src/constants';
 import Details from '@components/layout/details/details';
 import Footer from '@components/layout/footer/footer';
 import Overview from '@components/layout/overview/overview';
@@ -13,10 +13,13 @@ import FilmCardButtons from '@components/layout/film-card-buttons/film-card-butt
 import FilmCardHeader from '@components/layout/film-card-header/film-card-header';
 import { getComments as getCommentsFromStore } from '@store/active-film/selectors';
 import { useFilmLoad } from '@hooks/useFilmLoad';
+import { getAuthStatus } from '@store/user/selectors';
 
 function Film(): JSX.Element {
-  const film =   useFilmLoad();
+  const film = useFilmLoad();
   const comments = useSelector(getCommentsFromStore);
+
+  const authStatus = useSelector(getAuthStatus);
 
   const {
     id,
@@ -53,13 +56,15 @@ function Film(): JSX.Element {
             <FilmCardButtons
               className="film-card__desc"
               film={film}
-            >
-              <Link
-                to={generatePath(AppRoutes.Review, { id })}
-                className="btn film-card__button"
-              >
-                Add review
-              </Link>
+            >{
+                authStatus === AuthStatus.Auth &&
+                <Link
+                  to={generatePath(AppRoutes.Review, { id })}
+                  className="btn film-card__button"
+                >
+                  Add review
+                </Link>
+              }
             </FilmCardButtons>
           </div>
         </div>
