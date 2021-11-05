@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import { DEFAULT_FILM_DATA } from 'src/constants';
-import { Actions } from 'src/types/actions';
+import { Actions, ActionType } from 'src/types/actions';
 import { ActiveFilmState } from 'src/types/global-state';
 
 const initialState: ActiveFilmState = {
@@ -9,6 +9,9 @@ const initialState: ActiveFilmState = {
 
 export const reducer: Reducer<ActiveFilmState, Actions> = (state = initialState, action): ActiveFilmState => {
   switch (action.type) {
+    case ActionType.SetFilmById:
+      return { ...state, film: action.payload };
+
     default:
       return state;
   }
