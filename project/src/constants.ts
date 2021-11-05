@@ -12,6 +12,9 @@ export const enum AppRoutes {
 }
 
 export const STAR_COUNT = 10;
+export const DEFALUT_RATING_VALUE = 0;
+export const TEXT_COMMENT_MIN_LENGTH = 50;
+export const TEXT_COMMENT_MAX_LENGTH = 400;
 
 export const DEFALUT_ACTIVE_GENRE: Genre = 'All genres';
 

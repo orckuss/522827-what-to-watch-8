@@ -2,16 +2,20 @@ import { sendComment } from '@store/active-film/async-actions';
 import { getActiveFilm } from '@store/active-film/selectors';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { STAR_COUNT } from 'src/constants';
+import { DEFALUT_RATING_VALUE, STAR_COUNT, TEXT_COMMENT_MAX_LENGTH, TEXT_COMMENT_MIN_LENGTH } from 'src/constants';
 import RatingFormControl from '../rating-form-control/rating-form-control';
 
 function AddReviewForm(): JSX.Element {
   const [comment, setComment] = useState<string>('');
-  const [rating, setRating] = useState<number>(0);
+  const [rating, setRating] = useState<number>(DEFALUT_RATING_VALUE);
 
   const { id } = useSelector(getActiveFilm);
 
   const dispatch = useDispatch();
+
+  const condition = rating === DEFALUT_RATING_VALUE
+    || comment.length < TEXT_COMMENT_MIN_LENGTH
+    || comment.length > TEXT_COMMENT_MAX_LENGTH;
 
   return (
     <div className="add-review">
@@ -42,6 +46,7 @@ function AddReviewForm(): JSX.Element {
             <button
               className="add-review__btn"
               type="submit"
+              disabled={condition}
             >
               Post
             </button>
