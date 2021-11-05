@@ -17,6 +17,8 @@ import { checkAuth } from '@store/user/async-actions';
 import { setAuthStatus } from '@store/user/actions';
 import { redirect } from '@store/middlewares';
 import { AuthStatus } from './constants';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const api = createAPI(() => {
   store.dispatch(setAuthStatus(AuthStatus.NoAuth));
@@ -42,6 +44,7 @@ const store = createStore(
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      <ToastContainer />
       <App promoFilm={PROMO_FILM_MOCK} />
     </Provider>
   </React.StrictMode>,

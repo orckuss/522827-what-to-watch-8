@@ -16,6 +16,14 @@ export const DEFALUT_RATING_VALUE = 0;
 export const TEXT_COMMENT_MIN_LENGTH = 50;
 export const TEXT_COMMENT_MAX_LENGTH = 400;
 
+export const enum FailMessage {
+  GetSimilar = 'Не удалось получить похожие фильмы',
+  GetComments = 'Не удалось получить комментарии',
+  PostComment = 'Не удалось отправить комментарий',
+  Login = 'Авторизация не удалась',
+  GetFilms = 'Не удалось получить список фильмов',
+}
+
 export const DEFALUT_ACTIVE_GENRE: Genre = 'All genres';
 
 export const FILM_CARDS_COUNT = 8;
