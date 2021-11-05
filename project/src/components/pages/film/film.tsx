@@ -1,6 +1,5 @@
-import { generatePath, useParams } from 'react-router';
+import { generatePath } from 'react-router';
 import { Link } from 'react-router-dom';
-import { RouteParams } from 'src/types/route-params';
 import { AppRoutes } from 'src/constants';
 import Details from '@components/layout/details/details';
 import Footer from '@components/layout/footer/footer';
@@ -8,36 +7,23 @@ import Overview from '@components/layout/overview/overview';
 import Reviews from '@components/layout/reviews/reviews';
 import Tabs, { TabConfig } from '@components/layout/tabs/tabs';
 import SimilarFilmCardList from '@components/layout/similar-film-card-list/similar-film-card-list';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Poster from '@components/layout/poster/poster';
 import FilmCardButtons from '@components/layout/film-card-buttons/film-card-buttons';
 import FilmCardHeader from '@components/layout/film-card-header/film-card-header';
-import { useEffect } from 'react';
-import { getComments, getFilm, getSimilar } from '@store/active-film/async-actions';
-import { getActiveFilm, getComments as getCommentsFromStore } from '@store/active-film/selectors';
+import { getComments as getCommentsFromStore } from '@store/active-film/selectors';
+import { useFilmLoad } from '@hooks/useFilmLoad';
 
 function Film(): JSX.Element {
-  const id = Number(useParams<RouteParams>().id);
-
-  const film = useSelector(getActiveFilm);
+  const film =   useFilmLoad();
   const comments = useSelector(getCommentsFromStore);
 
   const {
-    id: filmId,
+    id,
     backgroundImage,
     name,
     posterImage,
   } = film;
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (filmId !== id) {
-      dispatch(getFilm(id));
-      dispatch(getSimilar(id));
-      dispatch(getComments(id));
-    }
-  }, [dispatch, id, filmId]);
 
   const tabs: Array<TabConfig> = [
     {
