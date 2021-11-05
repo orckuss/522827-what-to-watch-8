@@ -5,7 +5,7 @@ import { ThunkActionResponse } from 'src/types/actions';
 import { Comment, SendComment } from 'src/types/comment';
 import { Film } from 'src/types/film';
 import { SnakeToCamelAdapter } from 'src/utils/snake-to-camel-adapter';
-import { setActiveFilm, setComments, setSimilar } from './actions';
+import { endSendingComment, setActiveFilm, setComments, setSimilar, startSendingComment } from './actions';
 
 const adapter = new SnakeToCamelAdapter();
 
@@ -44,6 +44,8 @@ export const getComments = (id: number): ThunkActionResponse =>
 
 export const sendComment = (data: SendComment, id: number): ThunkActionResponse =>
   async (dispatch, _getState, api) => {
+    dispatch(startSendingComment());
     const response = await api.post<Array<Comment>>(`${APIRoutes.Comments}/${id}`, data);
     dispatch(setComments(response.data));
+    dispatch(endSendingComment());
   };

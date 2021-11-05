@@ -9,3 +9,5 @@ export const getActiveFilm: Selector<GlobalState, Film> = (state) => state.activ
 export const getSimilar: Selector<GlobalState, Array<Film>> = (state) => state.activeFilm.similar.slice(0, SIMILAR_FILMS_COUNT);
 
 export const getComments: Selector<GlobalState, Array<Comment>> = (state) => state.activeFilm.comments;
+
+export const getSendingCommentStatus: Selector<GlobalState, boolean> = (state) => state.activeFilm.isCommentSending;

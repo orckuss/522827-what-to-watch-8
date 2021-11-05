@@ -26,4 +26,5 @@ export type ActiveFilmState = {
   film: Film;
   similar: Array<Film>;
   comments: Array<Comment>;
+  isCommentSending: boolean;
 };

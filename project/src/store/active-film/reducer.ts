@@ -7,6 +7,7 @@ const initialState: ActiveFilmState = {
   film: DEFAULT_FILM_DATA,
   similar: [],
   comments: [],
+  isCommentSending: false,
 };
 
 export const reducer: Reducer<ActiveFilmState, Actions> = (state = initialState, action): ActiveFilmState => {
@@ -19,6 +20,12 @@ export const reducer: Reducer<ActiveFilmState, Actions> = (state = initialState,
 
     case ActionType.SetComments:
       return { ...state, comments: action.payload };
+
+    case ActionType.StartSendingComment:
+      return { ...state, isCommentSending: true };
+
+    case ActionType.EndSendingComment:
+      return { ...state, isCommentSending: false };
 
     default:
       return state;

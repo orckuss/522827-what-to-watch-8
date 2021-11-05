@@ -16,3 +16,11 @@ export const setComments = (payload: Array<Comment>) => ({
   type: ActionType.SetComments,
   payload,
 } as const);
+
+export const startSendingComment = () => ({
+  type: ActionType.StartSendingComment,
+} as const);
+
+export const endSendingComment = () => ({
+  type: ActionType.EndSendingComment,
+} as const);
