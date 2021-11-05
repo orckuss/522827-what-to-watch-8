@@ -5,3 +5,8 @@ export const setActiveFilm = (payload: Film) => ({
   type: ActionType.SetFilmById,
   payload,
 } as const);
+
+export const setSimilar = (payload: Array<Film>) => ({
+  type: ActionType.SetSimilar,
+  payload,
+} as const);

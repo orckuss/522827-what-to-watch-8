@@ -15,7 +15,7 @@ import { ThunkApiDispatch } from './types/actions';
 import { GlobalState } from './types/global-state';
 import { checkAuth } from '@store/user/async-actions';
 import { setAuthStatus } from '@store/user/actions';
-import { redirect } from '@store/user/middlewares';
+import { redirect } from '@store/middlewares';
 import { AuthStatus } from './constants';
 
 const api = createAPI(() => {

@@ -14,7 +14,7 @@ import Poster from '@components/layout/poster/poster';
 import FilmCardButtons from '@components/layout/film-card-buttons/film-card-buttons';
 import FilmCardHeader from '@components/layout/film-card-header/film-card-header';
 import { useEffect } from 'react';
-import { getFilmById } from '@store/active-film/async-actions';
+import { getFilmById, getSimilarById } from '@store/active-film/async-actions';
 import { getActiveFilm } from '@store/active-film/selectors';
 
 function Film(): JSX.Element {
@@ -33,6 +33,7 @@ function Film(): JSX.Element {
   useEffect(() => {
     if (filmId !== id) {
       dispatch(getFilmById(id));
+      dispatch(getSimilarById(id));
     }
   }, [dispatch, id, filmId]);
 

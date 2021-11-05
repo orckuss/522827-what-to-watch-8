@@ -23,4 +23,5 @@ export type UserState = {
 
 export type ActiveFilmState = {
   film: Film;
+  similar: Array<Film>;
 };

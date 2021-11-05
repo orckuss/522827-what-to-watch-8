@@ -1,5 +1,5 @@
-import { createSelector, OutputSelector, Selector } from 'reselect';
-import { DEFALUT_ACTIVE_GENRE, SIMILAR_FILMS_COUNT } from 'src/constants';
+import { createSelector, Selector } from 'reselect';
+import { DEFALUT_ACTIVE_GENRE } from 'src/constants';
 import { Film } from 'src/types/film';
 import { Genre } from 'src/types/genre';
 import { GlobalState } from 'src/types/global-state';
@@ -42,14 +42,3 @@ export const getSlicedFilteredFilms = createSelector<GlobalState, Array<Film>, n
   getFilmCardsCount,
   (films, count) => films.slice(0, count),
 );
-
-export const getSimilarFilmsFactory = (id: number): OutputSelector<GlobalState, Array<Film>, (films: Array<Film>) => Array<Film>> =>
-  createSelector<GlobalState, Array<Film>, Array<Film>>(
-    getFilms,
-    (films) => {
-      const activeFilm = films.find((film) => film.id === id);
-      return films
-        .filter((film) => film.id !== activeFilm?.id && film.genre === activeFilm?.genre)
-        .slice(0, SIMILAR_FILMS_COUNT);
-    },
-  );
