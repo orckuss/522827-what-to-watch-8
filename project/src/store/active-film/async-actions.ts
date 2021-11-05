@@ -1,5 +1,6 @@
 import { redirect } from '@store/actions';
 import { AxiosError } from 'axios';
+import { generatePath } from 'react-router';
 import { APIRoutes, AppRoutes, HttpCode } from 'src/constants';
 import { ThunkActionResponse } from 'src/types/actions';
 import { Comment, SendComment } from 'src/types/comment';
@@ -48,4 +49,5 @@ export const sendComment = (data: SendComment, id: number): ThunkActionResponse 
     const response = await api.post<Array<Comment>>(`${APIRoutes.Comments}/${id}`, data);
     dispatch(setComments(response.data));
     dispatch(endSendingComment());
+    dispatch(redirect(generatePath(AppRoutes.Films, { id })));
   };
