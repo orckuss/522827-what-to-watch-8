@@ -6,6 +6,7 @@ import App from './components/app/app';
 import { PROMO_FILM_MOCK } from './mocks/promo-film';
 import { reducer as filmReducer } from '@store/films/reducer';
 import { reducer as userReducer } from '@store/user/reducer';
+import { reducer as activeFilmReducer } from '@store/active-film/reducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createAPI } from './api/api';
 import thunk from 'redux-thunk';
@@ -24,6 +25,7 @@ const api = createAPI(() => {
 const reducer = combineReducers<GlobalState>({
   films: filmReducer,
   user: userReducer,
+  activeFilm: activeFilmReducer,
 });
 
 const store = createStore(
