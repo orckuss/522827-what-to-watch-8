@@ -1,4 +1,5 @@
 import { AuthStatus } from 'src/constants';
+import { Comment } from './comment';
 import { Film } from './film';
 import { Genre } from './genre';
 import { UserInfo } from './user';
@@ -24,4 +25,5 @@ export type UserState = {
 export type ActiveFilmState = {
   film: Film;
   similar: Array<Film>;
+  comments: Array<Comment>;
 };

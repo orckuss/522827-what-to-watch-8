@@ -1,6 +1,5 @@
 import { generatePath, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import { COMMENTS_MOCK } from 'src/mocks/comments';
 import { RouteParams } from 'src/types/route-params';
 import { AppRoutes } from 'src/constants';
 import Details from '@components/layout/details/details';
@@ -14,12 +13,14 @@ import Poster from '@components/layout/poster/poster';
 import FilmCardButtons from '@components/layout/film-card-buttons/film-card-buttons';
 import FilmCardHeader from '@components/layout/film-card-header/film-card-header';
 import { useEffect } from 'react';
-import { getFilmById, getSimilarById } from '@store/active-film/async-actions';
-import { getActiveFilm } from '@store/active-film/selectors';
+import { getComments, getFilm, getSimilar } from '@store/active-film/async-actions';
+import { getActiveFilm, getComments as getCommentsFromStore } from '@store/active-film/selectors';
 
 function Film(): JSX.Element {
   const id = Number(useParams<RouteParams>().id);
+
   const film = useSelector(getActiveFilm);
+  const comments = useSelector(getCommentsFromStore);
 
   const {
     id: filmId,
@@ -32,12 +33,11 @@ function Film(): JSX.Element {
 
   useEffect(() => {
     if (filmId !== id) {
-      dispatch(getFilmById(id));
-      dispatch(getSimilarById(id));
+      dispatch(getFilm(id));
+      dispatch(getSimilar(id));
+      dispatch(getComments(id));
     }
   }, [dispatch, id, filmId]);
-
-  const comments = COMMENTS_MOCK;
 
   const tabs: Array<TabConfig> = [
     {

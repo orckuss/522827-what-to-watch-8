@@ -20,6 +20,7 @@ export const SIMILAR_FILMS_COUNT = 4;
 
 export const enum APIRoutes {
   Films = '/films',
+  Comments = '/comments',
   Login = '/login',
   Logout = '/logout',
 }

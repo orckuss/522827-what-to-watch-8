@@ -6,6 +6,7 @@ import { ActiveFilmState } from 'src/types/global-state';
 const initialState: ActiveFilmState = {
   film: DEFAULT_FILM_DATA,
   similar: [],
+  comments: [],
 };
 
 export const reducer: Reducer<ActiveFilmState, Actions> = (state = initialState, action): ActiveFilmState => {
@@ -15,6 +16,9 @@ export const reducer: Reducer<ActiveFilmState, Actions> = (state = initialState,
 
     case ActionType.SetSimilar:
       return { ...state, similar: action.payload };
+
+    case ActionType.SetComments:
+      return { ...state, comments: action.payload };
 
     default:
       return state;
