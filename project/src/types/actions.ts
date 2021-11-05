@@ -8,11 +8,13 @@ import {
   setfilms,
   setFilmsLoaded
 } from '@store/films/actions';
-import { redirect, setAuthStatus, setUserInfo } from '@store/user/actions';
+import { setAuthStatus, setUserInfo } from '@store/user/actions';
 import { GlobalState } from './global-state';
 import { setActiveFilm } from '@store/active-film/actions';
+import { redirect } from '@store/actions';
 
 export enum ActionType {
+  Redirect = 'app/redirect',
   ChangeGenre = 'films/changeGenre',
   ResetFilter = 'films/resetFilter',
   IncreaseFilmCardsCount = 'films/increaseFilmCardsCount',
@@ -21,7 +23,6 @@ export enum ActionType {
   SetFilmsLoaded = 'films/setFilmsLoaded',
   SetAuthStatus = 'user/setAuthStatus',
   SetUserInfo = 'user/setUserInfo',
-  Redirect = 'user/redirect',
   SetFilmById = 'film/setFilm',
   SetLoadedFilmStatus = 'film/setLoadedStatus',
 }
@@ -30,6 +31,7 @@ export type ThunkActionResponse<R = Promise<void>> = ThunkAction<R, GlobalState,
 export type ThunkApiDispatch = ThunkDispatch<GlobalState, AxiosInstance, Actions>;
 
 export type Actions =
+  | ReturnType<typeof redirect>
   | ReturnType<typeof changeGenre>
   | ReturnType<typeof resetFilter>
   | ReturnType<typeof increaseFilmCardsCount>
@@ -38,5 +40,4 @@ export type Actions =
   | ReturnType<typeof setFilmsLoaded>
   | ReturnType<typeof setAuthStatus>
   | ReturnType<typeof setUserInfo>
-  | ReturnType<typeof redirect>
   | ReturnType<typeof setActiveFilm>;

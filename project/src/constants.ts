@@ -8,6 +8,7 @@ export const enum AppRoutes {
   Films = '/films/:id',
   Review = '/films/:id/review',
   Player = '/player/:id',
+  NotFound = '/NotFound',
 }
 
 export const STAR_COUNT = 10;
@@ -28,6 +29,7 @@ export const REQUEST_TIMEOUT = 5000;
 
 export const enum HttpCode {
   Unauthorized = 401,
+  NotFound = 404,
 }
 
 export const enum AuthStatus {

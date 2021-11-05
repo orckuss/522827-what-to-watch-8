@@ -1,9 +1,10 @@
+import { redirect } from '@store/actions';
 import { APIRoutes, AppRoutes, AuthStatus, AUTH_TOKEN_KEY_NAME } from 'src/constants';
 import { ThunkActionResponse } from 'src/types/actions';
 import { AuthRequest, AuthResponse } from 'src/types/user';
 import { SnakeToCamelAdapter } from 'src/utils/snake-to-camel-adapter';
 import { TokenStorage } from 'src/utils/token';
-import { redirect, setAuthStatus, setUserInfo } from './actions';
+import { setAuthStatus, setUserInfo } from './actions';
 
 const adapter = new SnakeToCamelAdapter();
 const storage = new TokenStorage(AUTH_TOKEN_KEY_NAME);
