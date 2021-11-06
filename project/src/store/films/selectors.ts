@@ -1,16 +1,16 @@
-import { createSelector, OutputSelector, Selector } from 'reselect';
-import { DEFALUT_ACTIVE_GENRE, SIMILAR_FILMS_COUNT } from 'src/constants';
+import { createSelector, Selector } from 'reselect';
+import { DEFALUT_ACTIVE_GENRE } from 'src/constants';
 import { Film } from 'src/types/film';
 import { Genre } from 'src/types/genre';
 import { GlobalState } from 'src/types/global-state';
 
-export const getActiveGenre: Selector<GlobalState, Genre> = (state) => state.film.genre;
+export const getActiveGenre: Selector<GlobalState, Genre> = (state) => state.films.genre;
 
-export const getFilms: Selector<GlobalState, Array<Film>> = (state) => state.film.films;
+export const getFilms: Selector<GlobalState, Array<Film>> = (state) => state.films.films;
 
-export const getFilmsLoadedState: Selector<GlobalState, boolean> = (state) => state.film.filmsLoaded;
+export const getFilmsLoadedState: Selector<GlobalState, boolean> = (state) => state.films.filmsLoaded;
 
-export const getFilmCardsCount: Selector<GlobalState, number> = (state) => state.film.filmCardsCount;
+export const getFilmCardsCount: Selector<GlobalState, number> = (state) => state.films.filmCardsCount;
 
 export const getGenres = createSelector<GlobalState, Array<Film>, Array<Genre>>(
   getFilms,
@@ -42,14 +42,3 @@ export const getSlicedFilteredFilms = createSelector<GlobalState, Array<Film>, n
   getFilmCardsCount,
   (films, count) => films.slice(0, count),
 );
-
-export const getSimilarFilmsFactory = (id: number): OutputSelector<GlobalState, Array<Film>, (films: Array<Film>) => Array<Film>> =>
-  createSelector<GlobalState, Array<Film>, Array<Film>>(
-    getFilms,
-    (films) => {
-      const activeFilm = films.find((film) => film.id === id);
-      return films
-        .filter((film) => film.id !== activeFilm?.id && film.genre === activeFilm?.genre)
-        .slice(0, SIMILAR_FILMS_COUNT);
-    },
-  );

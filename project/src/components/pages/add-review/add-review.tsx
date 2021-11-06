@@ -1,24 +1,20 @@
-import { generatePath, useParams } from 'react-router';
-import { Film } from 'src/types/film';
-import { NamedRoute, RouteParams } from 'src/types/route-params';
+import { generatePath } from 'react-router';
+import { NamedRoute } from 'src/types/route-params';
 import { AppRoutes } from 'src/constants';
 import AddReviewForm from '@components/layout/add-review-form/add-review-form';
 import Breadcrumbs from '@components/layout/breadcrumbs/breadcrumbs';
 import Header from '@components/layout/header/header';
-import { useSelector } from 'react-redux';
-import { getFilms } from '@store/film/selectors';
+import { useFilmLoad } from '@hooks/useFilmLoad';
 
 function AddReview(): JSX.Element {
-  const { id } = useParams<RouteParams>();
-
-  const films = useSelector(getFilms);
-  const film = films.find((item) => item.id === Number(id));
+  const film = useFilmLoad();
 
   const {
+    id,
     name,
     posterImage,
     backgroundImage,
-  } = film as Film;
+  } = film;
 
   const routes: Array<NamedRoute> = [
     {

@@ -3,7 +3,7 @@ import Header from '../header/header';
 type Props = {
   backgroundImage?: string;
   alt?: string;
-}
+};
 
 function FilmCardHeader({ backgroundImage, alt }: Props): JSX.Element {
   return (

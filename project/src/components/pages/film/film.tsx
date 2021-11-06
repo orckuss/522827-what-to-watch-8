@@ -1,9 +1,6 @@
-import { generatePath, useParams } from 'react-router';
+import { generatePath } from 'react-router';
 import { Link } from 'react-router-dom';
-import { COMMENTS_MOCK } from 'src/mocks/comments';
-import { Film as FilmData } from 'src/types/film';
-import { RouteParams } from 'src/types/route-params';
-import { AppRoutes } from 'src/constants';
+import { AppRoutes, AuthStatus } from 'src/constants';
 import Details from '@components/layout/details/details';
 import Footer from '@components/layout/footer/footer';
 import Overview from '@components/layout/overview/overview';
@@ -11,19 +8,21 @@ import Reviews from '@components/layout/reviews/reviews';
 import Tabs, { TabConfig } from '@components/layout/tabs/tabs';
 import SimilarFilmCardList from '@components/layout/similar-film-card-list/similar-film-card-list';
 import { useSelector } from 'react-redux';
-import { getFilms } from '@store/film/selectors';
 import Poster from '@components/layout/poster/poster';
 import FilmCardButtons from '@components/layout/film-card-buttons/film-card-buttons';
 import FilmCardHeader from '@components/layout/film-card-header/film-card-header';
+import { getComments as getCommentsFromStore } from '@store/active-film/selectors';
+import { useFilmLoad } from '@hooks/useFilmLoad';
+import { getAuthStatus } from '@store/user/selectors';
 
 function Film(): JSX.Element {
-  const { id } = useParams<RouteParams>();
-  const films = useSelector(getFilms);
-  const film = films.find((item) => item.id === Number(id)) as FilmData;
+  const film = useFilmLoad();
+  const comments = useSelector(getCommentsFromStore);
 
-  const comments = COMMENTS_MOCK;
+  const authStatus = useSelector(getAuthStatus);
 
   const {
+    id,
     backgroundImage,
     name,
     posterImage,
@@ -57,13 +56,15 @@ function Film(): JSX.Element {
             <FilmCardButtons
               className="film-card__desc"
               film={film}
-            >
-              <Link
-                to={generatePath(AppRoutes.Review, { id })}
-                className="btn film-card__button"
-              >
-                Add review
-              </Link>
+            >{
+                authStatus === AuthStatus.Auth &&
+                <Link
+                  to={generatePath(AppRoutes.Review, { id })}
+                  className="btn film-card__button"
+                >
+                  Add review
+                </Link>
+              }
             </FilmCardButtons>
           </div>
         </div>

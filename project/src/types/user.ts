@@ -11,4 +11,4 @@ export type User = BaseInfo & {
   email: string;
   avatarUrl: string;
   token: string;
-}
+};

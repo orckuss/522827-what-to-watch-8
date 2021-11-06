@@ -1,10 +1,10 @@
-import { resetFilmCardsCount } from '@store/film/actions';
+import { resetFilmCardsCount } from '@store/films/actions';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 type Props = {
   className?: string;
-}
+};
 
 function Logo({ className = '' }: Props): JSX.Element {
   const dispatch = useDispatch();

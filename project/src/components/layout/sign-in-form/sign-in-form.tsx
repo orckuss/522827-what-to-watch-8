@@ -5,7 +5,7 @@ import { EMAIL_PATTERN, PASSWORD_PATTERN } from 'src/constants';
 
 type Props = {
   className?: string;
-}
+};
 
 function SignInForm({ className = '' }: Props): JSX.Element {
   const [email, setEmail] = useState<string>('');

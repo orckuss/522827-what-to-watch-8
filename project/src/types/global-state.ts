@@ -1,14 +1,16 @@
 import { AuthStatus } from 'src/constants';
+import { Comment } from './comment';
 import { Film } from './film';
 import { Genre } from './genre';
 import { UserInfo } from './user';
 
 export type GlobalState = {
-  film: FilmState;
+  films: FilmsState;
   user: UserState;
-}
+  activeFilm: ActiveFilmState;
+};
 
-export type FilmState = {
+export type FilmsState = {
   genre: Genre;
   films: Array<Film>;
   filmsLoaded: boolean;
@@ -18,4 +20,11 @@ export type FilmState = {
 export type UserState = {
   authorizationStatus: AuthStatus;
   info: UserInfo;
-}
+};
+
+export type ActiveFilmState = {
+  film: Film;
+  similar: Array<Film>;
+  comments: Array<Comment>;
+  isCommentSending: boolean;
+};

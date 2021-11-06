@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { NamedRoute } from 'src/types/route-params';
 
 type Props = {
-  routes: Array<NamedRoute>
+  routes: Array<NamedRoute>;
 };
 
 function Breadcrumbs({ routes }: Props): JSX.Element {
