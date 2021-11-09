@@ -1,7 +1,7 @@
-import { Reducer } from 'redux';
+import { createReducer } from '@reduxjs/toolkit';
 import { DEFAULT_FILM_DATA } from 'src/constants';
-import { Actions, ActionType } from 'src/types/actions';
 import { ActiveFilmState } from 'src/types/global-state';
+import { endSendingComment, setActiveFilm, setComments, setSimilar, startSendingComment } from './actions';
 
 const initialState: ActiveFilmState = {
   film: DEFAULT_FILM_DATA,
@@ -10,24 +10,12 @@ const initialState: ActiveFilmState = {
   isCommentSending: false,
 };
 
-export const reducer: Reducer<ActiveFilmState, Actions> = (state = initialState, action): ActiveFilmState => {
-  switch (action.type) {
-    case ActionType.SetFilmById:
-      return { ...state, film: action.payload };
-
-    case ActionType.SetSimilar:
-      return { ...state, similar: action.payload };
-
-    case ActionType.SetComments:
-      return { ...state, comments: action.payload };
-
-    case ActionType.StartSendingComment:
-      return { ...state, isCommentSending: true };
-
-    case ActionType.EndSendingComment:
-      return { ...state, isCommentSending: false };
-
-    default:
-      return state;
-  }
-};
+export const reducer = createReducer<ActiveFilmState>(initialState, (builder) => {
+  builder
+    .addCase(setActiveFilm, (state, action) => { state.film = action.payload; })
+    .addCase(setSimilar, (state, action) => { state.similar = action.payload; })
+    .addCase(setComments, (state, action) => { state.comments = action.payload; })
+    .addCase(startSendingComment, (state) => { state.isCommentSending = true; })
+    .addCase(endSendingComment, (state) => { state.isCommentSending = false; })
+    .addDefaultCase((state) => state);
+});

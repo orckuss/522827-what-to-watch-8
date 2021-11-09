@@ -8,8 +8,6 @@ export const changeGenre = createAction(
   (payload: Genre) => ({ payload }),
 );
 
-export const resetFilter = createAction(ActionType.ResetFilter);
-
 export const increaseFilmCardsCount = createAction(ActionType.IncreaseFilmCardsCount);
 
 export const resetFilmCardsCount = createAction(ActionType.ResetFilmCardsCount);

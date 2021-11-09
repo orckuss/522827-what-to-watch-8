@@ -4,7 +4,6 @@ import {
   changeGenre,
   increaseFilmCardsCount,
   resetFilmCardsCount,
-  resetFilter,
   setfilms,
   setFilmsLoaded
 } from '@store/films/actions';
@@ -22,7 +21,6 @@ import { redirect } from '@store/actions';
 export enum ActionType {
   Redirect = 'app/redirect',
   ChangeGenre = 'films/changeGenre',
-  ResetFilter = 'films/resetFilter',
   IncreaseFilmCardsCount = 'films/increaseFilmCardsCount',
   ResetFilmCardsCount = 'films/resetFilmCardsCount',
   SetFilms = 'films/setFilms',
@@ -42,7 +40,6 @@ export type ThunkApiDispatch = ThunkDispatch<GlobalState, AxiosInstance, Actions
 export type Actions =
   | ReturnType<typeof redirect>
   | ReturnType<typeof changeGenre>
-  | ReturnType<typeof resetFilter>
   | ReturnType<typeof increaseFilmCardsCount>
   | ReturnType<typeof resetFilmCardsCount>
   | ReturnType<typeof setfilms>
