@@ -22,6 +22,7 @@ export const enum FailMessage {
   PostComment = 'Не удалось отправить комментарий',
   Login = 'Авторизация не удалась',
   GetFilms = 'Не удалось получить список фильмов',
+  GetPromo = 'Не удалось получить промо фильм',
 }
 
 export const DEFALUT_ACTIVE_GENRE: Genre = 'All genres';
@@ -34,6 +35,7 @@ export const enum APIRoutes {
   Comments = '/comments',
   Login = '/login',
   Logout = '/logout',
+  Promo = '/promo',
 }
 
 export const REQUEST_BASE_URL = 'https://8.react.pages.academy/wtw';

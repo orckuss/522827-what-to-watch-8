@@ -29,7 +29,7 @@ function App({ promoFilm }: Props): JSX.Element {
     <BrowserRouter history={browserHistory}>
       <Switch>
         <Route path={AppRoutes.Main} exact>
-          <Main promoFilm={promoFilm} />
+          <Main />
         </Route>
 
         <Route path={AppRoutes.SignIn} exact>
