@@ -8,6 +8,7 @@ export type GlobalState = {
   films: FilmsState;
   user: UserState;
   activeFilm: ActiveFilmState;
+  promo: PromoFilmState;
 };
 
 export type FilmsState = {
@@ -27,4 +28,9 @@ export type ActiveFilmState = {
   similar: Array<Film>;
   comments: Array<Comment>;
   isCommentSending: boolean;
+};
+
+export type PromoFilmState = {
+  film: Film;
+  isLoaded: boolean;
 };

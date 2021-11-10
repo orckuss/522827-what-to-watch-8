@@ -1,10 +1,9 @@
-import { Film } from 'src/types/film';
+import { getActiveFilm } from '@store/active-film/selectors';
+import { useSelector } from 'react-redux';
 
-type Props = {
-  film: Film;
-};
+function Details(): JSX.Element {
+  const film = useSelector(getActiveFilm);
 
-function Details({ film }: Props): JSX.Element {
   const {
     director,
     genre,

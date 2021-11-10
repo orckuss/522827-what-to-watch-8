@@ -1,26 +1,23 @@
+import { createAction } from '@reduxjs/toolkit';
 import { ActionType } from 'src/types/actions';
 import { Comment } from 'src/types/comment';
 import { Film } from 'src/types/film';
 
-export const setActiveFilm = (payload: Film) => ({
-  type: ActionType.SetFilmById,
-  payload,
-} as const);
+export const setActiveFilm = createAction(
+  ActionType.SetFilmById,
+  (payload: Film) => ({ payload }),
+);
 
-export const setSimilar = (payload: Array<Film>) => ({
-  type: ActionType.SetSimilar,
-  payload,
-} as const);
+export const setSimilar = createAction(
+  ActionType.SetSimilar,
+  (payload: Array<Film>) => ({ payload }),
+);
 
-export const setComments = (payload: Array<Comment>) => ({
-  type: ActionType.SetComments,
-  payload,
-} as const);
+export const setComments = createAction(
+  ActionType.SetComments,
+  (payload: Array<Comment>) => ({ payload }),
+);
 
-export const startSendingComment = () => ({
-  type: ActionType.StartSendingComment,
-} as const);
+export const startSendingComment = createAction(ActionType.StartSendingComment);
 
-export const endSendingComment = () => ({
-  type: ActionType.EndSendingComment,
-} as const);
+export const endSendingComment = createAction(ActionType.EndSendingComment);

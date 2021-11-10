@@ -1,5 +1,5 @@
 import StarRadioButton from '@components/ui/star-radio-button/star-radio-button';
-import { ChangeEventHandler } from 'react';
+import React, { ChangeEventHandler } from 'react';
 
 type Props = {
   count: number;
@@ -27,4 +27,4 @@ function RatingFormControl({ count, onChange }: Props): JSX.Element {
   );
 }
 
-export default RatingFormControl;
+export default React.memo(RatingFormControl);

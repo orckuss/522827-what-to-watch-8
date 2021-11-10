@@ -11,13 +11,11 @@ import { useSelector } from 'react-redux';
 import Poster from '@components/layout/poster/poster';
 import FilmCardButtons from '@components/layout/film-card-buttons/film-card-buttons';
 import FilmCardHeader from '@components/layout/film-card-header/film-card-header';
-import { getComments as getCommentsFromStore } from '@store/active-film/selectors';
 import { useFilmLoad } from '@hooks/useFilmLoad';
 import { getAuthStatus } from '@store/user/selectors';
 
 function Film(): JSX.Element {
   const film = useFilmLoad();
-  const comments = useSelector(getCommentsFromStore);
 
   const authStatus = useSelector(getAuthStatus);
 
@@ -31,15 +29,15 @@ function Film(): JSX.Element {
   const tabs: Array<TabConfig> = [
     {
       caption: 'Overview',
-      component: <Overview film={film} />,
+      component: <Overview />,
     },
     {
       caption: 'Details',
-      component: <Details film={film} />,
+      component: <Details />,
     },
     {
       caption: 'Reviews',
-      component: <Reviews comments={comments} />,
+      component: <Reviews />,
     },
   ];
 

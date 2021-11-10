@@ -4,7 +4,6 @@ import {
   changeGenre,
   increaseFilmCardsCount,
   resetFilmCardsCount,
-  resetFilter,
   setfilms,
   setFilmsLoaded
 } from '@store/films/actions';
@@ -18,11 +17,11 @@ import {
   endSendingComment
 } from '@store/active-film/actions';
 import { redirect } from '@store/actions';
+import { setPromo, setPromoLoaded } from '@store/promo/actions';
 
 export enum ActionType {
   Redirect = 'app/redirect',
   ChangeGenre = 'films/changeGenre',
-  ResetFilter = 'films/resetFilter',
   IncreaseFilmCardsCount = 'films/increaseFilmCardsCount',
   ResetFilmCardsCount = 'films/resetFilmCardsCount',
   SetFilms = 'films/setFilms',
@@ -34,6 +33,8 @@ export enum ActionType {
   SetComments = 'film/setComments',
   StartSendingComment = 'film/startSendingComment',
   EndSendingComment = 'film/endSendingComment',
+  SetPromo = 'promo/setPromo',
+  SetPromoLoaded = 'promo/setLoaded',
 }
 
 export type ThunkActionResponse<R = Promise<void>> = ThunkAction<R, GlobalState, AxiosInstance, Actions>;
@@ -42,7 +43,6 @@ export type ThunkApiDispatch = ThunkDispatch<GlobalState, AxiosInstance, Actions
 export type Actions =
   | ReturnType<typeof redirect>
   | ReturnType<typeof changeGenre>
-  | ReturnType<typeof resetFilter>
   | ReturnType<typeof increaseFilmCardsCount>
   | ReturnType<typeof resetFilmCardsCount>
   | ReturnType<typeof setfilms>
@@ -53,4 +53,6 @@ export type Actions =
   | ReturnType<typeof setSimilar>
   | ReturnType<typeof setComments>
   | ReturnType<typeof startSendingComment>
-  | ReturnType<typeof endSendingComment>;
+  | ReturnType<typeof endSendingComment>
+  | ReturnType<typeof setPromo>
+  | ReturnType<typeof setPromoLoaded>;

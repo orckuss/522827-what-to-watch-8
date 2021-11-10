@@ -5,13 +5,12 @@ import Footer from '@components/layout/footer/footer';
 import GenreList from '@components/layout/genre-list/genre-list';
 import Poster from '@components/layout/poster/poster';
 import ShowMoreBtn from '@components/ui/show-more-btn/show-more-btn';
-import { Film } from 'src/types/film';
+import { getPromoFilm } from '@store/promo/selectors';
+import { useSelector } from 'react-redux';
 
-type Props = {
-  promoFilm: Film;
-};
+function Main(): JSX.Element {
+  const promoFilm = useSelector(getPromoFilm);
 
-function Main({ promoFilm }: Props): JSX.Element {
   const {
     backgroundImage,
     name,
