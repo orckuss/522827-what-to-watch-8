@@ -1,11 +1,10 @@
-import { Comment } from 'src/types/comment';
+import { getComments } from '@store/active-film/selectors';
+import { useSelector } from 'react-redux';
 import './reviews.css';
 
-type Props = {
-  comments: Array<Comment>;
-};
+function Reviews(): JSX.Element {
+  const comments = useSelector(getComments);
 
-function Reviews({ comments }: Props): JSX.Element {
   return (
     <div className="film-card__reviews">
       {comments.map((comment) => (
