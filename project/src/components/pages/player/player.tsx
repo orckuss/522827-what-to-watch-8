@@ -1,20 +1,16 @@
 import IconFullScreen from '@components/ui/icons/icon-full-screen/icon-full-screen';
 import IconPlay from '@components/ui/icons/icon-play/icon-play';
 import ProgressBar from '@components/ui/progress-bar/progress-bar';
+import { useFilmLoad } from '@hooks/useFilmLoad';
 import { useHistory } from 'react-router';
-import { Film } from 'src/types/film';
 
-type Props = {
-  film: Film;
-};
-
-function Player({ film }: Props): JSX.Element {
+function Player(): JSX.Element {
   const history = useHistory();
 
   const {
     posterImage,
     videoLink,
-  } = film;
+  } = useFilmLoad();
 
   return (
     <div className="player">

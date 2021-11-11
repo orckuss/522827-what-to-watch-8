@@ -1,6 +1,5 @@
 import { Router as BrowserRouter, Switch, Route } from 'react-router-dom';
 import { AppRoutes, AuthStatus } from 'src/constants';
-import { Film as FilmData } from 'src/types/film';
 import AddReview from '../pages/add-review/add-review';
 import Film from '@components/pages/film/film';
 import Main from '@components/pages/main/main';
@@ -15,11 +14,7 @@ import { getFilmsLoadedState } from '@store/films/selectors';
 import { browserHistory } from 'src/utils/browser-history';
 import { getAuthStatus } from '@store/user/selectors';
 
-type Props = {
-  promoFilm: FilmData;
-};
-
-function App({ promoFilm }: Props): JSX.Element {
+function App(): JSX.Element {
   const authStatus = useSelector(getAuthStatus);
   const isFilmsLoaded = useSelector(getFilmsLoadedState);
 
@@ -49,7 +44,7 @@ function App({ promoFilm }: Props): JSX.Element {
         </PrivateRoute>
 
         <Route path={AppRoutes.Player} exact>
-          <Player film={promoFilm} />
+          <Player />
         </Route>
 
         <Route>
