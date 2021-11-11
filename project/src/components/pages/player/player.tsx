@@ -13,8 +13,9 @@ import { useHistory } from 'react-router';
 function Player(): JSX.Element {
   const history = useHistory();
   const isLoading = useSelector(getRequestStatus);
-  const [isPlayed, setPlayed] = useState<boolean>(false);
   const ref = useRef<HTMLVideoElement | null>(null);
+  const [isPlayed, setPlayed] = useState<boolean>(false);
+  const [currentTime, setCurrentTime] = useState<number>(0);
 
   const {
     previewImage,
@@ -27,13 +28,21 @@ function Player(): JSX.Element {
       : ref.current?.pause();
   }, [isPlayed]);
 
+  const getTImePersent = (): number =>
+    ref.current?.duration ? Math.round(currentTime / ref.current?.duration * 100) : 0;
+
+  const getRemainingTime = (): number =>
+    ref.current?.duration ? Math.round(ref.current.duration - currentTime) : 0;
+
   return isLoading ? <Spinner /> : (
     <div className="player">
       <video
         ref={ref}
         src={videoLink}
         className="player__video"
+        preload="metadata"
         poster={previewImage}
+        onTimeUpdate={(evt) => setCurrentTime(evt.currentTarget.currentTime)}
       />
 
       <button
@@ -46,9 +55,9 @@ function Player(): JSX.Element {
 
       <div className="player__controls">
         <div className="player__controls-row">
-          <ProgressBar />
+          <ProgressBar persent={getTImePersent()} />
 
-          <div className="player__time-value">1:30:29</div>
+          <div className="player__time-value">{getRemainingTime()}</div>
         </div>
 
         <div className="player__controls-row">

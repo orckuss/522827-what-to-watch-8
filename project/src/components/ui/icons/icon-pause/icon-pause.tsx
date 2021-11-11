@@ -1,3 +1,5 @@
+import React from 'react';
+
 function IconPause(): JSX.Element {
   return (
     <svg
@@ -10,4 +12,4 @@ function IconPause(): JSX.Element {
   );
 }
 
-export default IconPause;
+export default React.memo(IconPause);
