@@ -10,4 +10,4 @@ export const getSimilar: Selector<GlobalState, Array<Film>> = (state) => state.a
 
 export const getComments: Selector<GlobalState, Array<Comment>> = (state) => state.activeFilm.comments;
 
-export const getSendingCommentStatus: Selector<GlobalState, boolean> = (state) => state.activeFilm.isCommentSending;
+export const getRequestStatus: Selector<GlobalState, boolean> = (state) => state.activeFilm.requestStatus;

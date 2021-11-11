@@ -12,9 +12,9 @@ import { GlobalState } from './global-state';
 import {
   setActiveFilm,
   setComments,
-  startSendingComment,
+  startRequest,
   setSimilar,
-  endSendingComment
+  endRequest
 } from '@store/active-film/actions';
 import { redirect } from '@store/actions';
 import { setPromo, setPromoLoaded } from '@store/promo/actions';
@@ -31,8 +31,8 @@ export enum ActionType {
   SetFilmById = 'film/setFilm',
   SetSimilar = 'film/setSimilar',
   SetComments = 'film/setComments',
-  StartSendingComment = 'film/startSendingComment',
-  EndSendingComment = 'film/endSendingComment',
+  StartRequest = 'film/startRequest',
+  EndRequest = 'film/endRequest',
   SetPromo = 'promo/setPromo',
   SetPromoLoaded = 'promo/setLoaded',
 }
@@ -52,7 +52,7 @@ export type Actions =
   | ReturnType<typeof setActiveFilm>
   | ReturnType<typeof setSimilar>
   | ReturnType<typeof setComments>
-  | ReturnType<typeof startSendingComment>
-  | ReturnType<typeof endSendingComment>
+  | ReturnType<typeof startRequest>
+  | ReturnType<typeof endRequest>
   | ReturnType<typeof setPromo>
   | ReturnType<typeof setPromoLoaded>;

@@ -18,6 +18,6 @@ export const setComments = createAction(
   (payload: Array<Comment>) => ({ payload }),
 );
 
-export const startSendingComment = createAction(ActionType.StartSendingComment);
+export const startRequest = createAction(ActionType.StartRequest);
 
-export const endSendingComment = createAction(ActionType.EndSendingComment);
+export const endRequest = createAction(ActionType.EndRequest);

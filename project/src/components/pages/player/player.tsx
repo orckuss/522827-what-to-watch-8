@@ -1,18 +1,22 @@
+import Spinner from '@components/layout/spinner/spinner';
 import IconFullScreen from '@components/ui/icons/icon-full-screen/icon-full-screen';
 import IconPlay from '@components/ui/icons/icon-play/icon-play';
 import ProgressBar from '@components/ui/progress-bar/progress-bar';
 import { useFilmLoad } from '@hooks/useFilmLoad';
+import { getRequestStatus } from '@store/active-film/selectors';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 
 function Player(): JSX.Element {
   const history = useHistory();
+  const isLoading = useSelector(getRequestStatus);
 
   const {
     posterImage,
     videoLink,
   } = useFilmLoad();
 
-  return (
+  return isLoading ? <Spinner /> : (
     <div className="player">
       <video
         src={videoLink}
