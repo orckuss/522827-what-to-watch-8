@@ -1,5 +1,5 @@
-import FullScreenButton from '@components/ui/full-screen-button/full-screen-button';
-import PlayButton from '@components/ui/play-button/play-button';
+import IconFullScreen from '@components/ui/icons/icon-full-screen/icon-full-screen';
+import IconPlay from '@components/ui/icons/icon-play/icon-play';
 import ProgressBar from '@components/ui/progress-bar/progress-bar';
 import { useHistory } from 'react-router';
 import { Film } from 'src/types/film';
@@ -40,11 +40,23 @@ function Player({ film }: Props): JSX.Element {
         </div>
 
         <div className="player__controls-row">
-          <PlayButton />
+          <button
+            type="button"
+            className="player__play"
+          >
+            <IconPlay />
+            <span>Play</span>
+          </button>
 
           <div className="player__name">Transpotting</div>
 
-          <FullScreenButton />
+          <button
+            type="button"
+            className="player__full-screen"
+          >
+            <IconFullScreen />
+            <span>Full screen</span>
+          </button>
         </div>
       </div>
     </div>

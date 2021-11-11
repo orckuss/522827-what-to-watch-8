@@ -1,3 +1,5 @@
+import IconPlay from '@components/ui/icons/icon-play/icon-play';
+import IconAdd from '@components/ui/icons/icon-add/icon-add';
 import { ReactNode } from 'react';
 import { Link, generatePath } from 'react-router-dom';
 import { AppRoutes } from 'src/constants';
@@ -30,13 +32,7 @@ function FilmCardButtons({ film, className = '', children }: Props): JSX.Element
           to={generatePath(AppRoutes.Player, { id })}
           className="btn btn--play film-card__button"
         >
-          <svg
-            viewBox="0 0 19 19"
-            width="19"
-            height="19"
-          >
-            <use xlinkHref="#play-s"></use>
-          </svg>
+          <IconPlay />
           <span>Play</span>
         </Link>
 
@@ -44,13 +40,7 @@ function FilmCardButtons({ film, className = '', children }: Props): JSX.Element
           className="btn btn--list film-card__button"
           type="button"
         >
-          <svg
-            viewBox="0 0 19 20"
-            width="19"
-            height="20"
-          >
-            <use xlinkHref="#add"></use>
-          </svg>
+          <IconAdd />
           <span>My list</span>
         </button>
 
