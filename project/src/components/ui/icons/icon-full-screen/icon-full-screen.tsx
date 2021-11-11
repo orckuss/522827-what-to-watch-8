@@ -1,3 +1,5 @@
+import React from 'react';
+
 function IconFullScreen(): JSX.Element {
   return (
     <svg
@@ -10,4 +12,4 @@ function IconFullScreen(): JSX.Element {
   );
 }
 
-export default IconFullScreen;
+export default React.memo(IconFullScreen);
