@@ -1,13 +1,9 @@
-/* eslint-disable no-console */
-import Spinner from '@components/layout/spinner/spinner';
 import IconFullScreen from '@components/ui/icons/icon-full-screen/icon-full-screen';
 import IconPause from '@components/ui/icons/icon-pause/icon-pause';
 import IconPlay from '@components/ui/icons/icon-play/icon-play';
 import ProgressBar from '@components/ui/progress-bar/progress-bar';
 import { useFilmLoad } from '@hooks/useFilmLoad';
-import { getRequestStatus } from '@store/active-film/selectors';
 import { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { MILISECOND_MEASURE, PERCENT_MEASURE, PLAYER_ZERO_TIME } from 'src/constants';
 
@@ -15,7 +11,6 @@ const timeFormater = new Intl.DateTimeFormat('ru', { timeZone: 'UTC', timeStyle:
 
 function Player(): JSX.Element {
   const history = useHistory();
-  const isLoading = useSelector(getRequestStatus);
   const ref = useRef<HTMLVideoElement | null>(null);
   const [isPlayed, setPlayed] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<number>(PLAYER_ZERO_TIME);
@@ -47,9 +42,7 @@ function Player(): JSX.Element {
   const getTImePercent = (): number =>
     duration ? Math.round(currentTime / duration * PERCENT_MEASURE) : PLAYER_ZERO_TIME;
 
-  console.log('render');
-
-  return isLoading ? <Spinner /> : (
+  return (
     <div className="player">
       <video
         ref={ref}

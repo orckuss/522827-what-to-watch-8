@@ -13,12 +13,14 @@ import { useSelector } from 'react-redux';
 import { getFilmsLoadedState } from '@store/films/selectors';
 import { browserHistory } from 'src/utils/browser-history';
 import { getAuthStatus } from '@store/user/selectors';
+import { getRequestStatus } from '@store/active-film/selectors';
 
 function App(): JSX.Element {
   const authStatus = useSelector(getAuthStatus);
   const isFilmsLoaded = useSelector(getFilmsLoadedState);
+  const isLoading = useSelector(getRequestStatus);
 
-  const condition = authStatus !== AuthStatus.Unknown && isFilmsLoaded;
+  const condition = authStatus !== AuthStatus.Unknown && isFilmsLoaded && !isLoading;
 
   return condition ? (
     <BrowserRouter history={browserHistory}>
