@@ -21,6 +21,7 @@ export type FilmsState = {
 export type UserState = {
   authorizationStatus: AuthStatus;
   info: UserInfo;
+  favoriteFilms: Array<Film>;
 };
 
 export type ActiveFilmState = {

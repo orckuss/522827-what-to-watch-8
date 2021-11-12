@@ -6,6 +6,7 @@ import { setAuthStatus, setUserInfo } from './actions';
 const initialState: UserState = {
   authorizationStatus: AuthStatus.Unknown,
   info: null,
+  favoriteFilms: [],
 };
 
 export const reducer = createReducer<UserState>(initialState, (builder) => {
