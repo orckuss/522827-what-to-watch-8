@@ -9,13 +9,17 @@ import { getRequestStatus } from '@store/active-film/selectors';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
+import { MILISECOND_MEASURE, PERCENT_MEASURE, PLAYER_ZERO_TIME } from 'src/constants';
+
+const timeFormater = new Intl.DateTimeFormat('ru', { timeZone: 'UTC', timeStyle: 'medium' });
 
 function Player(): JSX.Element {
   const history = useHistory();
   const isLoading = useSelector(getRequestStatus);
   const ref = useRef<HTMLVideoElement | null>(null);
   const [isPlayed, setPlayed] = useState<boolean>(false);
-  const [currentTime, setCurrentTime] = useState<number>(0);
+  const [currentTime, setCurrentTime] = useState<number>(PLAYER_ZERO_TIME);
+  const [duration, setDuration] = useState<number>(PLAYER_ZERO_TIME);
 
   const {
     previewImage,
@@ -28,11 +32,22 @@ function Player(): JSX.Element {
       : ref.current?.pause();
   }, [isPlayed]);
 
-  const getTImePersent = (): number =>
-    ref.current?.duration ? Math.round(currentTime / ref.current?.duration * 100) : 0;
+  const getForamatedRemainingTime = (): string => {
+    const formatedTime = timeFormater.format((duration - currentTime) * MILISECOND_MEASURE);
 
-  const getRemainingTime = (): number =>
-    ref.current?.duration ? Math.round(ref.current.duration - currentTime) : 0;
+    let result = formatedTime.split(':');
+
+    if (Number(result[0]) === PLAYER_ZERO_TIME) {
+      result = result.slice(1);
+    }
+
+    return `-${result.join(':')}`;
+  };
+
+  const getTImePercent = (): number =>
+    duration ? Math.round(currentTime / duration * PERCENT_MEASURE) : PLAYER_ZERO_TIME;
+
+  console.log('render');
 
   return isLoading ? <Spinner /> : (
     <div className="player">
@@ -42,7 +57,10 @@ function Player(): JSX.Element {
         className="player__video"
         preload="metadata"
         poster={previewImage}
-        onTimeUpdate={(evt) => setCurrentTime(evt.currentTarget.currentTime)}
+        onTimeUpdate={(evt) => setCurrentTime(Math.round(evt.currentTarget.currentTime))}
+        onDurationChange={(evt) => setDuration(Math.round(evt.currentTarget.duration))}
+        onPauseCapture={(evt) => setPlayed(!evt.currentTarget.paused)}
+        onPlayCapture={(evt) => setPlayed(!evt.currentTarget.paused)}
       />
 
       <button
@@ -55,9 +73,9 @@ function Player(): JSX.Element {
 
       <div className="player__controls">
         <div className="player__controls-row">
-          <ProgressBar persent={getTImePersent()} />
+          <ProgressBar persent={getTImePercent()} />
 
-          <div className="player__time-value">{getRemainingTime()}</div>
+          <div className="player__time-value">{getForamatedRemainingTime()}</div>
         </div>
 
         <div className="player__controls-row">

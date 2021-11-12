@@ -75,3 +75,9 @@ export const DEFAULT_FILM_DATA: Film = {
   starring: [],
   videoLink: '',
 };
+
+export const MILISECOND_MEASURE = 1000;
+
+export const PERCENT_MEASURE = 100;
+
+export const PLAYER_ZERO_TIME = 0;
