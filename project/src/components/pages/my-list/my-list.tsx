@@ -1,4 +1,4 @@
-import FilteredFilmCardList from '@components/layout/filtered-film-card-list/filtered-film-card-list';
+import FavoriteFilmCardList from '@components/layout/favorite-film-card-list/favorite-film-card-list';
 import Footer from '@components/layout/footer/footer';
 import Header from '@components/layout/header/header';
 
@@ -12,7 +12,7 @@ function MyList(): JSX.Element {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <FilteredFilmCardList />
+        <FavoriteFilmCardList />
       </section>
 
       <Footer />
