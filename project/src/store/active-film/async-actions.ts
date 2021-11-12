@@ -30,7 +30,7 @@ export const getSimilar = (id: number): ThunkActionResponse =>
   async (dispatch, _getState, api) => {
     try {
       const response = await api.get<Array<Record<string, unknown>>>(`${APIRoutes.Films}/${id}/similar`);
-      const similar = response.data.map((item) => adapter.transform<Film>(item));
+      const similar = adapter.transformArray<Film>(response.data);
       dispatch(setSimilar(similar));
     } catch (error) {
       dispatch(setSimilar([]));

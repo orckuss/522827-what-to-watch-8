@@ -7,7 +7,7 @@ import {
   setfilms,
   setFilmsLoaded
 } from '@store/films/actions';
-import { setAuthStatus, setUserInfo } from '@store/user/actions';
+import { setAuthStatus, setFavoriteFilms, setUserInfo } from '@store/user/actions';
 import { GlobalState } from './global-state';
 import {
   setActiveFilm,
@@ -28,6 +28,7 @@ export enum ActionType {
   SetFilmsLoaded = 'films/setFilmsLoaded',
   SetAuthStatus = 'user/setAuthStatus',
   SetUserInfo = 'user/setUserInfo',
+  SetFavoriteFilms = 'user/setFavoriteFilms',
   SetFilmById = 'film/setFilm',
   SetSimilar = 'film/setSimilar',
   SetComments = 'film/setComments',
@@ -49,6 +50,7 @@ export type Actions =
   | ReturnType<typeof setFilmsLoaded>
   | ReturnType<typeof setAuthStatus>
   | ReturnType<typeof setUserInfo>
+  | ReturnType<typeof setFavoriteFilms>
   | ReturnType<typeof setActiveFilm>
   | ReturnType<typeof setSimilar>
   | ReturnType<typeof setComments>

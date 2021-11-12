@@ -9,7 +9,7 @@ import { Film } from 'src/types/film';
 import { AuthRequest, AuthResponse } from 'src/types/user';
 import { SnakeToCamelAdapter } from 'src/utils/snake-to-camel-adapter';
 import { TokenStorage } from 'src/utils/token';
-import { setAuthStatus, setUserInfo } from './actions';
+import { setAuthStatus, setFavoriteFilms, setUserInfo } from './actions';
 
 const adapter = new SnakeToCamelAdapter();
 const storage = new TokenStorage(AUTH_TOKEN_KEY_NAME);
@@ -62,4 +62,11 @@ export const changeFavorite = (filmId: number, data: FavoriteRequestData): Thunk
       (error as AxiosError).response?.status === HttpCode.Unauthorized &&
         toast.error(FailMessage.Unauthorized);
     }
+  };
+
+export const getFavoriteFilms = (): ThunkActionResponse =>
+  async (dispatch, _getState, api) => {
+    const response = await api.get<Array<Record<string, unknown>>>(APIRoutes.Favorite);
+    const films = adapter.transformArray<Film>(response.data);
+    dispatch(setFavoriteFilms(films));
   };
