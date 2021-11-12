@@ -1,9 +1,12 @@
 import IconPlay from '@components/ui/icons/icon-play/icon-play';
 import IconAdd from '@components/ui/icons/icon-add/icon-add';
+import IconCheck from '@components/ui/icons/icon-check/icon-check';
 import { ReactNode } from 'react';
 import { Link, generatePath } from 'react-router-dom';
-import { AppRoutes } from 'src/constants';
+import { AppRoutes, FavoriteRequestData } from 'src/constants';
 import { Film } from 'src/types/film';
+import { useDispatch } from 'react-redux';
+import { changeFavorite } from '@store/user/async-actions';
 
 type Props = {
   film: Film;
@@ -17,7 +20,10 @@ function FilmCardButtons({ film, className = '', children }: Props): JSX.Element
     name,
     genre,
     released,
+    isFavorite,
   } = film;
+
+  const dispatch = useDispatch();
 
   return (
     <div className={className} >
@@ -39,8 +45,9 @@ function FilmCardButtons({ film, className = '', children }: Props): JSX.Element
         <button
           className="btn btn--list film-card__button"
           type="button"
+          onClick={() => dispatch(changeFavorite(id, isFavorite ? FavoriteRequestData.Delete : FavoriteRequestData.Add))}
         >
-          <IconAdd />
+          {isFavorite ? <IconCheck /> : <IconAdd />}
           <span>My list</span>
         </button>
 
