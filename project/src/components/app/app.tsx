@@ -29,11 +29,21 @@ function App(): JSX.Element {
           <Main />
         </Route>
 
-        <Route path={AppRoutes.SignIn} exact>
+        <PrivateRoute
+          path={AppRoutes.SignIn}
+          exact
+          authStatus={AuthStatus.NoAuth}
+          redirect={AppRoutes.Main}
+        >
           <SignIn />
-        </Route>
+        </PrivateRoute>
 
-        <PrivateRoute path={AppRoutes.MyList} exact>
+        <PrivateRoute
+          path={AppRoutes.MyList}
+          exact
+          authStatus={AuthStatus.Auth}
+          redirect={AppRoutes.SignIn}
+        >
           <MyList />
         </PrivateRoute>
 
@@ -41,7 +51,12 @@ function App(): JSX.Element {
           <Film />
         </Route>
 
-        <PrivateRoute path={AppRoutes.Review} exact>
+        <PrivateRoute
+          path={AppRoutes.Review}
+          exact
+          authStatus={AuthStatus.Auth}
+          redirect={AppRoutes.SignIn}
+        >
           <AddReview />
         </PrivateRoute>
 
