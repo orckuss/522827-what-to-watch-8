@@ -7,14 +7,14 @@ import {
   setfilms,
   setFilmsLoaded
 } from '@store/films/actions';
-import { setAuthStatus, setUserInfo } from '@store/user/actions';
+import { setAuthStatus, setFavoriteFilms, setUserInfo } from '@store/user/actions';
 import { GlobalState } from './global-state';
 import {
   setActiveFilm,
   setComments,
-  startSendingComment,
+  startRequest,
   setSimilar,
-  endSendingComment
+  endRequest
 } from '@store/active-film/actions';
 import { redirect } from '@store/actions';
 import { setPromo, setPromoLoaded } from '@store/promo/actions';
@@ -28,11 +28,12 @@ export enum ActionType {
   SetFilmsLoaded = 'films/setFilmsLoaded',
   SetAuthStatus = 'user/setAuthStatus',
   SetUserInfo = 'user/setUserInfo',
+  SetFavoriteFilms = 'user/setFavoriteFilms',
   SetFilmById = 'film/setFilm',
   SetSimilar = 'film/setSimilar',
   SetComments = 'film/setComments',
-  StartSendingComment = 'film/startSendingComment',
-  EndSendingComment = 'film/endSendingComment',
+  StartRequest = 'film/startRequest',
+  EndRequest = 'film/endRequest',
   SetPromo = 'promo/setPromo',
   SetPromoLoaded = 'promo/setLoaded',
 }
@@ -49,10 +50,11 @@ export type Actions =
   | ReturnType<typeof setFilmsLoaded>
   | ReturnType<typeof setAuthStatus>
   | ReturnType<typeof setUserInfo>
+  | ReturnType<typeof setFavoriteFilms>
   | ReturnType<typeof setActiveFilm>
   | ReturnType<typeof setSimilar>
   | ReturnType<typeof setComments>
-  | ReturnType<typeof startSendingComment>
-  | ReturnType<typeof endSendingComment>
+  | ReturnType<typeof startRequest>
+  | ReturnType<typeof endRequest>
   | ReturnType<typeof setPromo>
   | ReturnType<typeof setPromoLoaded>;

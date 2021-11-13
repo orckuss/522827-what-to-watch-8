@@ -23,6 +23,7 @@ export const enum FailMessage {
   Login = 'Авторизация не удалась',
   GetFilms = 'Не удалось получить список фильмов',
   GetPromo = 'Не удалось получить промо фильм',
+  Unauthorized = 'Не удалось выполнить операцию, т.к. пользователь не авторизован',
 }
 
 export const DEFALUT_ACTIVE_GENRE: Genre = 'All genres';
@@ -36,6 +37,7 @@ export const enum APIRoutes {
   Login = '/login',
   Logout = '/logout',
   Promo = '/promo',
+  Favorite = '/favorite',
 }
 
 export const REQUEST_BASE_URL = 'https://8.react.pages.academy/wtw';
@@ -75,3 +77,14 @@ export const DEFAULT_FILM_DATA: Film = {
   starring: [],
   videoLink: '',
 };
+
+export const MILISECOND_MEASURE = 1000;
+
+export const PERCENT_MEASURE = 100;
+
+export const PLAYER_ZERO_TIME = 0;
+
+export const enum FavoriteRequestData {
+  Delete,
+  Add,
+}

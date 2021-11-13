@@ -1,8 +1,17 @@
-import FilteredFilmCardList from '@components/layout/filtered-film-card-list/filtered-film-card-list';
+import FavoriteFilmCardList from '@components/layout/favorite-film-card-list/favorite-film-card-list';
 import Footer from '@components/layout/footer/footer';
 import Header from '@components/layout/header/header';
+import { getFavoriteFilms } from '@store/user/async-actions';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 function MyList(): JSX.Element {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getFavoriteFilms());
+  }, [dispatch]);
+
   return (
     <div className="user-page">
       <Header className="user-page__head">
@@ -12,7 +21,7 @@ function MyList(): JSX.Element {
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-        <FilteredFilmCardList />
+        <FavoriteFilmCardList />
       </section>
 
       <Footer />

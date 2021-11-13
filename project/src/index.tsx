@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import App from './components/app/app';
-import { PROMO_FILM_MOCK } from './mocks/promo-film';
 import { reducer as filmReducer } from '@store/films/reducer';
 import { reducer as userReducer } from '@store/user/reducer';
 import { reducer as activeFilmReducer } from '@store/active-film/reducer';
@@ -47,7 +46,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ToastContainer />
-      <App promoFilm={PROMO_FILM_MOCK} />
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'));

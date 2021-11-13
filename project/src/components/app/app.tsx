@@ -1,6 +1,5 @@
 import { Router as BrowserRouter, Switch, Route } from 'react-router-dom';
 import { AppRoutes, AuthStatus } from 'src/constants';
-import { Film as FilmData } from 'src/types/film';
 import AddReview from '../pages/add-review/add-review';
 import Film from '@components/pages/film/film';
 import Main from '@components/pages/main/main';
@@ -14,16 +13,14 @@ import { useSelector } from 'react-redux';
 import { getFilmsLoadedState } from '@store/films/selectors';
 import { browserHistory } from 'src/utils/browser-history';
 import { getAuthStatus } from '@store/user/selectors';
+import { getRequestStatus } from '@store/active-film/selectors';
 
-type Props = {
-  promoFilm: FilmData;
-};
-
-function App({ promoFilm }: Props): JSX.Element {
+function App(): JSX.Element {
   const authStatus = useSelector(getAuthStatus);
   const isFilmsLoaded = useSelector(getFilmsLoadedState);
+  const isLoading = useSelector(getRequestStatus);
 
-  const condition = authStatus !== AuthStatus.Unknown && isFilmsLoaded;
+  const condition = authStatus !== AuthStatus.Unknown && isFilmsLoaded && !isLoading;
 
   return condition ? (
     <BrowserRouter history={browserHistory}>
@@ -32,11 +29,21 @@ function App({ promoFilm }: Props): JSX.Element {
           <Main />
         </Route>
 
-        <Route path={AppRoutes.SignIn} exact>
+        <PrivateRoute
+          path={AppRoutes.SignIn}
+          exact
+          authStatus={AuthStatus.NoAuth}
+          redirect={AppRoutes.Main}
+        >
           <SignIn />
-        </Route>
+        </PrivateRoute>
 
-        <PrivateRoute path={AppRoutes.MyList} exact>
+        <PrivateRoute
+          path={AppRoutes.MyList}
+          exact
+          authStatus={AuthStatus.Auth}
+          redirect={AppRoutes.SignIn}
+        >
           <MyList />
         </PrivateRoute>
 
@@ -44,12 +51,17 @@ function App({ promoFilm }: Props): JSX.Element {
           <Film />
         </Route>
 
-        <PrivateRoute path={AppRoutes.Review} exact>
+        <PrivateRoute
+          path={AppRoutes.Review}
+          exact
+          authStatus={AuthStatus.Auth}
+          redirect={AppRoutes.SignIn}
+        >
           <AddReview />
         </PrivateRoute>
 
         <Route path={AppRoutes.Player} exact>
-          <Player film={promoFilm} />
+          <Player />
         </Route>
 
         <Route>

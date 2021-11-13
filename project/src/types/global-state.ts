@@ -21,13 +21,14 @@ export type FilmsState = {
 export type UserState = {
   authorizationStatus: AuthStatus;
   info: UserInfo;
+  favoriteFilms: Array<Film>;
 };
 
 export type ActiveFilmState = {
   film: Film;
   similar: Array<Film>;
   comments: Array<Comment>;
-  isCommentSending: boolean;
+  requestStatus: boolean;
 };
 
 export type PromoFilmState = {

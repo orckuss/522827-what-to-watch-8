@@ -11,8 +11,8 @@ export const getFilms = (): ThunkActionResponse =>
   async (dispatch, _getState, api) => {
     try {
       const response = await api.get<Array<Record<string, unknown>>>(APIRoutes.Films);
-      const result = response.data.map((item) => adapter.transform<Film>(item));
-      dispatch(setfilms(result));
+      const films = adapter.transformArray<Film>(response.data);
+      dispatch(setfilms(films));
       dispatch(setFilmsLoaded(true));
     } catch (error) {
       toast.error(FailMessage.GetFilms);

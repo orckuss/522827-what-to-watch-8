@@ -3,12 +3,17 @@ import { useSelector } from 'react-redux';
 import { Redirect, Route, RouteProps } from 'react-router';
 import { AppRoutes, AuthStatus } from 'src/constants';
 
-function PrivateRoute({ children, ...rest }: RouteProps): JSX.Element {
+type Props = RouteProps & {
+  authStatus: AuthStatus,
+  redirect: AppRoutes,
+}
+
+function PrivateRoute({ authStatus, redirect, children, ...rest }: Props): JSX.Element {
   const isAuthorized = useSelector(getAuthStatus);
 
   return (
     <Route {...rest}>
-      {isAuthorized === AuthStatus.Auth ? children : <Redirect to={AppRoutes.SignIn} />}
+      {isAuthorized === authStatus ? children : <Redirect to={redirect} />}
     </Route>
   );
 }
