@@ -13,7 +13,7 @@ export const getFilms = (): ThunkActionResponse =>
       const response = await api.get<Array<Record<string, unknown>>>(APIRoutes.Films);
       const films = adapter.transformArray<Film>(response.data);
       dispatch(setfilms(films));
-      dispatch(setFilmsLoaded(true));
+      dispatch(setFilmsLoaded());
     } catch (error) {
       toast.error(FailMessage.GetFilms);
     }

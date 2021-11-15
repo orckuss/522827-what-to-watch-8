@@ -17,7 +17,4 @@ export const setfilms = createAction(
   (payload: Array<Film>) => ({ payload }),
 );
 
-export const setFilmsLoaded = createAction(
-  ActionType.SetFilmsLoaded,
-  (payload: boolean) => ({ payload }),
-);
+export const setFilmsLoaded = createAction(ActionType.SetFilmsLoaded);
