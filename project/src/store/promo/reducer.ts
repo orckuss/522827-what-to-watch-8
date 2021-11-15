@@ -3,7 +3,7 @@ import { DEFAULT_FILM_DATA } from 'src/constants';
 import { PromoFilmState } from 'src/types/global-state';
 import { setPromo, setPromoLoaded } from './actions';
 
-const initialState: PromoFilmState = {
+export const initialState: PromoFilmState = {
   film: DEFAULT_FILM_DATA,
   isLoaded: false,
 };
