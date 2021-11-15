@@ -19,9 +19,6 @@ describe('tests for promo film resucer', () => {
 
     expect(reducer({ film: makeFakeFilm(), isLoaded: false }, setPromo(promofilm)))
       .toEqual({ film: promofilm, isLoaded: false });
-
-    expect(reducer({ film: makeFakeFilm(), isLoaded: false }, setPromo(promofilm)))
-      .not.toEqual({ film: promofilm, isLoaded: true });
   });
 
   it('should return load status true when action setPromoLoaded', () => {
@@ -29,8 +26,5 @@ describe('tests for promo film resucer', () => {
 
     expect(reducer({ film: promofilm, isLoaded: false }, setPromoLoaded()))
       .toEqual({ film: promofilm, isLoaded: true });
-
-    expect(reducer({ film: promofilm, isLoaded: false }, setPromoLoaded()))
-      .not.toEqual({ film: makeFakeFilm(), isLoaded: true });
   });
 });
