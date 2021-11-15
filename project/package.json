@@ -1,5 +1,13 @@
 {
   "name": "project",
+  "jest": {
+    "moduleNameMapper": {
+      "^src/(.*)$": "<rootDir>/src/$1",
+      "^@components/(.*)$": "<rootDir>/src/components/$1",
+      "^@store/(.*)$": "<rootDir>/src/store/$1",
+      "^@hooks/(.*)$": "<rootDir>/src/hooks/$1"
+    }
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
