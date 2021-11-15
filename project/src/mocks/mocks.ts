@@ -1,6 +1,15 @@
-import { name, lorem, datatype } from 'faker';
+import { name, lorem, datatype, internet } from 'faker';
 import { Comment } from 'src/types/comment';
 import { Film } from 'src/types/film';
+import { UserInfo } from 'src/types/user';
+
+export const makeFakeUser = (): UserInfo => ({
+  id: datatype.number(),
+  avatarUrl: internet.avatar(),
+  name: name.firstName(),
+  email: internet.email(),
+  token: datatype.string(),
+});
 
 export const makeFakeFilm = (): Film => ({
   id: datatype.number(),
