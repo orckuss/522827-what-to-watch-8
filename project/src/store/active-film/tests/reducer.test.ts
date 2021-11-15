@@ -1,4 +1,5 @@
 import { makeFakeCommentList, makeFakeFilm, makeFakeFilmList } from 'src/mocks/mocks';
+import { Film } from 'src/types/film';
 import { ActiveFilmState } from 'src/types/global-state';
 import { endRequest, setActiveFilm, setComments, setSimilar, startRequest } from '../actions';
 import { initialState, reducer } from '../reducer';
@@ -20,32 +21,27 @@ describe('ActiveFilm reduser tests', () => {
   });
 
   it('should switch loadStatus to true when action "startRequest"', () => {
-    expect(reducer({ requestStatus: false } as ActiveFilmState, startRequest()))
-      .toEqual({ requestStatus: true });
+    const fakeFilm = makeFakeFilm();
 
-    expect(reducer({ requestStatus: true } as ActiveFilmState, startRequest()))
-      .toEqual({ requestStatus: true });
+    expect(reducer({ film: fakeFilm, requestStatus: false, comments: [], similar: [] }, startRequest()))
+      .toEqual({ film: fakeFilm, requestStatus: true, comments: [], similar: [] });
   });
 
   it('should switch loadStatus to false when action "endRequest"', () => {
-    expect(reducer({ requestStatus: false } as ActiveFilmState, endRequest()))
-      .toEqual({ requestStatus: false });
+    const fakeFilm = makeFakeFilm();
 
-    expect(reducer({ requestStatus: true } as ActiveFilmState, endRequest()))
-      .toEqual({ requestStatus: false });
+    expect(reducer({ film: fakeFilm, requestStatus: true, comments: [], similar: [] }, endRequest()))
+      .toEqual({ film: fakeFilm, requestStatus: false, comments: [], similar: [] });
   });
 
   it('should set active film when action setActiveFilm', () => {
     const fakeFilm = makeFakeFilm();
 
-    expect(reducer({ film: null as unknown } as ActiveFilmState, setActiveFilm(fakeFilm)))
-      .toEqual({ film: fakeFilm });
+    expect(reducer({ film: null as unknown as Film, requestStatus: false, comments: [], similar: [] }, setActiveFilm(fakeFilm)))
+      .toEqual({ film: fakeFilm, requestStatus: false, comments: [], similar: [] });
 
-    expect(reducer({ film: makeFakeFilm() } as ActiveFilmState, setActiveFilm(fakeFilm)))
-      .toEqual({ film: fakeFilm });
-
-    expect(reducer({ film: makeFakeFilm(), requestStatus: false } as ActiveFilmState, setActiveFilm(fakeFilm)))
-      .not.toEqual({ film: fakeFilm, requestStatus: true });
+    expect(reducer({ film: makeFakeFilm(), requestStatus: false, comments: [], similar: [] }, setActiveFilm(fakeFilm)))
+      .toEqual({ film: fakeFilm, requestStatus: false, comments: [], similar: [] });
   });
 
   it('should set similar films when action setSimilar', () => {
