@@ -3,7 +3,7 @@ import { DEFAULT_FILM_DATA } from 'src/constants';
 import { ActiveFilmState } from 'src/types/global-state';
 import { endRequest, setActiveFilm, setComments, setSimilar, startRequest } from './actions';
 
-const initialState: ActiveFilmState = {
+export const initialState: ActiveFilmState = {
   film: DEFAULT_FILM_DATA,
   similar: [],
   comments: [],
