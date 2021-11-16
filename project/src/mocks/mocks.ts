@@ -3,12 +3,12 @@ import { Comment } from 'src/types/comment';
 import { Film } from 'src/types/film';
 import { UserInfo } from 'src/types/user';
 
-export const makeFakeUser = (): UserInfo => ({
+export const makeFakeUser = (token = ''): UserInfo => ({
   id: datatype.number(),
   avatarUrl: internet.avatar(),
   name: name.firstName(),
   email: internet.email(),
-  token: datatype.string(),
+  token,
 });
 
 export const makeFakeFilm = (): Film => ({

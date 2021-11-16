@@ -16,11 +16,15 @@ const storage = new TokenStorage(AUTH_TOKEN_KEY_NAME);
 
 export const checkAuth = (): ThunkActionResponse =>
   async (dispatch, _getState, api) => {
-    const response = await api.get<Record<string, unknown>>(APIRoutes.Login);
-    const result = adapter.transform<AuthResponse>(response.data);
-    storage.setToken(result.token);
-    dispatch(setAuthStatus(AuthStatus.Auth));
-    dispatch(setUserInfo(result));
+    try {
+      const response = await api.get<Record<string, unknown>>(APIRoutes.Login);
+      const result = adapter.transform<AuthResponse>(response.data);
+      storage.setToken(result.token);
+      dispatch(setAuthStatus(AuthStatus.Auth));
+      dispatch(setUserInfo(result));
+    } catch (error) {
+      return void 0;
+    }
   };
 
 export const login = (data: AuthRequest): ThunkActionResponse =>

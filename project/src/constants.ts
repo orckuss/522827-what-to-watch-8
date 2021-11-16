@@ -44,6 +44,8 @@ export const REQUEST_BASE_URL = 'https://8.react.pages.academy/wtw';
 export const REQUEST_TIMEOUT = 5000;
 
 export const enum HttpCode {
+  Success = 200,
+  NoContent = 204,
   Unauthorized = 401,
   NotFound = 404,
 }
