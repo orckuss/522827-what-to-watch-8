@@ -46,6 +46,7 @@ export const REQUEST_TIMEOUT = 5000;
 export const enum HttpCode {
   Success = 200,
   NoContent = 204,
+  BadRequest = 400,
   Unauthorized = 401,
   NotFound = 404,
 }
