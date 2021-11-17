@@ -9,11 +9,13 @@ function ProgressBar({ persent }: Props): JSX.Element {
         className="player__progress"
         value={persent}
         max="100"
+        data-testid="progress"
       />
 
       <div
         className="player__toggler"
         style={{ 'left': `${persent}%` }}
+        data-testid="toggler"
       >
         Toggler
       </div>
