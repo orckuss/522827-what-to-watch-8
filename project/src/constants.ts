@@ -11,6 +11,14 @@ export const enum AppRoutes {
   NotFound = '/NotFound',
 }
 
+export enum RatingLevel {
+  Bad = 'Bad',
+  Normal = 'Normal',
+  Good = 'Good',
+  VeryGood = 'Very good',
+  Awesome = 'Awesome',
+}
+
 export const STAR_COUNT = 10;
 export const DEFALUT_RATING_VALUE = 0;
 export const TEXT_COMMENT_MIN_LENGTH = 50;

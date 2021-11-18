@@ -28,7 +28,7 @@ export const getFilmsCount = createSelector<GlobalState, Array<Film>, number>(
 export const getFilteredFilms = createSelector<GlobalState, Genre, Array<Film>, Array<Film>>(
   getActiveGenre,
   getFilms,
-  (genre, films) => genre === DEFALUT_ACTIVE_GENRE ?
+  (genre, films) => !genre || genre === DEFALUT_ACTIVE_GENRE ?
     films : films.filter((film) => film.genre === genre),
 );
 
