@@ -19,6 +19,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { configureStore } from '@reduxjs/toolkit';
 import { getPromo } from '@store/promo/async-action';
+import { Router } from 'react-router-dom';
+import { browserHistory } from 'src/utils/browser-history';
 
 const api = createAPI(() => {
   store.dispatch(setAuthStatus(AuthStatus.NoAuth));
@@ -45,8 +47,10 @@ const store = configureStore({
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ToastContainer />
-      <App />
+      <Router history={browserHistory}>
+        <ToastContainer />
+        <App />
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'));
