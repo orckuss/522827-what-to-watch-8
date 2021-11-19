@@ -1,5 +1,6 @@
 import { getActiveFilm } from '@store/active-film/selectors';
 import { useSelector } from 'react-redux';
+import { RatingLevel } from 'src/constants';
 
 function Overview(): JSX.Element {
   const film = useSelector(getActiveFilm);
@@ -17,7 +18,7 @@ function Overview(): JSX.Element {
       <div className="film-rating">
         <div className="film-rating__score">{rating}</div>
         <p className="film-rating__meta">
-          <span className="film-rating__level">Very good</span>
+          <span className="film-rating__level">{getRatigLevel(rating)}</span>
           <span className="film-rating__count">{scoresCount} ratings</span>
         </p>
       </div>
@@ -38,3 +39,25 @@ function Overview(): JSX.Element {
 }
 
 export default Overview;
+
+const getRatigLevel = (rating: number): string => {
+  switch (true) {
+    case rating >= 0 && rating < 3:
+      return RatingLevel.Bad;
+
+    case rating >= 3 && rating < 5:
+      return RatingLevel.Normal;
+
+    case rating >= 5 && rating < 8:
+      return RatingLevel.Good;
+
+    case rating >= 8 && rating < 10:
+      return RatingLevel.VeryGood;
+
+    case rating === 10:
+      return RatingLevel.Awesome;
+
+    default:
+      throw (new Error('incorrect rating value'));
+  }
+};

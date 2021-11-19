@@ -6,6 +6,7 @@ function IconFullScreen(): JSX.Element {
       viewBox="0 0 27 27"
       width="27"
       height="27"
+      data-testid="full-screen"
     >
       <use xlinkHref="#full-screen"></use>
     </svg>

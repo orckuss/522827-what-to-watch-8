@@ -3,7 +3,7 @@ import { AuthStatus } from 'src/constants';
 import { UserState } from 'src/types/global-state';
 import { setAuthStatus, setFavoriteFilms, setUserInfo } from './actions';
 
-const initialState: UserState = {
+export const initialState: UserState = {
   authorizationStatus: AuthStatus.Unknown,
   info: null,
   favoriteFilms: [],

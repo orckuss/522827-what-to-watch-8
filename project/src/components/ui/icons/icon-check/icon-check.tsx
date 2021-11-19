@@ -6,6 +6,7 @@ function IconCheck(): JSX.Element {
       viewBox="0 0 18 14"
       width="18"
       height="14"
+      data-testid="check"
     >
       <use xlinkHref="#in-list"></use>
     </svg>

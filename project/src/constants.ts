@@ -11,6 +11,14 @@ export const enum AppRoutes {
   NotFound = '/NotFound',
 }
 
+export enum RatingLevel {
+  Bad = 'Bad',
+  Normal = 'Normal',
+  Good = 'Good',
+  VeryGood = 'Very good',
+  Awesome = 'Awesome',
+}
+
 export const STAR_COUNT = 10;
 export const DEFALUT_RATING_VALUE = 0;
 export const TEXT_COMMENT_MIN_LENGTH = 50;
@@ -44,6 +52,9 @@ export const REQUEST_BASE_URL = 'https://8.react.pages.academy/wtw';
 export const REQUEST_TIMEOUT = 5000;
 
 export const enum HttpCode {
+  Success = 200,
+  NoContent = 204,
+  BadRequest = 400,
   Unauthorized = 401,
   NotFound = 404,
 }

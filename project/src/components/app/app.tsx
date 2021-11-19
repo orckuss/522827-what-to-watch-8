@@ -1,4 +1,4 @@
-import { Router as BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { AppRoutes, AuthStatus } from 'src/constants';
 import AddReview from '../pages/add-review/add-review';
 import Film from '@components/pages/film/film';
@@ -11,7 +11,6 @@ import PrivateRoute from '@components/services/private-route';
 import Spinner from '@components/layout/spinner/spinner';
 import { useSelector } from 'react-redux';
 import { getFilmsLoadedState } from '@store/films/selectors';
-import { browserHistory } from 'src/utils/browser-history';
 import { getAuthStatus } from '@store/user/selectors';
 import { getRequestStatus } from '@store/active-film/selectors';
 
@@ -23,52 +22,50 @@ function App(): JSX.Element {
   const condition = authStatus !== AuthStatus.Unknown && isFilmsLoaded && !isLoading;
 
   return condition ? (
-    <BrowserRouter history={browserHistory}>
-      <Switch>
-        <Route path={AppRoutes.Main} exact>
-          <Main />
-        </Route>
+    <Switch>
+      <Route path={AppRoutes.Main} exact>
+        <Main />
+      </Route>
 
-        <PrivateRoute
-          path={AppRoutes.SignIn}
-          exact
-          authStatus={AuthStatus.NoAuth}
-          redirect={AppRoutes.Main}
-        >
-          <SignIn />
-        </PrivateRoute>
+      <PrivateRoute
+        path={AppRoutes.SignIn}
+        exact
+        authStatus={AuthStatus.NoAuth}
+        redirect={AppRoutes.Main}
+      >
+        <SignIn />
+      </PrivateRoute>
 
-        <PrivateRoute
-          path={AppRoutes.MyList}
-          exact
-          authStatus={AuthStatus.Auth}
-          redirect={AppRoutes.SignIn}
-        >
-          <MyList />
-        </PrivateRoute>
+      <PrivateRoute
+        path={AppRoutes.MyList}
+        exact
+        authStatus={AuthStatus.Auth}
+        redirect={AppRoutes.SignIn}
+      >
+        <MyList />
+      </PrivateRoute>
 
-        <Route path={AppRoutes.Films} exact>
-          <Film />
-        </Route>
+      <Route path={AppRoutes.Films} exact>
+        <Film />
+      </Route>
 
-        <PrivateRoute
-          path={AppRoutes.Review}
-          exact
-          authStatus={AuthStatus.Auth}
-          redirect={AppRoutes.SignIn}
-        >
-          <AddReview />
-        </PrivateRoute>
+      <PrivateRoute
+        path={AppRoutes.Review}
+        exact
+        authStatus={AuthStatus.Auth}
+        redirect={AppRoutes.SignIn}
+      >
+        <AddReview />
+      </PrivateRoute>
 
-        <Route path={AppRoutes.Player} exact>
-          <Player />
-        </Route>
+      <Route path={AppRoutes.Player} exact>
+        <Player />
+      </Route>
 
-        <Route>
-          <NotFound />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+      <Route>
+        <NotFound />
+      </Route>
+    </Switch>
   ) : <Spinner />;
 }
 
