@@ -16,12 +16,6 @@ const AuthStore = mockStore({
   activeFilm: { requestStatus: false },
 });
 
-const NoAuthStore = mockStore({
-  user: { authorizationStatus: AuthStatus.NoAuth },
-  films: { filmsLoaded: true },
-  activeFilm: { requestStatus: false },
-});
-
 const mockAuthApp = (
   <Provider store={AuthStore}>
     <Router history={history}>
@@ -29,6 +23,12 @@ const mockAuthApp = (
     </Router>
   </Provider>
 );
+
+const NoAuthStore = mockStore({
+  user: { authorizationStatus: AuthStatus.NoAuth },
+  films: { filmsLoaded: true },
+  activeFilm: { requestStatus: false },
+});
 
 const mockNoAuthApp = (
   <Provider store={NoAuthStore}>
@@ -60,7 +60,7 @@ function MockSignIn(): JSX.Element { return <section>SignIn</section>; }
 jest.mock('@components/pages/sign-in/sign-in', () => MockSignIn);
 
 describe('Tests for app routing', () => {
-  it('Test route to Main', () => {
+  it('Should navigate to Main', () => {
     history.push(AppRoutes.Main);
 
     render(mockAuthApp);
@@ -68,7 +68,7 @@ describe('Tests for app routing', () => {
     expect(screen.queryByText(/Main/i)).toBeInTheDocument();
   });
 
-  it('Shiuld navigate to Film', () => {
+  it('Should navigate to Film', () => {
     history.push(generatePath(AppRoutes.Films, { id: 1 }));
 
     render(mockAuthApp);
@@ -76,7 +76,7 @@ describe('Tests for app routing', () => {
     expect(screen.queryByText(/Film/i)).toBeInTheDocument();
   });
 
-  it('Shiuld navigate to NotFound', () => {
+  it('Should navigate to NotFound', () => {
     history.push(AppRoutes.NotFound);
 
     render(mockAuthApp);
@@ -84,7 +84,7 @@ describe('Tests for app routing', () => {
     expect(screen.queryByText(/NotFound/i)).toBeInTheDocument();
   });
 
-  it('Shiuld navigate to Player', () => {
+  it('Should navigate to Player', () => {
     history.push(generatePath(AppRoutes.Player, { id: 1 }));
 
     render(mockAuthApp);
@@ -92,7 +92,7 @@ describe('Tests for app routing', () => {
     expect(screen.queryByText(/Player/i)).toBeInTheDocument();
   });
 
-  it('Shiuld navigate to AddReview', () => {
+  it('Should navigate to AddReview', () => {
     history.push(generatePath(AppRoutes.Review, { id: 1 }));
 
     render(mockAuthApp);
@@ -100,7 +100,7 @@ describe('Tests for app routing', () => {
     expect(screen.queryByText(/AddReview/i)).toBeInTheDocument();
   });
 
-  it('Shiuld navigate to MyList whith Authorization', () => {
+  it('Should navigate to MyList whith Authorization', () => {
     history.push(AppRoutes.MyList);
 
     render(mockAuthApp);
@@ -108,7 +108,7 @@ describe('Tests for app routing', () => {
     expect(screen.queryByText(/MyList/i)).toBeInTheDocument();
   });
 
-  it('Shiuld redirect to SignIn without Authorization', () => {
+  it('Should redirect to SignIn without Authorization', () => {
     history.push(AppRoutes.MyList);
 
     render(mockNoAuthApp);
@@ -117,7 +117,7 @@ describe('Tests for app routing', () => {
     expect(screen.queryByText(/SignIn/i)).toBeInTheDocument();
   });
 
-  it('Shiuld navigate to SignIn without Authorization', () => {
+  it('Should navigate to SignIn without Authorization', () => {
     history.push(AppRoutes.SignIn);
 
     render(mockNoAuthApp);
@@ -125,12 +125,32 @@ describe('Tests for app routing', () => {
     expect(screen.queryByText(/SignIn/i)).toBeInTheDocument();
   });
 
-  it('Shiuld redirect to Nain with Authorization', () => {
+  it('Should redirect to Nain with Authorization', () => {
     history.push(AppRoutes.SignIn);
 
     render(mockAuthApp);
 
     expect(screen.queryByText(/SignIn/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/Main/i)).toBeInTheDocument();
+  });
+
+  it('Should do not navigate to main and show spinner when loading is true', () => {
+    history.push(AppRoutes.Main);
+    const store = mockStore({
+      user: { authorizationStatus: AuthStatus.Auth },
+      films: { filmsLoaded: false },
+      activeFilm: { requestStatus: false },
+    });
+
+    const { container } = render(
+      <Provider store={store}>
+        <Router history={history}>
+          <App></App>
+        </Router>
+      </Provider>,
+    );
+
+    expect(screen.queryByText(/Main/i)).not.toBeInTheDocument();
+    expect(container.querySelector('.spinner')).toBeInTheDocument();
   });
 });
