@@ -1,18 +1,18 @@
+import { useSelector } from 'react-redux';
 import { generatePath } from 'react-router';
 import { Link } from 'react-router-dom';
-import { AppRoutes, AuthStatus } from 'src/constants';
+import { getAuthStatus } from '@store/user/selectors';
 import Details from '@components/layout/details/details';
 import Footer from '@components/layout/footer/footer';
 import Overview from '@components/layout/overview/overview';
 import Reviews from '@components/layout/reviews/reviews';
 import Tabs, { TabConfig } from '@components/layout/tabs/tabs';
 import SimilarFilmCardList from '@components/layout/similar-film-card-list/similar-film-card-list';
-import { useSelector } from 'react-redux';
 import Poster from '@components/layout/poster/poster';
 import FilmCardButtons from '@components/layout/film-card-buttons/film-card-buttons';
 import FilmCardHeader from '@components/layout/film-card-header/film-card-header';
 import { useFilmLoad } from '@hooks/useFilmLoad';
-import { getAuthStatus } from '@store/user/selectors';
+import { AppRoutes, AuthStatus } from 'src/constants';
 
 function Film(): JSX.Element {
   const film = useFilmLoad();

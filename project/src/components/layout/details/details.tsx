@@ -1,5 +1,5 @@
-import { getActiveFilm } from '@store/active-film/selectors';
 import { useSelector } from 'react-redux';
+import { getActiveFilm } from '@store/active-film/selectors';
 
 function Details(): JSX.Element {
   const film = useSelector(getActiveFilm);

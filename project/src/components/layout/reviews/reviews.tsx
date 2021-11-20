@@ -1,5 +1,5 @@
-import { getComments } from '@store/active-film/selectors';
 import { useSelector } from 'react-redux';
+import { getComments } from '@store/active-film/selectors';
 import './reviews.css';
 
 function Reviews(): JSX.Element {

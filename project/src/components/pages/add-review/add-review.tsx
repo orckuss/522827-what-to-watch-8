@@ -1,10 +1,10 @@
 import { generatePath } from 'react-router';
-import { NamedRoute } from 'src/types/route-params';
-import { AppRoutes } from 'src/constants';
 import AddReviewForm from '@components/layout/add-review-form/add-review-form';
 import Breadcrumbs from '@components/layout/breadcrumbs/breadcrumbs';
 import Header from '@components/layout/header/header';
 import { useFilmLoad } from '@hooks/useFilmLoad';
+import { NamedRoute } from 'src/types/route-params';
+import { AppRoutes } from 'src/constants';
 
 function AddReview(): JSX.Element {
   const film = useFilmLoad();

@@ -1,7 +1,7 @@
-import { logout } from '@store/user/async-actions';
-import { getAuthStatus, getUserInfo } from '@store/user/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { logout } from '@store/user/async-actions';
+import { getAuthStatus, getUserInfo } from '@store/user/selectors';
 import { AppRoutes, AuthStatus } from 'src/constants';
 
 function User(): JSX.Element {

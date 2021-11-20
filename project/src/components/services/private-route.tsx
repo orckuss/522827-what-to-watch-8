@@ -1,6 +1,6 @@
-import { getAuthStatus } from '@store/user/selectors';
 import { useSelector } from 'react-redux';
 import { Redirect, Route, RouteProps } from 'react-router';
+import { getAuthStatus } from '@store/user/selectors';
 import { AppRoutes, AuthStatus } from 'src/constants';
 
 type Props = RouteProps & {

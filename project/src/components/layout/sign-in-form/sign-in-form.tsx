@@ -1,6 +1,6 @@
-import { login } from '@store/user/async-actions';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { login } from '@store/user/async-actions';
 import { EMAIL_PATTERN, PASSWORD_PATTERN } from 'src/constants';
 
 type Props = {

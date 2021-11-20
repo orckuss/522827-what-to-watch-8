@@ -1,6 +1,9 @@
+import { useSelector } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
-import { AppRoutes, AuthStatus } from 'src/constants';
-import AddReview from '../pages/add-review/add-review';
+import { getFilmsLoadedState } from '@store/films/selectors';
+import { getAuthStatus } from '@store/user/selectors';
+import { getRequestStatus } from '@store/active-film/selectors';
+import AddReview from '@components/pages/add-review/add-review';
 import Film from '@components/pages/film/film';
 import Main from '@components/pages/main/main';
 import MyList from '@components/pages/my-list/my-list';
@@ -9,10 +12,7 @@ import Player from '@components/pages/player/player';
 import SignIn from '@components/pages/sign-in/sign-in';
 import PrivateRoute from '@components/services/private-route';
 import Spinner from '@components/layout/spinner/spinner';
-import { useSelector } from 'react-redux';
-import { getFilmsLoadedState } from '@store/films/selectors';
-import { getAuthStatus } from '@store/user/selectors';
-import { getRequestStatus } from '@store/active-film/selectors';
+import { AppRoutes, AuthStatus } from 'src/constants';
 
 function App(): JSX.Element {
   const authStatus = useSelector(getAuthStatus);
