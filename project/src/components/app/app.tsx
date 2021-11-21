@@ -13,6 +13,7 @@ import SignIn from '@components/pages/sign-in/sign-in';
 import PrivateRoute from '@components/services/private-route';
 import Spinner from '@components/layout/spinner/spinner';
 import { AppRoutes, AuthStatus } from 'src/constants';
+import NetworkError from '@components/layout/network-error/network-error';
 
 function App(): JSX.Element {
   const authStatus = useSelector(getAuthStatus);
@@ -20,6 +21,10 @@ function App(): JSX.Element {
   const isLoading = useSelector(getRequestStatus);
 
   const condition = authStatus !== AuthStatus.Unknown && isFilmsLoaded && !isLoading;
+
+  if (authStatus === AuthStatus.Unknown && isFilmsLoaded) {
+    return <NetworkError />;
+  }
 
   return condition ? (
     <Switch>
