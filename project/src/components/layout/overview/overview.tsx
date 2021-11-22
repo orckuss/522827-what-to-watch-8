@@ -1,22 +1,22 @@
 import { useSelector } from 'react-redux';
 import { getActiveFilm } from '@store/active-film/selectors';
-import { RatingLevel } from 'src/constants';
+import { Rating, RatingLevel } from 'src/constants';
 
 const getRatigLevel = (rating: number): string => {
   switch (true) {
-    case rating >= 0 && rating < 3:
+    case rating >= Rating.BadMain && rating < Rating.BadMAx:
       return RatingLevel.Bad;
 
-    case rating >= 3 && rating < 5:
+    case rating >= Rating.NormalMin && rating < Rating.NormalMax:
       return RatingLevel.Normal;
 
-    case rating >= 5 && rating < 8:
+    case rating >= Rating.GoodMin && rating < Rating.GoodMax:
       return RatingLevel.Good;
 
-    case rating >= 8 && rating < 10:
+    case rating >= Rating.VeryGoodMin && rating < Rating.VeryGoodMax:
       return RatingLevel.VeryGood;
 
-    case rating === 10:
+    case rating === Rating.AwesomeMin:
       return RatingLevel.Awesome;
 
     default:
