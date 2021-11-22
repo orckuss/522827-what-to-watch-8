@@ -10,28 +10,28 @@ import App from './app';
 const mockStore = configureMockStore<GlobalState>();
 const history = createMemoryHistory();
 
-const AuthStore = mockStore({
+const authStore = mockStore({
   user: { authorizationStatus: AuthStatus.Auth },
   films: { filmsLoaded: true },
   activeFilm: { requestStatus: false },
 });
 
 const mockAuthApp = (
-  <Provider store={AuthStore}>
+  <Provider store={authStore}>
     <Router history={history}>
       <App></App>
     </Router>
   </Provider>
 );
 
-const NoAuthStore = mockStore({
+const noAuthStore = mockStore({
   user: { authorizationStatus: AuthStatus.NoAuth },
   films: { filmsLoaded: true },
   activeFilm: { requestStatus: false },
 });
 
 const mockNoAuthApp = (
-  <Provider store={NoAuthStore}>
+  <Provider store={noAuthStore}>
     <Router history={history}>
       <App></App>
     </Router>

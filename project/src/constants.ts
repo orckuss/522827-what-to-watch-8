@@ -11,6 +11,18 @@ export const enum AppRoutes {
   NotFound = '/NotFound',
 }
 
+export const enum Rating {
+  BadMain = 0,
+  BadMAx = 3,
+  NormalMin = 3,
+  NormalMax = 5,
+  GoodMin = 5,
+  GoodMax = 8,
+  VeryGoodMin = 8,
+  VeryGoodMax = 10,
+  AwesomeMin = 10,
+}
+
 export enum RatingLevel {
   Bad = 'Bad',
   Normal = 'Normal',
