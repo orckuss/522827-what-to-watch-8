@@ -1,9 +1,9 @@
-import { sendComment } from '@store/active-film/async-actions';
-import { getActiveFilm, getRequestStatus } from '@store/active-film/selectors';
 import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { DEFALUT_RATING_VALUE, STAR_COUNT, TEXT_COMMENT_MAX_LENGTH, TEXT_COMMENT_MIN_LENGTH } from 'src/constants';
+import { sendComment } from '@store/active-film/async-actions';
+import { getActiveFilm, getRequestStatus } from '@store/active-film/selectors';
 import RatingFormControl from '../rating-form-control/rating-form-control';
+import { DEFALUT_RATING_VALUE, STAR_COUNT, TEXT_COMMENT_MAX_LENGTH, TEXT_COMMENT_MIN_LENGTH } from 'src/constants';
 
 function AddReviewForm(): JSX.Element {
   const [comment, setComment] = useState<string>('');

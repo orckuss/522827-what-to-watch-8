@@ -15,6 +15,7 @@ export const getFilms = (): ThunkActionResponse =>
       dispatch(setfilms(films));
       dispatch(setFilmsLoaded());
     } catch (error) {
+      dispatch(setFilmsLoaded());
       toast.error(FailMessage.GetFilms);
     }
   };

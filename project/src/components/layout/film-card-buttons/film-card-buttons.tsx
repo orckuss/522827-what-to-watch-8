@@ -1,12 +1,12 @@
+import { ReactNode } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link, generatePath } from 'react-router-dom';
+import { changeFavorite } from '@store/user/async-actions';
 import IconPlay from '@components/ui/icons/icon-play/icon-play';
 import IconAdd from '@components/ui/icons/icon-add/icon-add';
 import IconCheck from '@components/ui/icons/icon-check/icon-check';
-import { ReactNode } from 'react';
-import { Link, generatePath } from 'react-router-dom';
 import { AppRoutes, FavoriteRequestData } from 'src/constants';
 import { Film } from 'src/types/film';
-import { useDispatch } from 'react-redux';
-import { changeFavorite } from '@store/user/async-actions';
 
 type Props = {
   film: Film;

@@ -1,13 +1,28 @@
+import { useEffect, useRef, useState } from 'react';
+import { useHistory } from 'react-router';
 import IconFullScreen from '@components/ui/icons/icon-full-screen/icon-full-screen';
 import IconPause from '@components/ui/icons/icon-pause/icon-pause';
 import IconPlay from '@components/ui/icons/icon-play/icon-play';
 import ProgressBar from '@components/ui/progress-bar/progress-bar';
 import { useFilmLoad } from '@hooks/useFilmLoad';
-import { useEffect, useRef, useState } from 'react';
-import { useHistory } from 'react-router';
 import { MILISECOND_MEASURE, PERCENT_MEASURE, PLAYER_ZERO_TIME } from 'src/constants';
 
 const timeFormater = new Intl.DateTimeFormat('ru', { timeZone: 'UTC', timeStyle: 'medium' });
+
+const getForamatedRemainingTime = (duration: number, currentTime: number): string => {
+  const formatedTime = timeFormater.format((duration - currentTime) * MILISECOND_MEASURE);
+
+  let result = formatedTime.split(':');
+
+  if (Number(result[0]) === PLAYER_ZERO_TIME) {
+    result = result.slice(1);
+  }
+
+  return `-${result.join(':')}`;
+};
+
+const getTImePercent = (duration: number, currentTime: number): number =>
+  duration ? Math.round(currentTime / duration * PERCENT_MEASURE) : PLAYER_ZERO_TIME;
 
 function Player(): JSX.Element {
   const history = useHistory();
@@ -26,21 +41,6 @@ function Player(): JSX.Element {
       ? ref.current?.play()
       : ref.current?.pause();
   }, [isPlayed]);
-
-  const getForamatedRemainingTime = (): string => {
-    const formatedTime = timeFormater.format((duration - currentTime) * MILISECOND_MEASURE);
-
-    let result = formatedTime.split(':');
-
-    if (Number(result[0]) === PLAYER_ZERO_TIME) {
-      result = result.slice(1);
-    }
-
-    return `-${result.join(':')}`;
-  };
-
-  const getTImePercent = (): number =>
-    duration ? Math.round(currentTime / duration * PERCENT_MEASURE) : PLAYER_ZERO_TIME;
 
   return (
     <div className="player">
@@ -66,9 +66,9 @@ function Player(): JSX.Element {
 
       <div className="player__controls">
         <div className="player__controls-row">
-          <ProgressBar persent={getTImePercent()} />
+          <ProgressBar persent={getTImePercent(duration, currentTime)} />
 
-          <div className="player__time-value">{getForamatedRemainingTime()}</div>
+          <div className="player__time-value">{getForamatedRemainingTime(duration, currentTime)}</div>
         </div>
 
         <div className="player__controls-row">

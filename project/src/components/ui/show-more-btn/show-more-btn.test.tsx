@@ -1,11 +1,11 @@
 import { configureMockStore } from '@jedmao/redux-mock-store';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import * as Redux from 'react-redux';
 import { Provider } from 'react-redux';
+import ShowMoreBtn from './show-more-btn';
 import { makeFakeFilmList } from 'src/mocks/mocks';
 import { GlobalState } from 'src/types/global-state';
-import ShowMoreBtn from './show-more-btn';
-import * as Redux from 'react-redux';
-import userEvent from '@testing-library/user-event';
 import { ActionType } from 'src/types/actions';
 
 const mockStore = configureMockStore<GlobalState>();

@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useState } from 'react';
 
 export type TabConfig = {
   caption: string;
@@ -11,13 +11,9 @@ type Props = {
 };
 
 function Tabs({ tabs, className = '' }: Props): JSX.Element {
-  const [active, setActive] = useState<string>(tabs[0].caption);
-  const [component, setComponent] = useState<ReactNode>(null);
-
-  useEffect(() => {
-    const activeTab = tabs.find((tab) => tab.caption === active);
-    setComponent(activeTab?.component);
-  }, [tabs, active]);
+  const [initTab] = tabs;
+  const [active, setActive] = useState<string>(initTab.caption);
+  const [component, setComponent] = useState<ReactNode>(initTab.component);
 
   return (
     <div className={className}>
@@ -34,6 +30,7 @@ function Tabs({ tabs, className = '' }: Props): JSX.Element {
                 onClick={(evt) => {
                   evt.preventDefault();
                   setActive(tab.caption);
+                  setComponent(tab.component);
                 }}
               >
                 {tab.caption}

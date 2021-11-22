@@ -1,8 +1,8 @@
+import { useEffect } from 'react';
+import { useParams } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
 import { getComments, getFilm, getSimilar } from '@store/active-film/async-actions';
 import { getActiveFilm } from '@store/active-film/selectors';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
 import { Film } from 'src/types/film';
 import { RouteParams } from 'src/types/route-params';
 

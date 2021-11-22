@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+import { getPromoFilm } from '@store/promo/selectors';
 import FilmCardButtons from '@components/layout/film-card-buttons/film-card-buttons';
 import FilmCardHeader from '@components/layout/film-card-header/film-card-header';
 import FilteredFilmCardList from '@components/layout/filtered-film-card-list/filtered-film-card-list';
@@ -5,8 +7,6 @@ import Footer from '@components/layout/footer/footer';
 import GenreList from '@components/layout/genre-list/genre-list';
 import Poster from '@components/layout/poster/poster';
 import ShowMoreBtn from '@components/ui/show-more-btn/show-more-btn';
-import { getPromoFilm } from '@store/promo/selectors';
-import { useSelector } from 'react-redux';
 
 function Main(): JSX.Element {
   const promoFilm = useSelector(getPromoFilm);

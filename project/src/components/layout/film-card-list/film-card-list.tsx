@@ -1,5 +1,5 @@
-import { Film } from 'src/types/film';
 import SmallFilmCard from '../small-film-card/small-film-card';
+import { Film } from 'src/types/film';
 
 type Props = {
   films: Array<Film>;
