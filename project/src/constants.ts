@@ -37,7 +37,7 @@ export const TEXT_COMMENT_MIN_LENGTH = 50;
 export const TEXT_COMMENT_MAX_LENGTH = 400;
 
 export const enum FailMessage {
-  GetSimilar = 'Не удалось получить похожие фильмы',
+  GetSimilar = 'Не удалось получить список похожих фильмов',
   GetComments = 'Не удалось получить комментарии',
   PostComment = 'Не удалось отправить комментарий',
   Login = 'Авторизация не удалась',
